@@ -1,5 +1,5 @@
 runtime! debian.vim
-
+      
 "----- Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -12,8 +12,10 @@ call plug#begin()
 Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
-Plug 'vim-latex/vim-latex'
+Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdtree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 "----- NERDTtree
@@ -70,19 +72,41 @@ let g:seoul256_srgb = 1
 "----- Set aliases to improve efficiency
 command W w
 command Wq wq
+command WQ wq
 
 "----- Set shortcuts in LaTeX documents 
 autocmd filetype tex set tw=90
 autocmd filetype tex set spell
-augroup MyIMAPs
-    au!
-    autocmd FileType tex call IMAP('LIL', '\lstinline{<+code+>}<++>', 'tex')
-    autocmd FileType tex call IMAP('ATTR', '\attribute{<++> : <++>}<++>', 'tex')
-    autocmd FileType tex call IMAP('ASSO', '\association{<+attr1+>}{<+multiplicity1+>{<+role1+>}{<+attr2+>}{<+multiplicity2+>}{<+role+>}<++>', 'tex')
-    autocmd FileType tex call IMAP('OPER', '\operation{<+operation+> (<+varname+> : <+vartype+>) : <+rettype+>}<++>', 'tex')
-augroup END
 
 "----- set the placement of the swap files
 set backupdir=~/.backup/,/tmp//
 set directory=~/.swp/,/tmp//
 set undodir=~/.undo/,/tmp//
+
+"----- set vimtex options
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+let g:vimtex_fold_enabled = 1
+let g:vim_fold_types = {'sections' : {'parse_levels' : 3}}
