@@ -12,6 +12,7 @@ call plug#begin()
 Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
+Plug 'vim-latex/vim-latex'
 call plug#end()
 
 "----- NERDTtree
