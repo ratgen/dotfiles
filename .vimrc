@@ -44,19 +44,44 @@ let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 set grepprg=grep\ -nH\ $*
 
-"---- Set the view of indendation and indentation to 2.
+"---- Set the view of indentation and indentation to 2.
 filetype indent on
 set tabstop=2
-set laststatus=2
 set shiftwidth=2
+set autoindent
+set expandtab
 
-"----- Set the numbering to relative and, show the actual line of the current
-"line
+"----- Set search options
+set hlsearch "sets highlighting when searching
+
+"----- Interface options
 set noshowmode
 set relativenumber
 set nu
+set laststatus=2 "always show the statusbar (the one on the bottom)
+set confirm "display confirmation when closing unsaved file
 
 "----- Set the color theme
 colo seoul256
 set background=dark
 let g:seoul256_srgb = 1
+
+"----- Set aliases to improve efficiency
+command W w
+command Wq wq
+
+"----- Set shortcuts in LaTeX documents 
+autocmd filetype tex set tw=90
+autocmd filetype tex set spell
+augroup MyIMAPs
+    au!
+    autocmd FileType tex call IMAP('LIL', '\lstinline{<+code+>}<++>', 'tex')
+    autocmd FileType tex call IMAP('ATTR', '\attribute{<++> : <++>}<++>', 'tex')
+    autocmd FileType tex call IMAP('ASSO', '\association{<+attr1+>}{<+multiplicity1+>{<+role1+>}{<+attr2+>}{<+multiplicity2+>}{<+role+>}<++>', 'tex')
+    autocmd FileType tex call IMAP('OPER', '\operation{<+operation+> (<+varname+> : <+vartype+>) : <+rettype+>}<++>', 'tex')
+augroup END
+
+"----- set the placement of the swap files
+set backupdir=~/.backup/,/tmp//
+set directory=~/.swp/,/tmp//
+set undodir=~/.undo/,/tmp//
