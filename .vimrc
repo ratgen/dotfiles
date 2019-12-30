@@ -9,7 +9,7 @@ endif
 
 "----- Get Plug plugins
 call plug#begin()
-Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
@@ -65,9 +65,8 @@ set laststatus=2 "always show the statusbar (the one on the bottom)
 set confirm "display confirmation when closing unsaved file
 
 "----- Set the color theme
-colo seoul256
+colo gruvbox 
 set background=dark
-let g:seoul256_srgb = 1
 
 "----- Set aliases to improve efficiency
 command W w
