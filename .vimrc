@@ -15,7 +15,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 "----- NERDTtree
