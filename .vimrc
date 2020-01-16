@@ -10,7 +10,6 @@ endif
 "----- Get Plug plugins
 call plug#begin()
 Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdtree'
@@ -31,30 +30,12 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
-"----- Set the ALT key bindings to work in tex
-let c='a'
-while c <= 'z'
-  exec "set <A-".c.">=\e".c
-  exec "imap \e".c." <A-".c.">"
-  let c = nr2char(1+char2nr(c))
-endw
-
-set timeout ttimeoutlen=50
-
-"---- Set the latex flavor
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
-set grepprg=grep\ -nH\ $*
-
 "---- Set the view of indentation and indentation to 2.
 filetype indent on
 set tabstop=2
 set shiftwidth=2
 set autoindent
 set expandtab
-
-"----- Set search options
-set hlsearch "sets highlighting when searching
 
 "----- Interface options
 set noshowmode
