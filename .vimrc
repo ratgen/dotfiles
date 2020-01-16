@@ -73,7 +73,7 @@ command Wq wq
 command WQ wq
 
 "----- Set shortcuts in LaTeX documents 
-autocmd filetype tex set tw=90
+autocmd filetype tex set tw=80
 autocmd filetype tex set spell
 
 "----- set the placement of the swap files
