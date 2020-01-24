@@ -2,4 +2,6 @@
 *
 !.gitignore
 !.vimrc
+!.config/nvim/init.vim
+!.bashrc
 !README.md
