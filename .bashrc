@@ -157,3 +157,4 @@ export NVM_DIR="$HOME/.nvm"
 alias python=python3
 set -o vi
 
+echo "USE TMUX" | lolcat
