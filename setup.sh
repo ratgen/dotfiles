@@ -18,6 +18,7 @@ function dotfilelink {
 
 dotfilelink bashrc  .bashrc
 dotfilelink init.vim .config/nvim/init.vim
+dotfilelink gitconfig .gitconfig
 
 if [ -f /etc/os-release ]; then
   . /etc/os-release
@@ -28,7 +29,7 @@ fi
 
 if [ $OS=="arch" ]; then
   sudo pacman -Syu
-  sudo pacman -S --needed neovim
+  sudo pacman -S --needed neovim evolution evolution-ews firefox caprine lolcat fortune-mod screenfetch
 elif [$OS=="debian" ]; then
   sudo apt install neovim
 else
@@ -36,3 +37,4 @@ else
 fi
 
 nvim +PlugInstall +q! +q! +q!
+source ~/.bashrc
