@@ -27,9 +27,10 @@ else
   OS=$(uname -r)
 fi
 
+echo "Install nvim and coc dependencies"
 if [ $OS=="arch" ]; then
   sudo pacman -Syu
-  sudo pacman -S --needed neovim evolution evolution-ews firefox caprine lolcat fortune-mod screenfetch
+  sudo pacman -S --needed neovim node npm
 elif [$OS=="debian" ]; then
   sudo apt install neovim
 else
