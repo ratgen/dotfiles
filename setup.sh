@@ -19,10 +19,11 @@ function dotfilelink {
 dotfilelink bashrc  .bashrc
 dotfilelink init.vim .config/nvim/init.vim
 dotfilelink gitconfig .gitconfig
+dotfilelink coc-settings.json .config/nvim/coc-settings.json
 
 unameS=$(uname -s)
 declare packageManager
-packages="neovim nodejs npm neofetch"
+packages="neovim nodejs npm neofetch firefox"
 
 if [ $unameS = "Linux" ]; then
   if test -f "/etc/arch-release" ; then
@@ -40,4 +41,8 @@ else
 fi
 
 nvim +PlugInstall +q! +q! +q!
+sudo npm i -g bash-language-server
+nvim +"CocInstall coc-vimtex" +"CocInstall coc-json" +"coc-python" +q! +q!
+
+
 source ~/.bashrc
