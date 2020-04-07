@@ -24,20 +24,17 @@ unameS=$(uname -s)
 declare packageManager
 packages="neovim nodejs npm neofetch"
 
-if [ $unameS=="Linux" ]
-then
-  if [ /etc/arch-release ]
-  then
+if [ $unameS = "Linux" ]; then
+  if test -f "/etc/arch-release" ; then
     sudo pacman -S --needed $packages fortune-mod
-  elif [ /etc/debian_version ]
-  then
+  elif test -f "/etc/debian_version" ; then
     sudo apt install $packages fortune
   else
     echo "no supported package manager"
   fi
-elif [ $unameS=="Darwin" ]
-then
+elif [ $unameS = "Darwin" ]; then
   brew install $packages fortune
+  echo "done brewing"
 else
   echo "not a supported system"
 fi
