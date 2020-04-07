@@ -20,21 +20,26 @@ dotfilelink bashrc  .bashrc
 dotfilelink init.vim .config/nvim/init.vim
 dotfilelink gitconfig .gitconfig
 
-if [ -f /etc/os-release ]; then
-  . /etc/os-release
-  OS=$ID_LIKE
-else
-  OS=$(uname -r)
-fi
+unameS=$(uname -s)
+declare packageManager
+packages="neovim nodejs npm neofetch"
 
-echo "Install nvim and coc dependencies"
-if [ $OS=="arch" ]; then
-  sudo pacman -Syu
-  sudo pacman -S --needed neovim node npm
-elif [$OS=="debian" ]; then
-  sudo apt install neovim
+if [ $unameS=="Linux" ]
+then
+  if [ /etc/arch-release ]
+  then
+    sudo pacman -S --needed $packages fortune-mod
+  elif [ /etc/debian_version ]
+  then
+    sudo apt install $packages fortune
+  else
+    echo "no supported package manager"
+  fi
+elif [ $unameS=="Darwin" ]
+then
+  brew install $packages fortune
 else
-  echo "no installtion for this setup file"
+  echo "not a supported system"
 fi
 
 nvim +PlugInstall +q! +q! +q!
