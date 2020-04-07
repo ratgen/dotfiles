@@ -12,7 +12,6 @@ alias python=python3
 op(){
   xdg-open "$1"
 }
-
 # set vim as the default editor
 VISUAL=nvim;export VISUAL EDITOR=nvim; export EDITOR
 
@@ -22,8 +21,6 @@ LS_COLORS=$LS_COLOR:'di=1;37:' ; export LS_COLORS
 #set vi in bash terminal
 set -o vi
 
-screenfetch 
-
-echo " "
+neofetch --color_blocks off
 
 fortune
