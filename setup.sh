@@ -44,5 +44,4 @@ nvim +PlugInstall +q! +q! +q!
 sudo npm i -g bash-language-server
 nvim +"CocInstall coc-vimtex" +"CocInstall coc-json" +"coc-python" +q! +q!
 
-
 source ~/.bashrc

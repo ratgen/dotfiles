@@ -77,6 +77,7 @@ endfunction
 
 let g:vimtex_fold_enabled = 1
 let g:vim_fold_types = {'sections' : {'parse_levels' : 3}}
+let g:tex_flavor = 'latex'
 
 let g:LanguageClient_serverCommands = {'sh': ['bash-language-server', 'start']}
 
