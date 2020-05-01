@@ -25,5 +25,9 @@
         }
       }
     }
-  }
+  },
+  "html.enable": true,
+  "html.autoClosingTags": true,
+  "python.linting.pylintEnabled": false
 }
+

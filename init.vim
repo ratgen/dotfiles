@@ -16,6 +16,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh', }
 Plug 'machakann/vim-sandwich'
 Plug 'ap/vim-css-color'
+Plug 'dense-analysis/ale'
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
 call plug#end()
 
 "----- NERDTtree
@@ -37,6 +39,7 @@ filetype indent on
 set tabstop=2
 set shiftwidth=2
 set autoindent
+set smartindent
 set expandtab
 
 "----- Interface options
@@ -90,3 +93,10 @@ endfunction
 
 " Use C to open coc config
 call SetupCommandAbbrs('C', 'CocConfig')
+
+let g:ale_linters = {
+      \   'python': ['flake8'],
+      \   'ruby': ['standardrb', 'rubocop'],
+      \   'javascript': ['eslint'],
+      \}
+
