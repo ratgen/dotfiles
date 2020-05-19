@@ -26,8 +26,8 @@
       }
     }
   },
-  "html.enable": true,
   "html.autoClosingTags": true,
-  "python.linting.pylintEnabled": false
+  "python.linting.pylintEnabled": false,
+  "coc.preferences.diagnostic.displayByAle": true
 }
 

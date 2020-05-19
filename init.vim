@@ -15,9 +15,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh', }
 Plug 'machakann/vim-sandwich'
-Plug 'ap/vim-css-color'
-Plug 'dense-analysis/ale'
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
 call plug#end()
 
 "----- NERDTtree
@@ -68,6 +65,13 @@ set directory=~/.swp/,/tmp//
 set undodir=~/.undo/,/tmp//
 
 "----- set vimtex options
+
+let g:vimtex_fold_enabled = 1
+let g:vim_fold_types = {'sections' : {'parse_levels' : 3}}
+let g:tex_flavor = 'latex'
+
+
+"----- coc completion functions from nvim example function
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -79,24 +83,20 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:vimtex_fold_enabled = 1
-let g:vim_fold_types = {'sections' : {'parse_levels' : 3}}
-let g:tex_flavor = 'latex'
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+set updatetime=300
+
+"----- LanguageServer options
 
 let g:LanguageClient_serverCommands = {'sh': ['bash-language-server', 'start']}
-
-function! SetupCommandAbbrs(from, to)
-  exec 'cnoreabbrev <expr> '.a:from
-        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
-        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
-endfunction
-
-" Use C to open coc config
-call SetupCommandAbbrs('C', 'CocConfig')
-
-let g:ale_linters = {
-      \   'python': ['flake8'],
-      \   'ruby': ['standardrb', 'rubocop'],
-      \   'javascript': ['eslint'],
-      \}
-
+let g:coc_global_extensions = ['coc-vimtex', 'coc-html', 'coc-css', 'coc-highlight', 'coc-python', 'coc-json', 'coc-java', 'coc-vimlsp']
