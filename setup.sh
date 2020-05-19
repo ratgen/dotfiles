@@ -1,12 +1,11 @@
 #!/bin/bash
 
 mkdir -p $HOME/.config/nvim/
-
 dotFileDir=$(pwd)
 
 function dotfilelink {
   dest="$HOME/$2"
-  
+ 
   if [ -h $dest ]; then
     echo "Removing existing symlink"
     rm $dest
