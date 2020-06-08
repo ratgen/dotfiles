@@ -99,5 +99,7 @@ set updatetime=300
 "----- LanguageServer options
 
 let g:LanguageClient_serverCommands = {'sh': ['bash-language-server', 'start']}
-let g:coc_global_extensions = ['coc-vimtex', 'coc-html', 'coc-css', 'coc-highlight', 'coc-python', 'coc-json', 'coc-java', 'coc-vimlsp', 'coc-sh']
+let g:coc_global_extensions = ['coc-vimtex', 'coc-html', 'coc-css', 
+      \'coc-highlight', 'coc-python', 'coc-json', 'coc-java', 'coc-vimlsp',
+      \'coc-sh', 'coc-lua']
 
