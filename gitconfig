@@ -3,3 +3,5 @@
 	name = Peter Heilbo Ratgen
 [pull]
 	rebase = false
+[url "git@github.com:"]
+	insteadOf = https://github.com/
