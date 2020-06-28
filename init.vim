@@ -11,18 +11,11 @@ call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
-Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'machakann/vim-sandwich'
+Plug 'machakann/vim-sandwich' "Surrounding for quoting and parenthesizing
+Plug 'mattn/emmet-vim' " emmet is HTML expansion
+Plug 'junegunn/fzf.vim'
 call plug#end()
-
-"----- NERDTtree
-"Start on startup
-"If NERDTree is the only of two windows, close vim
-autocmd vimenter * NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
