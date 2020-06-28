@@ -1,3 +1,5 @@
 [user]
 	email = peter@pratgen.dk
 	name = Peter Heilbo Ratgen
+[pull]
+	rebase = false
