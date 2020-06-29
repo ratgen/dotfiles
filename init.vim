@@ -1,4 +1,3 @@
-      
 "----- Plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -58,11 +57,9 @@ set directory=~/.swp/,/tmp//
 set undodir=~/.undo/,/tmp//
 
 "----- set vimtex options
-
 let g:vimtex_fold_enabled = 1
 let g:vim_fold_types = {'sections' : {'parse_levels' : 3}}
 let g:tex_flavor = 'latex'
-
 
 "----- coc completion functions from nvim example function
 inoremap <silent><expr> <TAB>
