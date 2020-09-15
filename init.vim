@@ -14,7 +14,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'machakann/vim-sandwich' "Surrounding for quoting and parenthesizing
 Plug 'mattn/emmet-vim' " emmet is HTML expansion
 Plug 'junegunn/fzf.vim' " fuzzy search
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tpope/vim-fugitive' " github
+Plug 'ap/vim-css-color'
 call plug#end()
 
 "----- Unmap the arrow keys in normal and visual mode
