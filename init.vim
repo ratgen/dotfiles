@@ -49,7 +49,10 @@ command WQ wq
 
 "----- Set shortcuts in LaTeX documents 
 autocmd filetype tex set tw=80
-autocmd filetype tex set spell
+set spell
+set spelllang=da
+
+autocmd filetype text set tw=80
 
 "----- set the placement of the swap files
 set backupdir=~/.backup/,/tmp//
@@ -91,5 +94,5 @@ set updatetime=300
 let g:LanguageClient_serverCommands = {'sh': ['bash-language-server', 'start']}
 let g:coc_global_extensions = ['coc-vimtex', 'coc-html', 'coc-css', 
       \'coc-highlight', 'coc-python', 'coc-json', 'coc-java', 'coc-vimlsp',
-      \'coc-sh', 'coc-lua']
+      \'coc-sh', 'coc-lua', 'coc-r-lsp']
 
