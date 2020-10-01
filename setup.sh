@@ -22,7 +22,7 @@ dotfilelink coc-settings.json .config/nvim/coc-settings.json
 
 unameS=$(uname -s)
 declare packageManager
-packages="neovim nodejs npm neofetch firefox"
+packages="neovim nodejs npm neofetch fzf"
 
 if [ $unameS = "Linux" ]; then
   if test -f "/etc/arch-release" ; then

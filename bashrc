@@ -9,6 +9,20 @@ alias la='ls -lah'
 alias list='du -cbsh *'
 alias python=python3
 
+# fzf 
+## bindings and fzf completions 
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash
+
+## 
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
+
+# use ripgrep for FZF
+export FZF_DEFAULT_COMMAND='rg'
+
 op(){
   xdg-open "$1"
 }
