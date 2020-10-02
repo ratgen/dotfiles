@@ -8,19 +8,19 @@ alias la='ls -lah'
 alias list='du -cbsh *'
 alias python=python3
 
-unameS=$(uname -s)
 # fzf 
 ## bindings and fzf completions 
-if [ $unameS = "Linux" ]; then
-  source /usr/share/fzf/key-bindings.bash
-  source /usr/share/fzf/completion.bash
-  LS_COLORS=$LS_COLOR:'di=1;37:' ; export LS_COLORS
-elif [ $unameS = "Darwin" ]; then
-  source /usr/local/Cellar/fzf/0.22.0/shell/key-bindings.bash
-  source /usr/local/Cellar/fzf/0.22.0/shell/completion.bash
-else
-  echo "not a supported system"
-fi
+
+array_bindings = ("usr/share/doc/fzf/examples/" "/usr/share/fzf/" "/usr/local/Cellar/fzf/0.22.0/shell/")
+key_bind = ("key-bindings.bash" "completion.bash")
+
+for i in $array_bindings; do
+  if test -f  "$i$key_bind[0]"; then
+    for i in $key_bind; do
+      source $array_bindings[0]$i
+    done
+  fi
+done
 
 op(){
   xdg-open "$1"

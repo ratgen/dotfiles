@@ -33,7 +33,7 @@ if [ $unameS = "Linux" ]; then
   source ~/.bashrc
   fi
 elif [ $unameS = "Darwin" ]; then
-  dotfilelink bashrc .bash_profile
+dotfilelink bashrc .bash_profile
   brew install $packages fortune
   echo "done brewing"
   source ~/.bash_profile
