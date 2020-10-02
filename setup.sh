@@ -1,8 +1,5 @@
 #!/bin/bash
-
-mkdir -p $HOME/.config/nvim/
 dotFileDir=$(pwd)
-
 function dotfilelink {
   dest="$HOME/$2"
   if [ -h $dest ]; then
@@ -13,13 +10,32 @@ function dotfilelink {
   echo "Creating symlink"
   ln -s $dotFileDir/$1 $dest
 }
+unameS=$(uname -s)
+
+if [ $1  == "relink" ]; then
+  dotfilelink init.vim .config/nvim/init.vim
+  dotfilelink gitconfig .gitconfig
+  dotfilelink coc-settings.json .config/nvim/coc-settings.json
+  if [ $unameS = "Linux" ]; then
+    dotfilelink bashrc .bashrc
+    source ~/.bashrc
+    exit
+  elif [ $unameS = "Darwin" ]; then
+    dotfilelink bashrc .bash_profile
+    source ~/.bash_profile
+    exit
+  else
+    echo "not a supported system"
+  fi 
+fi
+
+mkdir -p $HOME/.config/nvim/
+
 
 dotfilelink init.vim .config/nvim/init.vim
 dotfilelink gitconfig .gitconfig
 dotfilelink coc-settings.json .config/nvim/coc-settings.json
 
-unameS=$(uname -s)
-declare packageManager
 packages="neovim nodejs npm neofetch fzf"
 
 if [ $unameS = "Linux" ]; then
@@ -30,10 +46,10 @@ if [ $unameS = "Linux" ]; then
     sudo apt install $packages fortune
   else
     echo "no supported package manager"
-  source ~/.bashrc
+    source ~/.bashrc
   fi
 elif [ $unameS = "Darwin" ]; then
-dotfilelink bashrc .bash_profile
+  dotfilelink bashrc .bash_profile
   brew install $packages fortune
   echo "done brewing"
   source ~/.bash_profile
