@@ -11,13 +11,13 @@ alias python=python3
 # fzf 
 ## bindings and fzf completions 
 
-array_bindings=("usr/share/doc/fzf/examples/" "/usr/share/fzf/" "/usr/local/Cellar/fzf/0.22.0/shell/")
+array_bindings=("/usr/share/doc/fzf/examples/" "/usr/share/fzf/" "/usr/local/Cellar/fzf/0.22.0/shell/")
 key_bind=("key-bindings.bash" "completion.bash")
 
 for i in $array_bindings; do
   if test -f  "$i$key_bind[0]"; then
-    for i in $key_bind; do
-      source $array_bindings[0]$i
+    for file in $key_bind; do
+      source $array_bindings[0]$file
     done
   fi
 done
