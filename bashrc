@@ -1,5 +1,5 @@
 #line on terminal
-PS1='[\D{%d/%m %R} \u\e[01;32m@\h: \e[1;34m\w\e[00m] $ '
+PS1='[\D{%d/%m %R} \u\e[01;32m@\h: \e[1;34m\w\e[00m] $ \n> '
 
 #useful aliases
 #list all with human size
