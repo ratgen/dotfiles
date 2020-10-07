@@ -17,6 +17,7 @@ function linkAllFiles {
   dotfilelink init.vim .config/nvim/init.vim
   dotfilelink gitconfig .gitconfig
   dotfilelink coc-settings.json .config/nvim/coc-settings.json
+  dotfilelink inputrc .inputrc
   if [ $unameS = "Linux" ]; then
     dotfilelink bashrc .bashrc
     source ~/.bashrc
