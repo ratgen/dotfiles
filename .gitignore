@@ -1,1 +1,3 @@
 # ignore all
+__MACOSX/
+.DS_Store
