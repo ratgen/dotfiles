@@ -17,6 +17,7 @@ Plug 'junegunn/fzf.vim' " fuzzy search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tpope/vim-fugitive' " github
 Plug 'ap/vim-css-color'
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 call plug#end()
 
 "----- Unmap the arrow keys in normal and visual mode
@@ -39,18 +40,6 @@ set relativenumber
 set nu
 set laststatus=2 "always show the statusbar (the one on the bottom)
 set confirm "display confirmation when closing unsaved file
-" Set font according to system
-if has("mac") || has("macunix")
-    set gfn=IBM\ Plex\ Mono:h14,Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
-elseif has("win16") || has("win32")
-    set gfn=IBM\ Plex\ Mono:h14,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
-elseif has("gui_gtk2")
-    set gfn=IBM\ Plex\ Mono\ 14,:Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
-elseif has("linux")
-    set gfn=IBM\ Plex\ Mono\ 14,:Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
-elseif has("unix")
-    set gfn=Monospace\ 11
-endif
 
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r
@@ -114,7 +103,7 @@ set updatetime=300
 let g:LanguageClient_serverCommands = {'sh': ['bash-language-server', 'start']}
 let g:coc_global_extensions = ['coc-vimtex', 'coc-html', 'coc-css', 
       \'coc-highlight', 'coc-python', 'coc-json', 'coc-java', 'coc-vimlsp',
-      \'coc-sh', 'coc-lua', 'coc-r-lsp']
+      \'coc-sh', 'coc-lua']
 
 "----- fzf search in file
 nnoremap <silent> <Leader>b :Buffers<CR>
