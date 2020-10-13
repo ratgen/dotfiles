@@ -5,7 +5,7 @@ unameS=$(uname -s)
 
 function dotfilelink {
   dest="$HOME/$2"
-  if [ -h $dest ]; then
+ if [ -h $dest ]; then
     echo "Removing existing symlink"
     rm $dest
   fi
@@ -15,6 +15,7 @@ function dotfilelink {
 
 function linkAllFiles {
   dotfilelink init.vim .config/nvim/init.vim
+  dotfilelink cocsettings.vim .config/nvim/cocsettings.vim
   dotfilelink gitconfig .gitconfig
   dotfilelink coc-settings.json .config/nvim/coc-settings.json
   dotfilelink inputrc .inputrc
@@ -33,7 +34,6 @@ if [ "$1" = "relink" ]; then
   linkAllFiles
   exit
 fi
-
 linkAllFiles 
 
 packages="neovim nodejs npm neofetch fzf tree lua"
