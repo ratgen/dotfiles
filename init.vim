@@ -73,37 +73,8 @@ let g:vimtex_fold_enabled = 1
 let g:vim_fold_types = {'sections' : {'parse_levels' : 3}}
 let g:tex_flavor = 'latex'
 
-"----- coc completion functions from nvim example function
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
 set updatetime=300
 
-"----- LanguageServer options
-
-let g:LanguageClient_serverCommands = {'sh': ['bash-language-server', 'start']}
-let g:coc_global_extensions = ['coc-vimtex', 'coc-html', 'coc-css', 
-      \'coc-highlight', 'coc-python', 'coc-json', 'coc-java', 'coc-vimlsp',
-      \'coc-sh', 'coc-lua', 'coc-r-lsp']
 
 "----- fzf search in file
 nnoremap <silent> <Leader>b :Buffers<CR>
@@ -117,3 +88,5 @@ nnoremap <silent> <Leader>hh :History<CR>
 nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR> 
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+
+so cocsettings.vim
