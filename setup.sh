@@ -36,7 +36,7 @@ if [ "$1" = "relink" ]; then
 fi
 linkAllFiles 
 
-packages="neovim nodejs npm neofetch fzf tree lua"
+packages="neovim nodejs npm neofetch fzf tree lua ripgrep"
 if [ $unameS = "Linux" ]; then
   if test -f "/etc/arch-release" ; then
     sudo pacman -S --needed $packages fortune-mod
