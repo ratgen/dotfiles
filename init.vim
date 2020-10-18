@@ -89,4 +89,4 @@ nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR> 
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
-so cocsettings.vim
+runtime cocsettings.vim

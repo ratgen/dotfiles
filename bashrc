@@ -8,8 +8,7 @@ alias la='ls -lah'
 alias list='du -cbsh *'
 alias python=python3
 
-# fzf 
-## bindings and fzf completions 
+# fzf bindings and fzf completions 
 paths=("/usr/share/doc/fzf/examples/" "/usr/share/fzf/" "/usr/local/Cellar/fzf/0.22.0/shell/")
 files=("key-bindings.bash" "completion.bash")
 
@@ -25,12 +24,13 @@ op(){
   xdg-open "$1"
 }
 
+
 # set nvim as the default editor
 VISUAL=nvim;export VISUAL EDITOR=nvim; export EDITOR
 
 ##set vi in bash terminal
+
 set -o vi
 
 neofetch --color_blocks off
-
 fortune
