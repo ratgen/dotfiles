@@ -7,6 +7,7 @@
       "ignoredRootPaths": ["~"]
     }
   },
-  "html.autoClosingTags": true
+  "html.autoClosingTags": true,
+  "python.pythonPath": "/usr/local/bin/python3"
 }
 

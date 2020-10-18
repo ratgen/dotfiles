@@ -70,3 +70,11 @@ endsnippet
 snippet "(\\?\w+)(,\.|\.,)" "Vector postfix" riA
 \vec{`!p snip.rv=match.group(1)`}
 endsnippet 
+
+snippet lim "Limit" A
+\lim_{${1:n} \to \infty}$0
+endsnippet
+
+snippet sum "Sum" b
+\sum^{$1}_{$2}$0
+endsnippet
