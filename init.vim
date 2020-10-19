@@ -18,6 +18,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tpope/vim-fugitive' " github
 Plug 'ap/vim-css-color'
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
+Plug 'eslint/eslint'
 call plug#end()
 
 "----- Unmap the arrow keys in normal and visual mode
