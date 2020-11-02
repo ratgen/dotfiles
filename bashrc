@@ -34,3 +34,5 @@ set -o vi
 
 neofetch --color_blocks off
 fortune
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
