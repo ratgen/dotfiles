@@ -11,6 +11,7 @@ Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-snippets'
 Plug 'machakann/vim-sandwich' "Surrounding for quoting and parenthesizing
 Plug 'mattn/emmet-vim' " emmet is HTML expansion
 Plug 'junegunn/fzf.vim' " fuzzy search

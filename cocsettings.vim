@@ -153,7 +153,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:LanguageClient_serverCommands = {'sh': ['bash-language-server', 'start']}
 let g:coc_global_extensions = ['coc-vimtex', 'coc-html', 'coc-css', 
       \'coc-highlight', 'coc-python', 'coc-json', 'coc-java', 'coc-vimlsp',
-      \'coc-sh', 'coc-lua', 'coc-r-lsp', 'coc-snippets', 'coc-eslint']
+      \'coc-sh', 'coc-lua', 'coc-r-lsp', 'coc-snippets', 'coc-eslint', 
+      \'coc-tsserver']
 
 " coc snippets
 imap <C-l> <Plug>(coc-snippets-expand)
