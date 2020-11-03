@@ -17,6 +17,35 @@ def math():
 		return False
 endglobal
 
+snippet sampletemplateda "Sample template for all documents" bA
+\documentclass{article}
+
+\usepackage[T1]{inputenc}
+\usepackage[danish]{babel}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{booktabs}
+%\usepackage{enumitem}
+\usepackage[a4paper, top = 1in, bottom = 1in, left=1in,right=1in]{geometry}
+
+\title{$1}
+\author{Peter Heilbo Ratgen}
+\date{\today}
+
+\begin{document}
+\maketitle
+$2
+
+\end{document}
+
+endsnippet
+
+
 snippet mk "Math environment" wA
 $ ${1} $`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
@@ -71,7 +100,7 @@ endsnippet
 
 
 context "math()"
-snippet frac "Fraction" iA
+snippet // "Fraction" iA
 \\frac{$1}{$2}$0
 endsnippet
 
@@ -99,12 +128,12 @@ context "math()"
 endsnippet 
 
 context "math()"
-snippet lim "Limit" A
+snippet lim "Limit" w
 \lim_{${1:n} \to \infty}$0
 endsnippet
 
 context "math()"
-snippet sum "Sum" bA
+snippet sum "Sum" w
 \sum^{$1}_{$2}$0
 endsnippet
 
