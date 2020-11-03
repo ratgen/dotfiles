@@ -95,3 +95,10 @@ nnoremap <silent> <Leader>h/ :History/<CR>
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
 runtime cocsettings.vim
+
+"---- Abbreviations
+abbr SE Software Engineering
+abbr hte the
+abbr nad and
+
+
