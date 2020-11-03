@@ -64,8 +64,6 @@ command WQ wq
 
 "----- Set shortcuts in LaTeX documents 
 autocmd filetype tex set tw=80
-set spell
-set spelllang=da
 
 autocmd filetype text set tw=80
 
@@ -98,6 +96,12 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 runtime cocsettings.vim
 
 "---- Abbreviations
+set spell
+set spelllang=da,en_gb
+"-- Choose the first suggestion for mistake
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+
 abbr SE Software Engineering
 abbr hte the
 abbr nad and
