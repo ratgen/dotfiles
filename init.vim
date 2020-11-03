@@ -11,7 +11,6 @@ Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-snippets'
 Plug 'machakann/vim-sandwich' "Surrounding for quoting and parenthesizing
 Plug 'mattn/emmet-vim' " emmet is HTML expansion
 Plug 'junegunn/fzf.vim' " fuzzy search
@@ -23,6 +22,8 @@ Plug 'heavenshell/vim-jsdoc', {
   \ 'for': ['javascript', 'javascript.jsx','typescript'], 
   \ 'do': 'make install'
 \}
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for concealing math
+Plug 'SirVer/ultisnips'
 call plug#end()
 
 "----- Unmap the arrow keys in normal and visual mode
@@ -101,4 +102,10 @@ abbr SE Software Engineering
 abbr hte the
 abbr nad and
 
+"---- conceal
+set conceallevel=2
+let g:tex_conceal="abdmgs"
+let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
+let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
+let g:tex_conceal_frac=1
 
