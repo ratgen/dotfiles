@@ -24,6 +24,7 @@ Plug 'heavenshell/vim-jsdoc', {
 \}
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for concealing math
 Plug 'SirVer/ultisnips'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 "----- Unmap the arrow keys in normal and visual mode
@@ -98,6 +99,7 @@ runtime cocsettings.vim
 "---- Abbreviations
 set spell
 set spelllang=da,en_gb
+set modeline
 "-- Choose the first suggestion for mistake
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
@@ -114,5 +116,6 @@ let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
 let g:tex_conceal_frac=1
 
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
