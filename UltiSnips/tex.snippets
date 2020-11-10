@@ -20,7 +20,7 @@ endglobal
 snippet sampletemplateda "Sample template for all documents" bA
 \documentclass{article}
 
-\usepackage[T1]{inputenc}
+\usepackage[latin1]{inputenc}
 \usepackage[danish]{babel}
 \usepackage{float}
 \usepackage{fancyhdr}
@@ -144,5 +144,34 @@ endsnippet
 snippet subsection "Create subsection" bA
 \subsection{$1}$0
 endsnippet
+
+snippet figure "Create figure" b
+\begin{figure}[${1:htpb}]
+	\centering
+	\includegraphics[width=$2\textwidth]{$3}
+	\caption{${4:caption}}
+\end{figure}
+$0
+endsnippet
+
+
+snippet tabular "Tabular / Array" b
+\begin{${1:t}${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${2:c}}
+$0${2/(?<=.)(c|l|r)|./(?1: & )/g}
+\end{$1${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
+
+endsnippet
+
+snippet table "Table" b
+\begin{table}[${1:htpb}]
+	\centering
+	\caption{${2:caption}}
+	\label{tab:${3:label}}
+	\begin{${4:t}${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${5:c}}
+	$0${5/(?<=.)(c|l|r)|./(?1: & )/g}
+	\end{$4${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
+\end{table}
+endsnippet
+
 
 # vim:ft=snippets
