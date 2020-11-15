@@ -18,8 +18,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tpope/vim-fugitive' " github
 Plug 'ap/vim-css-color'
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
-Plug 'heavenshell/vim-jsdoc', { 
-  \ 'for': ['javascript', 'javascript.jsx','typescript'], 
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript'],
   \ 'do': 'make install'
 \}
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for concealing math
@@ -53,9 +53,9 @@ set guioptions-=r
 set guioptions-=R
 set guioptions-=l
 set guioptions-=L
- 
+
 "----- Set the color theme
-colo gruvbox 
+colo gruvbox
 let g:gruvbox_contrast_dark ='hard'
 set background=dark
 
@@ -64,7 +64,7 @@ command W w
 command Wq wq
 command WQ wq
 
-"----- Set shortcuts in LaTeX documents 
+"----- Set shortcuts in LaTeX documents
 autocmd filetype tex set tw=80
 
 autocmd filetype text set tw=80
@@ -80,8 +80,7 @@ let g:vim_fold_types = {'sections' : {'parse_levels' : 3}}
 let g:tex_flavor = 'latex'
 
 set updatetime=300
-
-
+"
 "----- fzf search in file
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <C-f> :Files<CR>
@@ -92,7 +91,7 @@ nnoremap <silent> <Leader>g :Commits<CR>
 nnoremap <silent> <Leader>H :Helptags<CR>
 nnoremap <silent> <Leader>hh :History<CR>
 nnoremap <silent> <Leader>h: :History:<CR>
-nnoremap <silent> <Leader>h/ :History/<CR> 
+nnoremap <silent> <Leader>h/ :History/<CR>
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
 runtime cocsettings.vim
@@ -119,4 +118,3 @@ let g:tex_conceal_frac=1
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
