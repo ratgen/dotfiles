@@ -20,6 +20,7 @@ function linkAllFiles {
   dotfilelink coc-settings.json .config/nvim/coc-settings.json
   dotfilelink inputrc .inputrc
   dotfilelink UltiSnips .config/nvim/UltiSnips
+  dotfilelink Xresources .Xresources
 
   if [ $unameS = "Linux" ]; then
     dotfilelink bashrc .bashrc

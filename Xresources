@@ -1,0 +1,11 @@
+Xft.dpi: 145
+
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+*font:        xft:IBM Plex Mono:size=11:style=medium:antialias=true
+*boldFont:    xft:IBM Plex Mono:size=11:style=medium:antialias=true
