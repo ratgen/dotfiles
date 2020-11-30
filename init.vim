@@ -22,16 +22,18 @@ Plug 'heavenshell/vim-jsdoc', {
   \ 'for': ['javascript', 'javascript.jsx','typescript'],
   \ 'do': 'make install'
 \}
-Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for concealing math
-Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
 call plug#end()
-
+"
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+
+"----- Set the copying and pasting from the system clipboard 
+nmap <leader>p "+gp
+nmap <leader>y "+y
 
 "---- Set the view of indentation and indentation to 2.
 filetype indent on
@@ -103,21 +105,12 @@ set modeline
 "-- Choose the first suggestion for mistake
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
-
 abbr SE Software Engineering
 abbr hte the
 abbr nad and
 
 "---- conceal
 set conceallevel=2
-let g:tex_conceal="abdmgs"
-let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
-let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
-let g:tex_conceal_frac=1
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 " Run jest for current project
@@ -131,3 +124,4 @@ nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
 
 " Init jest in current cwd, require global jest command exists
 command! JestInit :call CocAction('runCommand', 'jest.init')
+
