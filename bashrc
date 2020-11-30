@@ -9,7 +9,7 @@ alias list='du -cbsh *'
 alias python=python3
 
 # fzf bindings and fzf completions 
-paths=("/usr/share/doc/fzf/examples/" "/usr/share/fzf/" "/usr/local/Cellar/fzf/0.22.0/shell/")
+paths=("/usr/share/doc/fzf/examples/" "/usr/share/fzf/" "/usr/local/Cellar/fzf/0.24.3/shell/")
 files=("key-bindings.bash" "completion.bash")
 
 for path in "${paths[@]}"; do
