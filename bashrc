@@ -24,7 +24,6 @@ op(){
   xdg-open "$1"
 }
 
-"LC_CTYPE=en_US.UTF-8 dmenu"
 
 # set nvim as the default editor
 VISUAL=nvim;export VISUAL EDITOR=nvim; export EDITOR
