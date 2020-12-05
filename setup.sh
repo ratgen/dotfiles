@@ -21,6 +21,7 @@ function linkAllFiles {
   dotfilelink inputrc .inputrc
   dotfilelink UltiSnips .config/nvim/UltiSnips
   dotfilelink i3 .config/i3
+  dotfilelink i3status .config/i3status
 
   if [ $unameS = "Linux" ]; then
     dotfilelink bashrc .bashrc
