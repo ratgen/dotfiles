@@ -30,6 +30,10 @@ VISUAL=nvim;export VISUAL EDITOR=nvim; export EDITOR
 
 ##set vi in bash terminal
 
+if test -f "~/.screenlayout/screen.sh"; then
+  source ~/.screenlayout/screen.sh
+fi
+
 set -o vi
 
 neofetch --color_blocks off
