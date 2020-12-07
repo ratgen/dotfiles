@@ -59,15 +59,6 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-<<<<<<< HEAD:i3/mac-config
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-=======
->>>>>>> 4bdf874573f577a34ad87d4de22632069d9d2b7f:i3/config
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -75,12 +66,7 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# split in horizontal orientation
-<<<<<<< HEAD:i3/mac-config
-bindsym $mod+b split h
-=======
 bindsym $mod+g split h
->>>>>>> 4bdf874573f577a34ad87d4de22632069d9d2b7f:i3/config
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -180,13 +166,10 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
   status_command i3status
-<<<<<<< HEAD:i3/mac-config
-=======
   font pango:IBM Plex Mono 10
->>>>>>> 4bdf874573f577a34ad87d4de22632069d9d2b7f:i3/config
 }
 
 gaps inner 3
 gaps outer 3
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
