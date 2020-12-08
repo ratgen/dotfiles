@@ -169,7 +169,7 @@ bar {
   font pango:IBM Plex Mono 10
 }
 
-gaps inner 3
-gaps outer 3
+gaps inner 10
+gaps outer 0
 
 for_window [class="^.*"] border pixel 0
