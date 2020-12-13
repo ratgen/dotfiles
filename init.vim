@@ -23,6 +23,7 @@ Plug 'heavenshell/vim-jsdoc', {
   \ 'do': 'make install'
 \}
 Plug 'vim-airline/vim-airline'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 "
 "----- Unmap the arrow keys in normal and visual mode
