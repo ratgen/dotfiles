@@ -179,4 +179,4 @@ exec setxkbmap -layout us -option compose:lwin
 
 bindsym $mod+t exec pactl set-card-profile 4 output:iec958-stereo
 bindsym $mod+y exec pactl set-card-profile 4 output:analog-stereo
-
+exec --no-startup-id clipit
