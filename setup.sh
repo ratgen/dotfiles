@@ -16,16 +16,17 @@ function dotfilelink {
 function linkAllFiles {
   dotfilelink init.vim .config/nvim/init.vim
   dotfilelink cocsettings.vim .config/nvim/cocsettings.vim
-  dotfilelink gitconfig .gitconfig
   dotfilelink coc-settings.json .config/nvim/coc-settings.json
+  dotfilelink gitconfig .gitconfig
   dotfilelink inputrc .inputrc
   dotfilelink UltiSnips .config/nvim/UltiSnips
-  dotfilelink i3 .config/i3
-  dotfilelink i3status .config/i3status
+  dotfilelink polybar .config/polybar
 
   if [ $unameS = "Linux" ]; then
     dotfilelink bashrc .bashrc
     source ~/.bashrc
+    dotfilelink zshrc .zshrc
+    source ~/.zshrc
   elif [ $unameS = "Darwin" ]; then
     dotfilelink bashrc .bash_profile
     source ~/.bash_profile

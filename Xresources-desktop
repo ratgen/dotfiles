@@ -12,5 +12,6 @@ URxvt.scrollBar: false
 xterm*background: #1c1c1c
 xterm*foreground: white
 
+
 *font:        xft:IBM Plex Mono Regular:size=12:style=medium:antialias=true
 *boldFont:    xft:IBM Plex Mono Medium:size=12:style=medium:antialias=true
