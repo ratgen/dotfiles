@@ -1,5 +1,6 @@
 #!/bin/bash
 mkdir -p $HOME/.config/nvim/
+mkdir -p $HOME/.config/i3
 dotFileDir=$(pwd)
 unameS=$(uname -s)
 
@@ -20,26 +21,41 @@ function linkAllFiles {
   dotfilelink gitconfig .gitconfig
   dotfilelink inputrc .inputrc
   dotfilelink UltiSnips .config/nvim/UltiSnips
-  dotfilelink polybar .config/polybar
 
-  if [ $unameS = "Linux" ]; then
-    dotfilelink bashrc .bashrc
-    source ~/.bashrc
-    dotfilelink zshrc .zshrc
-    source ~/.zshrc
-  elif [ $unameS = "Darwin" ]; then
-    dotfilelink bashrc .bash_profile
-    source ~/.bash_profile
-  else
-    echo "not a supported system"
-  fi 
+  if [ "$1" == "desk" ]; then
+    dotfilelink desk-polybar .config/polybar
+    dotfilelink i3/desk-config .config/i3/config
+    dotfilelink Xresources-desktop .Xresources
+  elif [ "$1" == "mac" ]; then
+    dotfilelink mac-polybar .config/polybar
+    dotfilelink i3/mac-config .config/i3
+    dotfilelink Xresources-mac .Xresources
+  fi
 }
 
 if [ "$1" = "relink" ]; then
-  linkAllFiles
-  exit
+  if [ "$2" = "desk" ]; then
+    linkAllFiles $2
+    exit
+  elif [ "$2" = "mac" ]; then
+    linkAllFiles $2
+    exit
+  else
+    linkAllFiles
+    exit
+  fi
+else 
+  if [ "$1" = "desk" ]; then
+    linkAllFiles $2
+    exit
+  elif [ "$1" = "mac" ]; then
+    linkAllFiles $2
+    exit
+  else
+    linkAllFiles
+    exit
+  fi
 fi
-linkAllFiles 
 
 packages="neovim nodejs npm neofetch fzf tree lua ripgrep"
 if [ $unameS = "Linux" ]; then

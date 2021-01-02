@@ -182,8 +182,8 @@ for_window [class="^.*"] border pixel 0
 exec source ~/.screenlayout/screen.sh
 exec setxkbmap -layout us -option compose:lwin
 
-bindsym $mod+t exec pactl set-card-profile 4 output:iec958-stereo
-bindsym $mod+y exec pactl set-card-profile 4 output:analog-stereo
+bindsym $mod+t exec pactl set-card-profile 3 output:iec958-stereo
+bindsym $mod+y exec pactl set-card-profile 3 output:analog-stereo
 exec --no-startup-id clipit
 
 
