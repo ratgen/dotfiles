@@ -15,12 +15,13 @@ function dotfilelink {
 }
 
 function linkAllFiles {
-  dotfilelink init.vim .config/nvim/init.vim
-  dotfilelink cocsettings.vim .config/nvim/cocsettings.vim
-  dotfilelink coc-settings.json .config/nvim/coc-settings.json
+  dotfilelink nvim/init.vim .config/nvim/init.vim
+  dotfilelink nvim/cocsettings.vim .config/nvim/cocsettings.vim
+  dotfilelink nvim/coc-settings.json .config/nvim/coc-settings.json
+  dotfilelink nvim/UltiSnips .config/nvim/UltiSnips
+
   dotfilelink gitconfig .gitconfig
   dotfilelink inputrc .inputrc
-  dotfilelink UltiSnips .config/nvim/UltiSnips
 
   if [ "$1" == "desk" ]; then
     dotfilelink desk-polybar .config/polybar
