@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo this
+
 zscroll -l 30 \
   --delay 0.1 \
   --scroll 1  \

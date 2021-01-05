@@ -45,9 +45,6 @@ line-color = #f00
 border-size = 4
 border-color = #00000000
 
-
-;override-redirect = true
-
 ;padding-left = 1
 padding-right = 2
 
@@ -326,6 +323,7 @@ format = <label>
 click-left = playerctl next spotify
 
 [module/tradfri]
+interval = 5 
 type = custom/script
 tail = true
 ; prefix symbol is shown before the text
