@@ -110,11 +110,28 @@ def run():
 
     lights = [dev for dev in devices if dev.has_light_control]
 
-    print(lights)
-    #cmd = lights[8].light_control.set_dimmer(5)
-    #api(cmd)
-    print(lights[2].light_control.lights[0].state)
-    print(lights[2].light_control.lights[0].dimmer)
+    device_names = ["Bord", "Gulvlampe", "Stue", "Klædeskab", "Knagerække", "Dør", "Pendellamper"]
+
+    lamps = {}
+
+    for device in device_names:
+        for light in lights:
+            if device.lower() in light.name.lower():
+                lamps[device] = light
+    
+
+    #print(lamps["Stue"].light_control.lights[0].state)
+    #api(lamps["Stue"].light_control.set_state(True))
+    #api(lamps["Stue"].light_control.set_dimmer(1))
+    api(lamps["Stue"].light_control.set_state(False))
+    
+    for dev in device_names:
+        print(dev, end = '')
+        state = lamps[dev].light_control.lights[0].state
+        if state == False:
+            print(':off ', end = '')
+        else:
+            print(':',lamps[dev].light_control.lights[0].dimmer, ' ', end = '') 
 
 run()
 
