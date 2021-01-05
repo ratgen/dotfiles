@@ -18,10 +18,10 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
+background = #282828
+background-alt = #3c3836
 ;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
+foreground = #fbf1c7
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
@@ -52,17 +52,17 @@ border-color = #00000000
 padding-right = 2
 
 ;module-margin-left = 0
-module-margin-right = 1
+module-margin-right = 0 
 
 font-0 = IBMPlexMono-Regular:size=10;2
-font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=14;4"
-font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=14;4"
-font-3 = "Font Awesome 5 Brands:pixelsize=14;4"
-font-4 = IBMPlexMono-Regular:size=19;4
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=13;4"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=13;4"
+font-3 = "Font Awesome 5 Brands:pixelsize=13;4"
+font-4 = IBMPlexMono-Regular:size=22;4
 
 modules-left = i3
 modules-center = spotify spotify-prev spotify-play-pause spotify-next tradfri
-modules-right = razer filesystem pulseaudio xkeyboard memory cpu eth temperature date 
+modules-right = steelseries razer filesystem pulseaudio xkeyboard memory cpu eth temperature date 
 
 monitor = ${env:MONITOR:}
 
@@ -73,14 +73,11 @@ enable-ipc = true
 
 tray-reparent = true
 
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
-
 cursor-click = pointer
 cursor-scroll = ns-resize
 
 dpi = 120
-;separator = " %{T5}%{F#0a81f5}|%{T-} "
+separator = "%{T5}%{F#919191}/%{T-}%{F#fbf1c7}"
 
 [module/xwindow]
 type = internal/xwindow
@@ -97,7 +94,7 @@ format-prefix-underline = ${colors.secondary}
 label-layout = %layout%
 label-layout-underline = ${colors.secondary}
 
-label-indicator-padding = 2
+label-indicator-padding = 1
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
@@ -281,14 +278,8 @@ ramp-1 = ""
 ramp-2 = ""
 ramp-foreground = ${colors.foreground-alt}
 
-
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
 
 [global/wm]
 margin-top = 5
@@ -299,6 +290,12 @@ margin-bottom = 5
 type = custom/script
 format = <label>
 exec = python ~/.config/polybar/razer.py
+
+[module/steelseries]
+type = custom/script
+;format-prefix = "  "
+format = <label>
+exec = ~/.config/polybar/headset.sh
 
 [module/spotify]
 type = custom/script
@@ -332,9 +329,8 @@ click-left = playerctl next spotify
 type = custom/script
 tail = true
 ; prefix symbol is shown before the text
-;format-prefix = "  "
-;format = <label>
-;enable-ipc = true
-exec = sh ~/.config/polybar/scroll_lights.sh
+format-prefix = "   "
+format = <label>
+exec = ~/.config/polybar/scroll_lights.sh
 
 ; vim:ft=dosini

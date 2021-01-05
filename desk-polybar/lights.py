@@ -131,6 +131,6 @@ def run():
         if state == False:
             print(':off ', end = '')
         else:
-            print(':',lamps[dev].light_control.lights[0].dimmer, ' ', end = '') 
+            print(':',round(lamps[dev].light_control.lights[0].dimmer/254*100, 2), '% ', sep = '', end = '') 
 run()
 

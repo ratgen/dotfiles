@@ -59,7 +59,7 @@ set guioptions-=L
 
 "----- Set the color theme
 colo gruvbox
-let g:gruvbox_contrast_dark ='hard'
+let g:gruvbox_contrast_dark ='medium'
 set background=dark
 
 "----- Set aliases to improve efficiency
