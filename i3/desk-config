@@ -186,5 +186,5 @@ bindsym $mod+t exec pactl set-card-profile 3 output:iec958-stereo
 bindsym $mod+y exec pactl set-card-profile 3 output:analog-stereo
 exec --no-startup-id clipit
 
-
+exec --no-startup-id nitrogen --restore
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
