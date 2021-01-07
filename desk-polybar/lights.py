@@ -104,9 +104,14 @@ def run():
 
     gateway = Gateway()
 
-    devices_command = gateway.get_devices()
-    devices_commands = api(devices_command)
-    devices = api(devices_commands)
+    try:
+        devices_command = gateway.get_devices()
+        devices_commands = api(devices_command)
+        devices = api(devices_commands)
+    except:
+        print("Could not retrieve devices")
+        return
+
 
     lights = [dev for dev in devices if dev.has_light_control]
 
