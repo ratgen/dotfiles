@@ -60,7 +60,7 @@ font-3 = "Font Awesome 5 Brands:pixelsize=13;4"
 
 modules-left = i3
 modules-center = spotify spotify-prev spotify-play-pause spotify-next tradfri
-modules-right = steelseries razer filesystem pulseaudio memory cpu eth temperature date 
+modules-right = steelseries razer pulseaudio memory cpu eth temperature date 
 
 monitor = ${env:MONITOR:}
 
@@ -254,12 +254,13 @@ format = <label>
 exec = python ~/.config/polybar/razer.py
 format-background = ${colors.green}
 format-padding = 1
-format-margin = 1
+;format-margin = 1
 
 
 [module/steelseries]
 type = custom/script
 ;format-prefix = "  "
+interval = 30
 format = <label>
 exec = ~/.config/polybar/headset.sh
 format-background = ${colors.orange}
@@ -267,6 +268,7 @@ format-padding = 1
 format-radius = 6.0
 format-border-size = 4
 format-border-color = #00000000
+format-margin = 1
 
 [module/spotify]
 type = custom/script
