@@ -17,12 +17,9 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
 background = #282828
 background-alt = #3c3836
-;foreground = ${xrdb:color7:#222}
 foreground = #ebdbb2
-foreground-alt = #555 
 red        = #cc241d
 green      = #98981a
 yellow     = #d79921
@@ -60,7 +57,7 @@ font-3 = "Font Awesome 5 Brands:pixelsize=13;4"
 
 modules-left = i3
 modules-center = spotify spotify-prev spotify-play-pause spotify-next tradfri
-modules-right = steelseries razer pulseaudio memory cpu eth temperature date 
+modules-right = steelseries razer pulseaudio filesystem memory cpu eth temperature date 
 
 monitor = ${env:MONITOR:}
 
@@ -97,7 +94,6 @@ mount-0 = /
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %used%/%total%
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
 format-mounted-padding = 1
 format-mounted-background = ${colors.blue}
 format-margin = 1
@@ -145,7 +141,6 @@ format-padding-right = 1
 type = internal/cpu
 interval = 2
 format-prefix = ""
-format-prefix-foreground = ${colors.foreground-alt}
 label = %percentage%%
 format-padding = 1
 format-background = ${colors.green}
@@ -155,7 +150,6 @@ format-margin-right = 1
 type = internal/memory
 interval = 1
 format-prefix = ""
-format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.blue}
 label = %mb_used%/%mb_total%
 format-padding = 1
@@ -169,7 +163,6 @@ interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = ""
-format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
 format-disconnected =
@@ -182,9 +175,6 @@ type = internal/date
 interval = 1
 
 time = %H:%M:%S
-
-format-prefix-foreground = ${colors.foreground-alt}
-
 label = %time%
 format-padding = 1
 format-background = ${colors.orange}
@@ -215,13 +205,9 @@ bar-volume-fill = 
 bar-volume-fill-font = 2
 bar-volume-empty = 
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 format-volume-background = ${colors.purple}
 format-volume-padding = 1
-;format-volume-margin = 1
 format-volume-margin = 1
-
-
 
 [module/temperature]
 type = internal/temperature
@@ -247,19 +233,15 @@ pseudo-transparency = true
 margin-top = 5
 margin-bottom = 5
 
-
 [module/razer]
 type = custom/script
 format = <label>
 exec = python ~/.config/polybar/razer.py
 format-background = ${colors.green}
 format-padding = 1
-;format-margin = 1
-
 
 [module/steelseries]
 type = custom/script
-;format-prefix = "  "
 interval = 30
 format = <label>
 exec = ~/.config/polybar/headset.sh
