@@ -266,7 +266,7 @@ format-padding = 1
 type = custom/script
 exec = echo ""
 format = <label>
-click-left = playerctl previous spotify
+click-left = playerctl --player=spotify previous
 format-padding = 1
 
 [module/spotify-play-pause]
@@ -274,14 +274,14 @@ type = custom/ipc
 hook-0 = echo ""
 hook-1 = echo ""
 initial = 1
-click-left = playerctl play-pause spotify
+click-left = playerctl --player=spotify play-pause
 format-padding = 1
 
 [module/spotify-next]
 type = custom/script
 exec = echo ""
 format = <label>
-click-left = playerctl next spotify
+click-left = playerctl --player=spotify next
 format-padding = 1
 
 [module/tradfri]
