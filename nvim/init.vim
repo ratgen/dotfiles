@@ -7,25 +7,22 @@ endif
 
 "----- Get Plug plugins
 call plug#begin()
-Plug 'morhetz/gruvbox'
-Plug 'itchyny/lightline.vim'
-Plug 'lervag/vimtex'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'machakann/vim-sandwich' "Surrounding for quoting and parenthesizing
-Plug 'mattn/emmet-vim' " emmet is HTML expansion
-Plug 'junegunn/fzf.vim' " fuzzy search
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'tpope/vim-fugitive' " github
-Plug 'ap/vim-css-color'
-Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
-Plug 'heavenshell/vim-jsdoc', {
-  \ 'for': ['javascript', 'javascript.jsx','typescript'],
-  \ 'do': 'make install'
-\}
-Plug 'vim-airline/vim-airline'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+  Plug 'morhetz/gruvbox'
+  Plug 'lervag/vimtex'
+  Plug 'machakann/vim-sandwich' "Surrounding for quoting and parenthesizing
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim' " fuzzy search
+  Plug 'tpope/vim-fugitive' " github
+  Plug 'ap/vim-css-color'
+  Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
+  Plug 'vim-airline/vim-airline'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+  Plug 'dense-analysis/ale'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
-"
+
+let g:deoplete#enable_at_startup = 1
+
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -97,8 +94,6 @@ nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR>
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
-runtime cocsettings.vim
-
 "---- Abbreviations
 set spell
 set spelllang=da,en_gb
@@ -113,16 +108,4 @@ abbr nad and
 "---- conceal
 set conceallevel=2
 
-
-" Run jest for current project
-command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
-
-" Run jest for current file
-command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
-
-" Run jest for current test
-nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
-
-" Init jest in current cwd, require global jest command exists
-command! JestInit :call CocAction('runCommand', 'jest.init')
 
