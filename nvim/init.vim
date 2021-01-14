@@ -115,3 +115,13 @@ inoremap <nowait> { {}<left>
 inoremap <nowait> {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
+"---- YouCompleteMe
+let g:ycm_language_server = [
+      \ {
+      \   'name' : 'texlab' ,
+      \   'cmdline' : ['texlab'],
+      \   'filetypes' : ['tex']
+      \ }
+      \]
+
+
