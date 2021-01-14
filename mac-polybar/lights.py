@@ -31,7 +31,6 @@ import time
 
 CONFIG_FILE = "tradfri_standalone_psk.conf"
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "host", metavar="IP", type=str, help="IP Address of your Tradfri gateway"
@@ -104,9 +103,14 @@ def run():
 
     gateway = Gateway()
 
-    devices_command = gateway.get_devices()
-    devices_commands = api(devices_command)
-    devices = api(devices_commands)
+    try:
+        devices_command = gateway.get_devices()
+        devices_commands = api(devices_command)
+        devices = api(devices_commands)
+    except:
+        print("Could not retrieve devices")
+        return
+
 
     lights = [dev for dev in devices if dev.has_light_control]
 
@@ -131,7 +135,6 @@ def run():
         if state == False:
             print(':off ', end = '')
         else:
-            print(':',lamps[dev].light_control.lights[0].dimmer, ' ', end = '') 
-
+            print(':',round(lamps[dev].light_control.lights[0].dimmer/254*100, 2), '% ', sep = '', end = '') 
 run()
 
