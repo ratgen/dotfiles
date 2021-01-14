@@ -18,10 +18,8 @@ call plug#begin()
   Plug 'vim-airline/vim-airline'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'dense-analysis/ale'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'ycm-core/YouCompleteMe'
 call plug#end()
-
-let g:deoplete#enable_at_startup = 1
 
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
