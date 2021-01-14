@@ -31,7 +31,6 @@ import time
 
 CONFIG_FILE = "tradfri_standalone_psk.conf"
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "host", metavar="IP", type=str, help="IP Address of your Tradfri gateway"
