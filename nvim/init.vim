@@ -19,6 +19,8 @@ call plug#begin()
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'dense-analysis/ale'
   Plug 'ycm-core/YouCompleteMe'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
 call plug#end()
 
 "----- Unmap the arrow keys in normal and visual mode
@@ -42,15 +44,10 @@ set expandtab
 "----- Interface options
 set noshowmode
 set relativenumber
-set nu
+set number
 set laststatus=2 "always show the statusbar (the one on the bottom)
 set confirm "display confirmation when closing unsaved file
-
-" Disable scrollbars (real hackers don't use scrollbars for navigation!)
-set guioptions-=r
-set guioptions-=R
-set guioptions-=l
-set guioptions-=L
+set conceallevel=2
 
 "----- Set the color theme
 colo gruvbox
@@ -96,6 +93,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set spell
 set spelllang=da,en_gb
 set modeline
+
 "-- Choose the first suggestion for mistake
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
@@ -103,7 +101,17 @@ abbr SE Software Engineering
 abbr hte the
 abbr nad and
 
-"---- conceal
-set conceallevel=2
+"--- Ultisnips options
+let g:UltiSnipsExpandTrigger="<c-space>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+"--- auto expansion
+inoremap <nowait> " ""<left>
+inoremap <nowait> ' ''<left>
+inoremap <nowait> ( ()<left>
+inoremap <nowait> [ []<left>
+inoremap <nowait> { {}<left>
+inoremap <nowait> {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
 
