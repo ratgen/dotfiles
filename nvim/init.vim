@@ -23,6 +23,8 @@ call plug#begin()
   Plug 'honza/vim-snippets'
 call plug#end()
 
+let g:ycm_auto_hover = 1
+
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -117,11 +119,14 @@ inoremap {;<CR> {<CR>};<ESC>O
 
 "---- YouCompleteMe
 let g:ycm_language_server = [
-      \ {
-      \   'name' : 'texlab' ,
-      \   'cmdline' : ['texlab'],
-      \   'filetypes' : ['tex']
-      \ }
-      \]
-
-
+\ {
+\   'name' : 'texlab' ,
+\   'cmdline' : ['texlab'],
+\   'filetypes' : ['tex']
+\ }, 
+\ {
+\   'name' : 'vim-lsp',
+\   'cmdline' : ['vim-language-server', '--stdio'],
+\   'filetypes' : ['vim']
+\ }
+\]
