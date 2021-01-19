@@ -124,9 +124,11 @@ let g:ycm_language_server = [
 \   'cmdline' : ['texlab'],
 \   'filetypes' : ['tex']
 \ }, 
-  \   'name' : 'bash' ,
-  \   'cmdline' : ['bash-language-server', 'start'],
-  \   'filetypes' : ['sh', 'bash']
+\ {
+\   'name' : 'bash' ,
+\   'cmdline' : ['bash-language-server', 'start'],
+\   'filetypes' : ['sh', 'bash']
+\ },
 \ {
 \   'name' : 'vim-lsp',
 \   'cmdline' : ['vim-language-server', '--stdio'],
