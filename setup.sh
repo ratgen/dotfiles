@@ -75,4 +75,3 @@ fi
 
 nvim +PlugInstall +q! +q! +q!
 sudo npm i -g bash-language-server
-
