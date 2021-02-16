@@ -1,4 +1,4 @@
-"----- Plug
+"---- Plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -21,7 +21,12 @@ call plug#begin()
   Plug 'ycm-core/YouCompleteMe'
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
+  Plug 'ncm2/float-preview.nvim'
 call plug#end()
+
+set completeopt=noinsert,menuone,noselect
+set shortmess+=c
+set noshowmode
 
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
@@ -134,10 +139,10 @@ let g:ycm_language_server = [
 \   'name' : 'vim-lsp',
 \   'cmdline' : ['vim-language-server', '--stdio'],
 \   'filetypes' : ['vim']
-\ },
+\ }, 
 \ {
-\   'name' : 'vue',
-\   'cmdline' : ['vls', '--stdio'],
-\   'filetypes' : ['vue']
+\   'name': 'vue',
+\   'filetypes': [ 'vue' ],
+\   'cmdline': ['vls', '--stdio']
 \ }
 \]
