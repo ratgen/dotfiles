@@ -23,8 +23,6 @@ call plug#begin()
   Plug 'honza/vim-snippets'
 call plug#end()
 
-let g:ycm_auto_hover = 1
-
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -117,6 +115,9 @@ inoremap <nowait> { {}<left>
 inoremap <nowait> {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
+"let g:ycm_keep_logfiles = 1 
+let g:ycm_log_level = 'debug'
+
 "---- YouCompleteMe
 let g:ycm_language_server = [
 \ {
@@ -133,14 +134,10 @@ let g:ycm_language_server = [
 \   'name' : 'vim-lsp',
 \   'cmdline' : ['vim-language-server', '--stdio'],
 \   'filetypes' : ['vim']
+\ },
+\ {
+\   'name' : 'vue',
+\   'cmdline' : ['vls', '--stdio'],
+\   'filetypes' : ['vue']
 \ }
 \]
-"------ NERDTree like
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-
-
-
