@@ -53,11 +53,11 @@ module-margin-right = 0
 font-0 = IBMPlexMono-Regular:size=10;2
 font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=13;4"
 font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=13;4"
-font-3 = "Font Awesome 5 Brands:pixelsize=13;4"
+font-3 = "Font Awesome 5 Brands:pixelsize=13;3"
 
 modules-left = i3
-modules-center = spotify spotify-prev spotify-play-pause spotify-next tradfri
-modules-right = steelseries razer pulseaudio filesystem memory cpu eth temperature date 
+modules-center = spotify spotify-prev spotify-play-pause spotify-next tradfri firefox
+modules-right = tv steelseries razer pulseaudio filesystem memory cpu eth temperature date 
 
 monitor = ${env:MONITOR:}
 
@@ -285,7 +285,6 @@ click-left = playerctl --player=spotify next
 format-padding = 1
 
 [module/tradfri]
-interval = 5 
 type = custom/script
 tail = true
 ; prefix symbol is shown before the text
@@ -293,5 +292,27 @@ format-prefix = ""
 format = <label>
 exec = ~/.config/polybar/scroll_lights.sh
 format-padding = 2
+
+[module/firefox]
+type = custom/script
+tail = true
+; prefix symbol is shown before the text
+format-prefix = " "
+format = <label>
+exec = ~/.config/polybar/polybar-youtube/scroll_firefox_status.sh
+format-padding = 2
+
+[module/tv]
+type = custom/script
+tail = true
+; prefix symbol is shown before the text
+format = "TV"
+exec = python tv.py
+format-padding = 2
+format-background = ${colors.green}
+scroll-up = python ~/.config/polybar/tv.py --vol-up
+click-left = python ~/.config/polybar/tv.py --off
+scroll-down = python ~/.config/polybar/tv.py --vol-down
+;cursor = pointer
 
 ; vim:ft=dosini
