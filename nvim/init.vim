@@ -56,7 +56,7 @@ set conceallevel=2
 
 "----- Set the color theme
 colo gruvbox
-let g:gruvbox_contrast_dark ='medium'
+let g:gruvbox_contrast_dark ='hard'
 set background=dark
 
 "----- Set aliases to improve efficiency
