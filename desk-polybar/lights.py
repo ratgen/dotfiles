@@ -103,16 +103,19 @@ def run():
 
     gateway = Gateway()
 
+    devices_command = gateway.get_devices()
+    devices_commands = api(devices_command)
+    devices = api(devices_commands)
     try:
-        devices_command = gateway.get_devices()
-        devices_commands = api(devices_command)
-        devices = api(devices_commands)
+        print(devices)
     except:
         print("Could not retrieve devices")
         return
 
 
     lights = [dev for dev in devices if dev.has_light_control]
+
+    print(lights)
 
     device_names = ["Bord", "Gulvlampe", "Stue", "Klædeskab", "Knagerække", "Dør", "Pendellamper"]
 
@@ -127,7 +130,7 @@ def run():
     #print(lamps["Stue"].light_control.lights[0].state)
     #api(lamps["Stue"].light_control.set_state(True))
     #api(lamps["Stue"].light_control.set_dimmer(1))
-    api(lamps["Stue"].light_control.set_state(False))
+    #api(lamps["Stue"].light_control.set_state(False))
     
     for dev in device_names:
         print(dev, end = '')

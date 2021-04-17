@@ -46,6 +46,10 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
 
+# start newsboat
+
+bindsym $mod+n exec gnome-terminal --command newsboat
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -145,11 +149,11 @@ mode "resize" {
 # Pressing left will shrink the window’s width.
 # Pressing right will grow the window’s width.
 # Pressing up will shrink the window’s height.
-# Pressing down will grow the window’s height.
-  bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym semicolon resize grow width 10 px or 10 ppt
+  # Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
 # same bindings, but for the arrow keys
     bindsym Left resize shrink width 10 px or 10 ppt
@@ -164,8 +168,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-bindsym $mod+b exec firefox
+bindsym $mod+b exec brave
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -176,10 +179,12 @@ bindsym $mod+b exec firefox
 
 exec --no-startup-id ~/.config/polybar/polybar.sh
 
-gaps inner 10
-gaps outer 0
+gaps inner 5 
+gaps outer 10
 
-for_window [class="^.*"] border pixel 0
+client.focused #555555 #555555 #ffffff #FFFFFF     #0095e4
+
+for_window [class="^.*"] border pixel 3
 
 exec source ~/.screenlayout/screen.sh
 exec setxkbmap -layout us -option compose:lwin

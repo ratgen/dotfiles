@@ -1,1 +1,0 @@
-../desk-polybar/scroll_lights.sh

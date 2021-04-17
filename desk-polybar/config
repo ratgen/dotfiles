@@ -23,15 +23,15 @@ foreground = #ebdbb2
 red        = #cc241d
 green      = #98981a
 yellow     = #d79921
-blue       = #458588
-purple     = #b16286
-teal       = #689d6a
-orange     = #d65d0e
+blue       = #45858800
+purple     = #b1628600
+teal       = #689d6a00
+orange     = #d65d0e00
 gray       = #928374
 
 [bar/example]
 width = 100%
-height = 31
+height = 28
 radius = 6.0
 border-size = 4
 border-color = #00000000
@@ -41,7 +41,7 @@ fixed-center = false
 background = #00000000
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 2
 line-color = ${colors.red}
 
 ;padding-left = 1
@@ -50,14 +50,16 @@ padding-right = 2
 ;module-margin-left = 0
 module-margin-right = 0 
 
-font-0 = IBMPlexMono-Regular:size=10;2
+font-0 = IBMPlexMono-Regular:size=9.5;2
 font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=13;4"
 font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=13;4"
 font-3 = "Font Awesome 5 Brands:pixelsize=13;3"
 
 modules-left = i3
-modules-center = spotify spotify-prev spotify-play-pause spotify-next tradfri firefox
-modules-right = tv steelseries razer pulseaudio filesystem memory cpu eth temperature date 
+modules-center = spotify  firefox
+modules-right = tv steelseries razer  filesystem memory cpu temperature date 
+; center: tradfri spotify-prev spotify-play-pause spotify-next
+;cpu eth pulseaudio 
 
 monitor = ${env:MONITOR:}
 
@@ -91,12 +93,17 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
+mount-1 = /mnt/hdd1
+mount-2 = /mnt/hdd2
+mount-3 = /mnt/ssd
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %used%/%total%
+;label-mounted = %{F#FFF}%mountpoint%%{F-}: %used%/%total%
+label-mounted = %used%/%total%
 label-unmounted = %mountpoint% not mounted
-format-mounted-padding = 1
-format-mounted-background = ${colors.blue}
-format-margin = 1
+;format-mounted-background = ${colors.teal}
+;format-mounted-padding = 1
+format-mounted-margin = 0.4
+
 
 [module/i3]
 type = internal/i3
@@ -143,7 +150,7 @@ interval = 2
 format-prefix = ""
 label = %percentage%%
 format-padding = 1
-format-background = ${colors.green}
+;format-background = ${colors.green}
 format-margin-right = 1 
 
 [module/memory]
@@ -153,7 +160,7 @@ format-prefix = ""
 format-underline = ${colors.blue}
 label = %mb_used%/%mb_total%
 format-padding = 1
-format-background = ${colors.blue}
+;format-background = ${colors.blue}
 format-margin = 1
 
 [module/eth]
@@ -177,7 +184,7 @@ interval = 1
 time = %H:%M:%S
 label = %time%
 format-padding = 1
-format-background = ${colors.orange}
+;format-background = ${colors.orange}
 format-margin = 1
 
 [module/pulseaudio]
@@ -221,7 +228,7 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.gray}
 
-format-background = ${colors.green}
+;format-background = ${colors.green}
 format-padding = 1
 format-margin-right = 1
 
@@ -237,7 +244,7 @@ margin-bottom = 5
 type = custom/script
 format = <label>
 exec = python ~/.config/polybar/razer.py
-format-background = ${colors.green}
+;format-background = ${colors.green}
 format-padding = 1
 
 [module/steelseries]
@@ -245,7 +252,7 @@ type = custom/script
 interval = 30
 format = <label>
 exec = ~/.config/polybar/headset.sh
-format-background = ${colors.orange}
+;format-background = ${colors.orange}
 format-padding = 1
 format-radius = 6.0
 format-border-size = 4
@@ -309,7 +316,7 @@ tail = true
 format = "TV"
 exec = python tv.py
 format-padding = 2
-format-background = ${colors.green}
+;format-background = ${colors.green}
 scroll-up = python ~/.config/polybar/tv.py --vol-up
 click-left = python ~/.config/polybar/tv.py --off
 scroll-down = python ~/.config/polybar/tv.py --vol-down
