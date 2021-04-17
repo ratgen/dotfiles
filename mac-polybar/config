@@ -266,41 +266,4 @@ pseudo-transparency = true
 margin-top = 5
 margin-bottom = 5
 
-[module/spotify]
-type = custom/script
-tail = true
-; prefix symbol is shown before the text
-format-prefix = "  "
-format = <label>
-enable-ipc = true
-exec = ~/.config/polybar/polybar-spotify/scroll_spotify_status.sh
-
-[module/spotify-prev]
-type = custom/script
-exec = echo ""
-format = <label>
-click-left = playerctl previous spotify
-
-[module/spotify-play-pause]
-type = custom/ipc
-hook-0 = echo ""
-hook-1 = echo ""
-initial = 1
-click-left = playerctl play-pause spotify
-
-[module/spotify-next]
-type = custom/script
-exec = echo ""
-format = <label>
-click-left = playerctl next spotify
-
-[module/tradfri]
-type = custom/script
-tail = true
-; prefix symbol is shown before the text
-format-prefix = "  "
-format = <label>
-enable-ipc = true
-exec = ~/.config/polybar/scroll_lights.sh
-
 ; vim:ft=dosini

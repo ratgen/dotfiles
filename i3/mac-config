@@ -170,10 +170,12 @@ bindsym $mod+r mode "resize"
 #}
 exec_always --no-startup-id polybar example
 
-#gaps outer 40
-gaps inner 15
+gaps inner 5 
+gaps outer 8
 
-for_window [class="^.*"] border pixel 0
+client.focused #555555 #555555 #ffffff #FFFFFF     #0095e4
+
+for_window [class="^.*"] border pixel 2
 
 exec nitrogen --restore
 
