@@ -37,3 +37,22 @@ endsnippet
 snippet tt "Textt" 
 \texttt{$1} $2
 endsnippet
+
+snippet umlclass  "Create UML Class" b
+\umlclass[x=${1:0},y=${2:0}]{${3:name}}{$4}{$5}
+endsnippet
+
+snippet < "Less than" i
+\textless$1
+endsnippet
+
+snippet > "Greater than" i
+\textgreater$1
+endsnippet
+
+snippet umlpackage "Create UML Package" b
+\begin{umlpackage}[x=${1:0}, y=${2:0}]{${3:name}}
+$4	
+\end{umlpackage}
+$5
+endsnippet
