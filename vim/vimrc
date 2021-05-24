@@ -1,12 +1,15 @@
-"---- Plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-"----- Get Plug plugins
-call plug#begin()
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+call plug#begin('~/.vim/plugged')
   Plug 'morhetz/gruvbox'
   Plug 'lervag/vimtex'
   Plug 'machakann/vim-sandwich' "Surrounding for quoting and parenthesizing
@@ -14,15 +17,16 @@ call plug#begin()
   Plug 'junegunn/fzf.vim' " fuzzy search
   Plug 'tpope/vim-fugitive' " github
   Plug 'ap/vim-css-color'
-  Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
   Plug 'vim-airline/vim-airline'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-  Plug 'dense-analysis/ale'
-  Plug 'ycm-core/YouCompleteMe'
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
-  Plug 'ncm2/float-preview.nvim'
+  Plug 'ycm-core/YouCompleteMe'
+  Plug 'dense-analysis/ale'
 call plug#end()
+
+let g:ale_completion_enabled = 0
+
 
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
@@ -119,30 +123,3 @@ inoremap <nowait> [ []<left>
 inoremap <nowait> { {}<left>
 inoremap <nowait> {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
-
-"let g:ycm_keep_logfiles = 1 
-let g:ycm_log_level = 'debug'
-
-"---- YouCompleteMe
-let g:ycm_language_server = [
-\ {
-\   'name' : 'texlab' ,
-\   'cmdline' : ['texlab'],
-\   'filetypes' : ['tex']
-\ },
-\ { 
-\   'name' : 'bash' ,
-\   'cmdline' : ['bash-language-server', 'start'],
-\   'filetypes' : ['sh', 'bash']
-\ }, 
-\ {
-\   'name' : 'vim-lsp',
-\   'cmdline' : ['vim-language-server', '--stdio'],
-\   'filetypes' : ['vim']
-\ }, 
-\ {
-\   'name': 'vue',
-\   'filetypes': [ 'vue' ],
-\   'cmdline': ['vls', '--stdio']
-\ }
-\]
