@@ -44,8 +44,8 @@ nmap <leader>y "+y
 
 "---- Set the view of indentation and indentation to 2.
 filetype indent on
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set autoindent
 set smartindent
 set expandtab
@@ -123,3 +123,21 @@ inoremap <nowait> [ []<left>
 inoremap <nowait> { {}<left>
 inoremap <nowait> {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
+
+"let g:ycm_keep_logfiles = 1 
+let g:ycm_log_level = 'debug'
+
+"---- YouCompleteMe
+let g:ycm_language_server = [
+\ {
+\   'name' : 'texlab' ,
+\   'cmdline' : ['texlab'],
+\   'filetypes' : ['tex']
+\ },
+\ {
+\   'name': 'vue',
+\   'filetypes': [ 'vue' ],
+\   'cmdline': ['vls', '--stdio']
+\ }
+\]
+
