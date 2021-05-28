@@ -10,7 +10,6 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 \| endif
 
 call plug#begin('~/.vim/plugged')
-  Plug 'morhetz/gruvbox'
   Plug 'lervag/vimtex'
   Plug 'machakann/vim-sandwich' "Surrounding for quoting and parenthesizing
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -22,6 +21,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'honza/vim-snippets'
   Plug 'dense-analysis/ale'
   Plug 'ycm-core/YouCompleteMe'
+  Plug 'danilo-augusto/vim-afterglow'
 call plug#end()
 
 let g:ale_completion_enabled = 0
@@ -57,9 +57,10 @@ set confirm "display confirmation when closing unsaved file
 set conceallevel=2
 
 "----- Set the color theme
-colo gruvbox
-let g:gruvbox_contrast_dark ='hard'
-set background=dark
+syntax on
+""set cursorline
+colorscheme afterglow
+let g:airline_theme='afterglow'
 
 "----- Set aliases to improve efficiency
 command W w
@@ -77,8 +78,8 @@ set directory=~/.swp/,/tmp//
 set undodir=~/.undo/,/tmp//
 
 "----- set vimtex options
-let g:vimtex_fold_enabled = 1
-let g:vim_fold_types = {'sections' : {'parse_levels' : 3}}
+"let g:vimtex_fold_enabled = 1
+"let g:vim_fold_types = {'sections' : {'parse_levels' : 3}}
 let g:tex_flavor = 'latex'
 
 set updatetime=300
