@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
   Plug 'dense-analysis/ale'
+  Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 let g:ale_completion_enabled = 0
@@ -120,3 +121,20 @@ inoremap <nowait> [ []<left>
 inoremap <nowait> { {}<left>
 inoremap <nowait> {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
+
+let g:ycm_log_level = 'debug'
+
+
+"---- YouCompleteMe
+let g:ycm_language_server = [
+\ {
+\   'name' : 'texlab' ,
+\   'cmdline' : ['texlab'],
+\   'filetypes' : ['tex']
+\ },
+\ {
+\   'name': 'vue',
+\   'filetypes': [ 'vue' ],
+\   'cmdline': ['vls', '--stdio']
+\ }
+\]
