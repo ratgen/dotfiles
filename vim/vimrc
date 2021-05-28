@@ -42,8 +42,8 @@ nmap <leader>y "+y
 
 "---- Set the view of indentation and indentation to 2.
 filetype indent on
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set autoindent
 set smartindent
 set expandtab
@@ -123,7 +123,6 @@ inoremap <nowait> {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
 let g:ycm_log_level = 'debug'
-
 
 "---- YouCompleteMe
 let g:ycm_language_server = [

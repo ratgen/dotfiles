@@ -9,7 +9,7 @@ Xft.rgba: rgb
 
 URxvt.scrollBar: false
 
-xterm*background: #1c1c1c
+xterm*background: #1d2021
 xterm*foreground: white
 
 XTerm*vt100.translations: #override \
