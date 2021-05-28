@@ -60,6 +60,7 @@ set conceallevel=2
 syntax on
 ""set cursorline
 colorscheme afterglow
+let g:afterglow_inherit_background=1
 let g:airline_theme='afterglow'
 
 "----- Set aliases to improve efficiency
