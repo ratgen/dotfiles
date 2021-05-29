@@ -22,13 +22,17 @@ call plug#begin('~/.vim/plugged')
   Plug 'dense-analysis/ale'
   Plug 'ycm-core/YouCompleteMe'
   Plug 'danilo-augusto/vim-afterglow'
+  Plug 'preservim/nerdtree'
 call plug#end()
-
-let g:ale_completion_enabled = 0
 
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
 set noshowmode
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
@@ -58,7 +62,7 @@ set conceallevel=2
 
 "----- Set the color theme
 syntax on
-""set cursorline
+set cursorline
 colorscheme afterglow
 let g:afterglow_inherit_background=1
 let g:airline_theme='afterglow'
