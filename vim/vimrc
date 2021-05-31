@@ -26,10 +26,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'Konfekt/FastFold'                               "Improve folding, tex is unusable without
 call plug#end()
 
-
-nnoremap <leader>n :NERDTreeFocus<CR>   "move focus to NERDTreeToggle
-nnoremap <C-n> :NERDTree<CR>            "launch NERDTree
-nnoremap <C-t> :NERDTreeToggle<CR>      "toggle NERDTree
+"move focus to NERDTreeToggle
+nnoremap <leader>n :NERDTreeFocus<CR>   
+"launch NERDTree
+nnoremap <C-n> :NERDTree<CR>            
+"toggle NERDTree
+nnoremap <C-t> :NERDTreeToggle<CR>      
 
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
@@ -98,12 +100,18 @@ let g:tex_flavor = 'latex'
 
 "
 "----- fzf search in file
-nnoremap <silent> <Leader>b :Buffers<CR>        "Search in buffer names
-nnoremap <silent> <C-f> :Files<CR>              "Search in files in directory
-nnoremap <silent> <Leader>f :Rg<CR>             "Grep in files in the directory
-nnoremap <silent> <Leader>/ :BLines<CR>         "Search in current file
-nnoremap <silent> <Leader>' :Marks<CR>          "Search in marks
-nnoremap <silent> <Leader>c :Commits<CR>        "Search in commits
+"Search in buffer names
+nnoremap <silent> <Leader>b :Buffers<CR>
+"Search in files in directory
+nnoremap <silent> <C-f> :Files<CR>              
+"Grep in files in the directory
+nnoremap <silent> <Leader>f :Rg<CR>
+"Search in current file
+nnoremap <silent> <Leader>/ :BLines<CR>
+"Search in marks
+nnoremap <silent> <Leader>' :Marks<CR>
+"Search in commits
+nnoremap <silent> <Leader>c :Commits<CR>
 nnoremap <silent> <Leader>H :Helptags<CR>
 nnoremap <silent> <Leader>hh :History<CR>
 nnoremap <silent> <Leader>h: :History:<CR>
@@ -135,7 +143,6 @@ inoremap <nowait> [ []<left>
 inoremap <nowait> { {}<left>
 inoremap <nowait> {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
-inoremap <nowait> <tab> %<right>
 
 let g:ycm_log_level = 'debug'
 
