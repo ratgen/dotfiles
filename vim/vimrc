@@ -117,7 +117,7 @@ let g:tex_flavor = 'latex'
 "Search in buffer names
 nnoremap <silent> <Leader>b :Buffers<CR>
 "Search in files in directory
-nnoremap <silent> <C-f> :Files<CR>              
+nnoremap <silent> <C-f> :Files<CR>
 "Grep in files in the directory
 nnoremap <silent> <Leader>f :Rg<CR>
 "Search in current file
