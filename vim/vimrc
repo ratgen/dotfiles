@@ -1,29 +1,43 @@
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
+            \| PlugInstall --sync | source $MYVIMRC
+            \| endif
 
 call plug#begin('~/.vim/plugged')
-  Plug 'lervag/vimtex'                                  "VimTeX extension for compiling tex documetns 
-  Plug 'machakann/vim-sandwich'                         "Surrounding for quoting and parenthesizing
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   "Fuzzy search in files systemwide
-  Plug 'junegunn/fzf.vim' " fuzzy search                "Fuzzy search in files in vim
-  Plug 'tpope/vim-fugitive'                             "Git commands inside vim
-  Plug 'ap/vim-css-color'                               "Display colors of codes inside .css and .html documents
-  Plug 'vim-airline/vim-airline'                        "Bottom line displaying insert and file info
-  Plug 'SirVer/ultisnips'                               "Snippets
-  Plug 'honza/vim-snippets'                             "Library of snippets for ultisnips
-  Plug 'dense-analysis/ale'                             "Linting of files
-  Plug 'ycm-core/YouCompleteMe'                         "Completion, and language server support
-  Plug 'morhetz/gruvbox'                                "Theme
-  Plug 'preservim/nerdtree'                             "File tree, if needed
-  Plug 'Konfekt/FastFold'                               "Improve folding, tex is unusable without
+    "VimTeX extension for compiling tex documetns 
+    Plug 'lervag/vimtex'                                  
+    "Surrounding for quoting and parenthesizing
+    Plug 'machakann/vim-sandwich'                         
+    "Fuzzy search in files systemwide
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   
+    "Fuzzy search in files in vim
+    Plug 'junegunn/fzf.vim' 
+    "Git commands inside vim
+    Plug 'tpope/vim-fugitive'                             
+    "Display colors of codes inside .css and .html documents
+    Plug 'ap/vim-css-color'                               
+    "Bottom line displaying insert and file info
+    Plug 'vim-airline/vim-airline'                        
+    "Snippets
+    Plug 'SirVer/ultisnips'                               
+    "Library of snippets for ultisnips
+    Plug 'honza/vim-snippets'                             
+    "Linting of files
+    Plug 'dense-analysis/ale'                             
+    "Completion, and language server support
+    Plug 'ycm-core/YouCompleteMe'                         
+    "Theme
+    Plug 'morhetz/gruvbox'                                
+    "File tree, if needed
+    Plug 'preservim/nerdtree'                             
+    "Improve folding, tex is unusable without
+    Plug 'Konfekt/FastFold'                               
 call plug#end()
 
 "move focus to NERDTreeToggle
@@ -124,7 +138,7 @@ set spelllang=en_gb             "Set language for spellchecking
 set modeline                    "Set options in each file
 
 "-- Choose the first suggestion for mistake
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u    "Use first suggestion with hotkey ctrl-l
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u    
 
 abbr SE Software Engineering
 abbr hte the
@@ -148,14 +162,14 @@ let g:ycm_log_level = 'debug'
 
 "---- YouCompleteMe language servers
 let g:ycm_language_server = [
-\ {
-\   'name' : 'texlab' ,
-\   'cmdline' : ['texlab'],
-\   'filetypes' : ['tex']
-\ },
-\ {
-\   'name': 'vue',
-\   'filetypes': [ 'vue' ],
-\   'cmdline': ['vls', '--stdio']
-\ }
+    \ {
+    \   'name' : 'texlab' ,
+    \   'cmdline' : ['texlab'],
+    \   'filetypes' : ['tex']
+    \ },
+    \ {
+    \   'name': 'vue',
+    \   'filetypes': [ 'vue' ],
+    \   'cmdline': ['vls', '--stdio']
+    \ }
 \]
