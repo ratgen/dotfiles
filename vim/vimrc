@@ -135,6 +135,7 @@ inoremap <nowait> [ []<left>
 inoremap <nowait> { {}<left>
 inoremap <nowait> {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
+inoremap <nowait> <tab> %<right>
 
 let g:ycm_log_level = 'debug'
 
