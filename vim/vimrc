@@ -21,24 +21,25 @@ call plug#begin('~/.vim/plugged')
   Plug 'honza/vim-snippets'                             "Library of snippets for ultisnips
   Plug 'dense-analysis/ale'                             "Linting of files
   Plug 'ycm-core/YouCompleteMe'                         "Completion, and language server support
-  Plug 'danilo-augusto/vim-afterglow'                   "Theme
+  Plug 'morhetz/gruvbox'                                "Theme
   Plug 'preservim/nerdtree'                             "File tree, if needed
+  Plug 'Konfekt/FastFold'                               "Improve folding, tex is unusable without
 call plug#end()
 
-""set completeopt=noinsert,menuone,noselect
-set shortmess+=c
-set noshowmode      "Remove vim's own statusbar
 
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <leader>n :NERDTreeFocus<CR>   "move focus to NERDTreeToggle
+nnoremap <C-n> :NERDTree<CR>            "launch NERDTree
+nnoremap <C-t> :NERDTreeToggle<CR>      "toggle NERDTree
 
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+imap <Up> <Nop>
+imap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 
 "----- Set the copying and pasting from the system clipboard 
 nmap <leader>p "+gp
@@ -46,58 +47,63 @@ nmap <leader>y "+y
 
 "---- Set the view of indentation and indentation to 2.
 filetype indent on
-set tabstop=4
-set shiftwidth=4
-set autoindent
-set smartindent
-set expandtab
+set tabstop=4       "number of spaces a tab counts for
+set shiftwidth=4    "number of space arrows count for 
+set autoindent      "keep indentation when moving to a new line
+set smartindent     "do indentation automatically 
+set expandtab       "use spaces instead of tabs
 
 "----- Interface options
-set noshowmode
-set relativenumber
-set number
-set laststatus=2 "always show the statusbar (the one on the bottom)
-set confirm "display confirmation when closing unsaved file
-set conceallevel=2
-
-map <leader>r :Rg<Return>
+set noshowmode      "Remove vim's own statusbar
+set relativenumber  "make numbers relative to current position
+set number          "Show numbers
+set laststatus=2    "always show the statusbar (the one on the bottom)
+set confirm         "display confirmation when closing unsaved file
+set conceallevel=2  "Conceal textbf and strings in tex
 
 "----- Set the color theme
-syntax on
-set cursorline
-colorscheme afterglow
-let g:afterglow_inherit_background=1
-let g:airline_theme='afterglow'
+syntax on                               "Syntax highlighting on
+set cursorline                          "Highlight the line on which the cursor is
+colorscheme gruvbox                     "Use the gruvbox theme
+set background=dark                     "Use the dark theme of gruvbox
+let g:gruvbox_contrast_dark='hard'      "Increase the constrast of the them 
+let g:airline_theme='gruvbox'           "Use the gruvbox theme for airline
 
 "----- Set aliases to improve efficiency
-command W w
+command W w                     
 command Wq wq
 command WQ wq
 
 "----- Set shortcuts in LaTeX documents
-autocmd filetype tex set tw=80
-autocmd filetype markdown set tw=80
-autocmd filetype text set tw=80
+set tw=80          "set textwidth to 80
+""autocmd filetype markdown set tw=80
+""autocmd filetype text set tw=80
 
 "----- set the placement of the swap files
 set backupdir=~/.backup/,/tmp//
 set directory=~/.swp/,/tmp//
 set undodir=~/.undo/,/tmp//
+set updatetime=300                  "Write the swapfile if nothings is written for 300 millisecs
+
+"Options for folding
+nmap zuz <Plug>(FastFoldUpdate)
+let g:fastfold_savehook = 1
+let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 
 "----- set vimtex options
-"let g:vimtex_fold_enabled = 1
-"let g:vim_fold_types = {'sections' : {'parse_levels' : 3}}
+let g:vimtex_fold_enabled = 1
+let g:vim_fold_types = {'sections' : {'parse_levels' : 3}} "Fold to subsubsection levels
 let g:tex_flavor = 'latex'
 
-set updatetime=300
 "
 "----- fzf search in file
-nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <C-f> :Files<CR>
-nnoremap <silent> <Leader>f :Rg<CR>
-nnoremap <silent> <Leader>/ :BLines<CR>
-nnoremap <silent> <Leader>' :Marks<CR>
-nnoremap <silent> <Leader>c :Commits<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>        "Search in buffer names
+nnoremap <silent> <C-f> :Files<CR>              "Search in files in directory
+nnoremap <silent> <Leader>f :Rg<CR>             "Grep in files in the directory
+nnoremap <silent> <Leader>/ :BLines<CR>         "Search in current file
+nnoremap <silent> <Leader>' :Marks<CR>          "Search in marks
+nnoremap <silent> <Leader>c :Commits<CR>        "Search in commits
 nnoremap <silent> <Leader>H :Helptags<CR>
 nnoremap <silent> <Leader>hh :History<CR>
 nnoremap <silent> <Leader>h: :History:<CR>
@@ -105,23 +111,23 @@ nnoremap <silent> <Leader>h/ :History/<CR>
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
 "---- Abbreviations
-set spell
-set spelllang=da,en_gb
-set modeline
+set spell                       "Enable spellchecking
+set spelllang=en_gb             "Set language for spellchecking
+set modeline                    "Set options in each file
 
 "-- Choose the first suggestion for mistake
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u    "Use first suggestion with hotkey ctrl-l
 
 abbr SE Software Engineering
 abbr hte the
 abbr nad and
 
 "--- Ultisnips options
-let g:UltiSnipsExpandTrigger="<c-space>"
+let g:UltiSnipsExpandTrigger="<c-space>"        
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-"--- auto expansion
+"--- Auto expansion
 inoremap <nowait> " ""<left>
 inoremap <nowait> ' ''<left>
 inoremap <nowait> ( ()<left>
@@ -132,7 +138,7 @@ inoremap {;<CR> {<CR>};<ESC>O
 
 let g:ycm_log_level = 'debug'
 
-"---- YouCompleteMe
+"---- YouCompleteMe language servers
 let g:ycm_language_server = [
 \ {
 \   'name' : 'texlab' ,
