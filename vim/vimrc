@@ -68,6 +68,8 @@ set shiftwidth=4    "number of space arrows count for
 set autoindent      "keep indentation when moving to a new line
 set smartindent     "do indentation automatically 
 set expandtab       "use spaces instead of tabs
+set incsearch       "automatically show the first result of a pattern
+set hlsearch        "highlight the results of a query.
 
 "----- Interface options
 set noshowmode      "Remove vim's own statusbar
