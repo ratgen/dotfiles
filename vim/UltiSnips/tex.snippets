@@ -8,8 +8,7 @@ endsnippet
 snippet sampletemplateda "Sample template for all documents" bA
 \documentclass{article}
 
-
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[danish]{babel}
 \usepackage{float}
 \usepackage{fancyhdr}
@@ -20,8 +19,10 @@ snippet sampletemplateda "Sample template for all documents" bA
 \usepackage{pdfpages}
 \usepackage{booktabs}
 \usepackage{listingsutf8}
-%\usepackage{enumitem}
+\usepackage{enumitem}
 \usepackage[a4paper, top = 1in, bottom = 1in, left=1in,right=1in]{geometry}
+\usepackage{csqoutes}
+\usepackage[backend=biber, citestyle=ieee]{biblatex}
 
 \title{$1}
 \author{Peter Heilbo Ratgen}

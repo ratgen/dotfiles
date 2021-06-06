@@ -75,8 +75,8 @@ set hlsearch        "highlight the results of a query.
 set noshowmode      "Remove vim's own statusbar
 set relativenumber  "make numbers relative to current position
 set number          "Show numbers
-set laststatus=2    "always show the statusbar (the one on the bottom)
 set confirm         "display confirmation when closing unsaved file
+set laststatus=2    "always show the statusbar (the one on the bottom)
 set conceallevel=2  "Conceal textbf and strings in tex
 
 "----- Set the color theme
