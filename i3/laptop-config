@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -167,8 +167,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec --no-startup-id ~/.config/polybar/polybar.sh
-
 gaps inner 5 
 gaps outer 10
 
@@ -176,9 +174,9 @@ client.focused #555555 #555555 #ffffff #FFFFFF     #0095e4
 
 for_window [class="^.*"] border pixel 3
 
-exec source ~/.screenlayout/screen.sh
-exec setxkbmap -layout us -option compose:lwin
+exec setxkbmap -layout dk
 
+exec --no-startup-id polybar example
 exec --no-startup-id clipit
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
