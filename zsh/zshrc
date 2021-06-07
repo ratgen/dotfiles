@@ -11,3 +11,5 @@ fi
 if [[ -e ~/dotfiles/zsh/manjaro-zsh-prompt ]]; then
   source ~/dotfiles/zsh/manjaro-zsh-prompt
 fi
+
+neofetch
