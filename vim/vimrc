@@ -173,5 +173,15 @@ let g:ycm_language_server = [
     \   'name': 'vue',
     \   'filetypes': [ 'vue' ],
     \   'cmdline': ['vls', '--stdio']
+    \ },
+    \ {
+    \   'name' : 'vim-lsp',
+    \   'cmdline' : ['vim-language-server', '--stdio'],
+    \   'filetypes' : ['vim']
+    \ },
+    \ { 
+    \   'name' : 'bash' ,
+    \   'cmdline' : ['bash-language-server', 'start'],
+    \   'filetypes' : ['sh', 'bash']
     \ }
 \]

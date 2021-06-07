@@ -33,7 +33,6 @@ function linkAllFiles {
     dotfilelink config/zathura .config/zathura
     dotfilelink config/rofi .config/rofi
 
-
     while true; do
         read -p "Desktop(d) or laptop(l)?" yn
         case $yn in
@@ -87,11 +86,11 @@ done
 
 packages="vim nodejs npm neofetch fzf \
     tree lua ripgrep compton xfce4-terminal \
-    brave rofi nitrogen clipit"
+    brave rofi nitrogen clipit vls texlab \
+    bash-language-server vim-language-server"
 if [ $unameS = "Linux" ]; then
     linkAllFiles
     sudo pacman -S --needed $packages fortune-mod
 fi
 
 vim +PlugInstall +q! +q! +q!
-sudo npm i -g bash-language-server
