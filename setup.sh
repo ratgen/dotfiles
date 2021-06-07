@@ -1,77 +1,52 @@
 #!/bin/bash
-mkdir -p $HOME/.config/nvim/
+mkdir -p $HOME/.vim
 mkdir -p $HOME/.config/i3
 dotFileDir=$(pwd)
 unameS=$(uname -s)
 
 function dotfilelink {
-  dest="$HOME/$2"
- if [ -h $dest ]; then
-    echo "Removing existing symlink"
-    rm $dest
-  fi
-  echo "Creating symlink"
-  ln -s $dotFileDir/$1 $dest
+    dest="$HOME/$2"
+    echo "The destination is " $dest
+    if [ -d $dest ]; then
+        echo "Removing folder existing symlink"
+        rm $dest
+    fi
+    if [ -f $dest ]; then
+        echo "Removing file symlink"
+        rm $dest
+    fi
+    if [ -h $dest ]; then
+        echo "Removing symlink"
+        rm $dest
+    fi
+    echo "Creating symlink"
+    ln -s $dotFileDir/$1 $dest
 }
 
 function linkAllFiles {
-  dotfilelink nvim/init.vim .config/nvim/init.vim
-  dotfilelink nvim/cocsettings.vim .config/nvim/cocsettings.vim
-  dotfilelink nvim/coc-settings.json .config/nvim/coc-settings.json
-  dotfilelink nvim/UltiSnips .config/nvim/UltiSnips
+    dotfilelink vim/vimrc .vim/vimrc
+    dotfilelink vim/UltiSnips .vim/UltiSnips
 
-  dotfilelink gitconfig .gitconfig
-  dotfilelink inputrc .inputrc
+    dotfilelink gitconfig .gitconfig
+    dotfilelink inputrc .inputrc
 
-  if [ "$1" == "desk" ]; then
-    dotfilelink desk-polybar .config/polybar
+    dotfilelink config/polybar .config/polybar
+    dotfilelink config/zathura .config/zathura
     dotfilelink i3/desk-config .config/i3/config
-    dotfilelink Xresources-desktop .Xresources
-  elif [ "$1" == "mac" ]; then
-    dotfilelink mac-polybar .config/polybar
-    dotfilelink i3/mac-config .config/i3
-    dotfilelink Xresources-mac .Xresources
-  fi
+
+    dotfilelink zsh/zshrc .zshrc
 }
 
 if [ "$1" = "relink" ]; then
-  if [ "$2" = "desk" ]; then
-    linkAllFiles $2
-    exit
-  elif [ "$2" = "mac" ]; then
-    linkAllFiles $2
-    exit
-  else
     linkAllFiles
     exit
-  fi
-else 
-  if [ "$1" = "desk" ]; then
-    linkAllFiles $2
-    exit
-  elif [ "$1" = "mac" ]; then
-    linkAllFiles $2
-    exit
-  else
-    linkAllFiles
-    exit
-  fi
 fi
 
 packages="neovim nodejs npm neofetch fzf tree lua ripgrep"
 if [ $unameS = "Linux" ]; then
-  if test -f "/etc/arch-release" ; then
+    linkAllFiles
     sudo pacman -S --needed $packages fortune-mod
-  elif test -f "/etc/debian_version" ; then
-    sudo apt install $packages fortune
-  else
-    echo "no supported package manager"
-  fi
-elif [ $unameS = "Darwin" ]; then
-  brew install $packages fortune
-else
-  echo "not a supported system"
 fi
 
-nvim +PlugInstall +q! +q! +q!
+vim +PlugInstall +q! +q! +q!
 sudo npm i -g bash-language-server

@@ -1,0 +1,13 @@
+# Use powerline
+USE_POWERLINE="true"
+EDITOR=vim
+source ~/.vim/plugged/fzf/shell/completion.zsh
+source ~/.vim/plugged/fzf/shell/key-bindings.zsh
+# Source manjaro-zsh-configuration
+if [[ -e ~/dotfiles/zsh/manjaro-zsh-config ]]; then
+  source ~/dotfiles/zsh/manjaro-zsh-config
+fi
+# Use manjaro zsh prompt
+if [[ -e ~/dotfiles/zsh/manjaro-zsh-prompt ]]; then
+  source ~/dotfiles/zsh/manjaro-zsh-prompt
+fi
