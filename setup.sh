@@ -90,7 +90,7 @@ packages="vim nodejs npm neofetch fzf \
     bash-language-server vim-language-server"
 if [ $unameS = "Linux" ]; then
     linkAllFiles
-    pamac $packages 
+    pamac install $packages 
 fi
 
 vim +PlugInstall +q! +q! +q!
