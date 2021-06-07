@@ -35,6 +35,7 @@ function linkAllFiles {
     dotfilelink i3/desk-config .config/i3/config
 
     dotfilelink zsh/zshrc .zshrc
+    dotfilelink config/Xresources .Xresources
 }
 
 if [ "$1" = "relink" ]; then
