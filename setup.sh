@@ -50,6 +50,7 @@ function linkAllFiles {
 function installDesktop {
     dotfilelink i3/desk-config .config/i3/config
     dotfilelink config/polybar/polybar-desktop .config/polybar
+    dotfilelink screenlayout .screenlayout
 }
 
 function installLaptop {
