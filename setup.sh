@@ -80,7 +80,9 @@ while true; do
     esac
 done
 
-packages="neovim nodejs npm neofetch fzf tree lua ripgrep"
+packages="vim nodejs npm neofetch fzf \
+    tree lua ripgrep compton xfce4-terminal \
+    brave rofi nitrogen clipit"
 if [ $unameS = "Linux" ]; then
     linkAllFiles
     sudo pacman -S --needed $packages fortune-mod
