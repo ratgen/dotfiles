@@ -38,10 +38,27 @@ function linkAllFiles {
     dotfilelink config/Xresources .Xresources
 }
 
+function installFont {
+    mkdir -p ~/.fonts
+    cd ~/.fonts
+    curl -o IBM_Plex_Mono.zip 'https://fonts.google.com/download?family=IBM%20Plex%20Mono'
+    unzip IBM_Plex_Mono
+    cd ~/dotfiles
+}
+
 if [ "$1" = "relink" ]; then
     linkAllFiles
     exit
 fi
+
+while true; do
+    read -p "Pull in fonts?" yn
+    case $yn in
+        [Yy]* ) installFont; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 packages="neovim nodejs npm neofetch fzf tree lua ripgrep"
 if [ $unameS = "Linux" ]; then
