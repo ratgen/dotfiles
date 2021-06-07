@@ -45,7 +45,7 @@ exec --no-startup-id compton &
 # start newsboat
 
 bindsym $mod+b exec brave
-bindsym $mod+n exec gnome-terminal --command newsboat
+bindsym $mod+n exec xfce4-terminal --execute newsboat
 bindsym $mod+m exec evolution
 
 # kill focused window
