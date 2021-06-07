@@ -32,6 +32,7 @@ function linkAllFiles {
 
     dotfilelink config/polybar .config/polybar
     dotfilelink config/zathura .config/zathura
+    dotfilelink config/rofi .config/rofi
     dotfilelink i3/desk-config .config/i3/config
 
     dotfilelink zsh/zshrc .zshrc
