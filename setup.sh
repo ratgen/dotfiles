@@ -65,8 +65,8 @@ function installFont {
     unzip IBM_Plex_Mono
     curl -o Fontawesome.zip 'https://use.fontawesome.com/releases/v5.15.3/fontawesome-free-5.15.3-desktop.zip'
     unzip Fontawesome
-    mv Fontawesome/otfs/* .
-    rm -rf Fontawesome
+    mv fontawesome-free-5.15.3-desktop/otfs/* .
+    rm -rf fontawesome-free-5.15.3-desktop
     rm README.md
     cd ~/dotfiles
 }
