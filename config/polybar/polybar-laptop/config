@@ -1,0 +1,325 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+background = #282828
+background-alt = #3c3836
+foreground = #ebdbb2
+red        = #cc241d
+green      = #98981a
+yellow     = #d79921
+blue       = #45858800
+purple     = #b1628600
+teal       = #689d6a00
+orange     = #d65d0e00
+gray       = #928374
+
+[bar/example]
+width = 100%
+height = 28
+radius = 6.0
+border-size = 4
+border-color = #00000000
+fixed-center = false
+
+;background = ${colors.background}
+background = #00000000
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = ${colors.red}
+
+;padding-left = 1
+padding-right = 2
+
+;module-margin-left = 0
+module-margin-right = 0 
+
+font-0 = IBMPlexMono-Regular:size=9.5;2
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=13;4"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=13;4"
+font-3 = "Font Awesome 5 Brands:pixelsize=13;3"
+
+modules-left = i3
+modules-center = spotify  firefox
+modules-right = tv steelseries razer  filesystem memory cpu temperature date 
+; center: tradfri spotify-prev spotify-play-pause spotify-next
+;cpu eth pulseaudio 
+
+monitor = ${env:MONITOR:}
+
+tray-position = right
+wm-restack = i3
+
+enable-ipc = true
+
+tray-reparent = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+dpi = 120
+;separator = "%{T5}%{F#919191}/%{T-}%{F#fbf1c7}"
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+format-padding = 1
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+label-layout = %layout%
+format-padding = 1
+format-background = ${colors.red}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+mount-1 = /mnt/hdd1
+mount-2 = /mnt/hdd2
+mount-3 = /mnt/ssd
+
+;label-mounted = %{F#FFF}%mountpoint%%{F-}: %used%/%total%
+label-mounted = %used%/%total%
+label-unmounted = %mountpoint% not mounted
+;format-mounted-background = ${colors.teal}
+;format-mounted-padding = 1
+format-mounted-margin = 0.4
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.yellow}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.yellow}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.red}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+format-padding-right = 1
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = ""
+label = %percentage%%
+format-padding = 1
+;format-background = ${colors.green}
+format-margin-right = 1 
+
+[module/memory]
+type = internal/memory
+interval = 1
+format-prefix = ""
+format-underline = ${colors.blue}
+label = %mb_used%/%mb_total%
+format-padding = 1
+;format-background = ${colors.blue}
+format-margin = 1
+
+[module/eth]
+type = internal/network
+interface = enp4s0
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = ""
+label-connected = %local_ip%
+
+format-disconnected =
+format-connected-padding = 1
+format-connected-background = ${colors.teal}
+format-connected-margin = 1
+
+[module/date]
+type = internal/date
+interval = 1
+
+time = %H:%M:%S
+label = %time%
+format-padding = 1
+;format-background = ${colors.orange}
+format-margin = 1
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = "muted"
+label-muted-foreground = #666
+
+bar-volume-width = 5
+bar-volume-foreground-0 = ${colors.green}
+bar-volume-foreground-1 = ${colors.green}
+bar-volume-foreground-2 = ${colors.green}
+bar-volume-foreground-3 = ${colors.green}
+bar-volume-foreground-4 = ${colors.green}
+bar-volume-foreground-5 = ${colors.orange}
+bar-volume-foreground-6 = ${colors.red}
+bar-volume-gradient = false
+bar-volume-indicator = 
+bar-volume-indicator-font = 2
+bar-volume-fill = 
+bar-volume-fill-font = 2
+bar-volume-empty = 
+bar-volume-empty-font = 2
+format-volume-background = ${colors.purple}
+format-volume-padding = 1
+format-volume-margin = 1
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input
+warn-temperature = 80
+
+format = <label>
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.gray}
+
+;format-background = ${colors.green}
+format-padding = 1
+format-margin-right = 1
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[module/razer]
+type = custom/script
+format = <label>
+exec = python ~/.config/polybar/razer.py
+;format-background = ${colors.green}
+format-padding = 1
+
+[module/steelseries]
+type = custom/script
+interval = 30
+format = <label>
+exec = ~/.config/polybar/headset.sh
+;format-background = ${colors.orange}
+format-padding = 1
+format-radius = 6.0
+format-border-size = 4
+format-border-color = #00000000
+format-margin = 1
+
+[module/spotify]
+type = custom/script
+tail = true
+; prefix symbol is shown before the text
+format-prefix = "  "
+format = <label>
+enable-ipc = true
+exec = ~/.config/polybar/polybar-spotify/scroll_spotify_status.sh
+format-padding = 1
+
+[module/spotify-prev]
+type = custom/script
+exec = echo ""
+format = <label>
+click-left = playerctl --player=spotify previous
+format-padding = 1
+
+[module/spotify-play-pause]
+type = custom/ipc
+hook-0 = echo ""
+hook-1 = echo ""
+initial = 1
+click-left = playerctl --player=spotify play-pause
+format-padding = 1
+
+[module/spotify-next]
+type = custom/script
+exec = echo ""
+format = <label>
+click-left = playerctl --player=spotify next
+format-padding = 1
+
+[module/tradfri]
+type = custom/script
+tail = true
+; prefix symbol is shown before the text
+format-prefix = ""
+format = <label>
+exec = ~/.config/polybar/scroll_lights.sh
+format-padding = 2
+
+[module/firefox]
+type = custom/script
+tail = true
+; prefix symbol is shown before the text
+format-prefix = " "
+format = <label>
+exec = ~/.config/polybar/polybar-youtube/scroll_firefox_status.sh
+format-padding = 2
+
+[module/tv]
+type = custom/script
+tail = true
+; prefix symbol is shown before the text
+format = "TV"
+exec = python tv.py
+format-padding = 2
+;format-background = ${colors.green}
+scroll-up = python ~/.config/polybar/tv.py --vol-up
+click-left = python ~/.config/polybar/tv.py --off
+scroll-down = python ~/.config/polybar/tv.py --vol-down
+;cursor = pointer
+
+; vim:ft=dosini

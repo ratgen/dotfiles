@@ -3,6 +3,7 @@ mkdir -p $HOME/.vim
 mkdir -p $HOME/.config/i3
 dotFileDir=$(pwd)
 unameS=$(uname -s)
+device="desktop"
 
 function dotfilelink {
     dest="$HOME/$2"
@@ -26,17 +27,34 @@ function dotfilelink {
 function linkAllFiles {
     dotfilelink vim/vimrc .vim/vimrc
     dotfilelink vim/UltiSnips .vim/UltiSnips
-
     dotfilelink gitconfig .gitconfig
     dotfilelink inputrc .inputrc
 
-    dotfilelink config/polybar .config/polybar
     dotfilelink config/zathura .config/zathura
     dotfilelink config/rofi .config/rofi
-    dotfilelink i3/desk-config .config/i3/config
+
+
+    while true; do
+        read -p "Desktop(d) or laptop(l)?" yn
+        case $yn in
+            [Dd]* ) installDesktop ; break;;
+            [Ll]* ) installLaptop; break;;
+            * ) echo "Please answer deskop or laptop.";;
+        esac
+    done
 
     dotfilelink zsh/zshrc .zshrc
     dotfilelink config/Xresources .Xresources
+}
+
+function installDesktop {
+    dotfilelink i3/desk-config .config/i3/config
+    dotfilelink config/polybar/polybar-desktop .config/polybar
+}
+
+function installLaptop {
+    dotfilelink i3/laptop-config .config/i3/config
+    dotfilelink config/polybar/polybar-laptop .config/polybar
 }
 
 function installFont {
