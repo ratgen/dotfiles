@@ -185,3 +185,4 @@ let g:ycm_language_server = [
     \   'filetypes' : ['sh', 'bash']
     \ }
 \]
+"vim set filetype=vim
