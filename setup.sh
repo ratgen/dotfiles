@@ -63,6 +63,11 @@ function installFont {
     cd ~/.fonts
     curl -o IBM_Plex_Mono.zip 'https://fonts.google.com/download?family=IBM%20Plex%20Mono'
     unzip IBM_Plex_Mono
+    curl -o Fontawesome.zip 'https://use.fontawesome.com/releases/v5.15.3/fontawesome-free-5.15.3-desktop.zip'
+    unzip Fontawesome
+    mv Fontawesome/otfs/* .
+    rm -rf Fontawesome
+    rm README.md
     cd ~/dotfiles
 }
 
