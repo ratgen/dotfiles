@@ -43,18 +43,19 @@ function linkAllFiles {
     done
 
     dotfilelink zsh/zshrc .zshrc
-    dotfilelink config/Xresources .Xresources
 }
 
 function installDesktop {
     dotfilelink i3/desk-config .config/i3/config
     dotfilelink config/polybar/polybar-desktop .config/polybar
     dotfilelink screenlayout .screenlayout
+    dotfilelink config/Xresources/Xresources-desktop .Xresources
 }
 
 function installLaptop {
     dotfilelink i3/laptop-config .config/i3/config
     dotfilelink config/polybar/polybar-laptop .config/polybar
+    dotfilelink config/Xresources/Xresources-laptop .Xresources
 }
 
 function installFont {
@@ -86,8 +87,10 @@ done
 
 packages="vim nodejs npm neofetch fzf \
     tree lua ripgrep compton xfce4-terminal \
-    brave rofi nitrogen clipit vls texlab \
-    bash-language-server vim-language-server"
+    brave rofi nitrogen clipit"
+aur_packages="vls texlab \
+    bash-language-server vim-language-server \
+    light"
 if [ $unameS = "Linux" ]; then
     linkAllFiles
     pamac install $packages 

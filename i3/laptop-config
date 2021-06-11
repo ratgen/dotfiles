@@ -34,6 +34,10 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl --player=spotify play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl --player=spotify next
 bindsym XF86AudioPrev exec --no-startup-id playerctl --player=spotify previous
 
+bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'"                                                                                   
+bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
+
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
