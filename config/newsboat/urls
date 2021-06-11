@@ -1,0 +1,122 @@
+--Nyheder--
+
+https://www.dr.dk/Nyheder/service/feeds/alleNyheder Nyheder "~DR Nyheder"
+http://feeds.services.tv2.dk/api/feeds/Nyheder/rss Nyheder "~TV2 Nyheder"
+http://feeds.services.tv2.dk/api/feeds/sport/rss sport "~TV2 Sport"
+https://fyens.dk/feed/forside Regional Nyheder "~Fyens Stifttidende"
+https://www.tv2fyn.dk/rss Regional Nyheder "~TV2 Fyn"
+https://ing.dk/rss/Nyheder Nyheder Tech "City Planning" "~Ingeniøren"
+
+--Substack--
+
+https://greenwald.substack.com/feed Nyheder "~Glenn Greenwald"
+https://krystalkyleandfriends.substack.com/feed "~Krystal Kyle and Friends"
+
+--Nyheder_Tech--
+
+https://www.version2.dk/it-Nyheder/rss Nyheder Tech "~Version2"
+https://hnrss.org/frontpage?points=100 Nyheder Tech "~Hacker News"
+
+--Youtube_Politics--
+https://www.youtube.com/feeds/videos.xml?channel_id=UC3M7l8ved_rYQ45AVzS0RGA Youtube Politics "~The Jimmy Dore Show"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCDRIjKy6eZOvKtOELtTdeUA Youtube Politics "~Breaking Points"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCldfgbzNILYZA4dmDt4Cd6A Youtube Politics "~Secular Talk"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCCOYSB2aauO71Ut0Pl4SfzA Youtube Politics "~Hard Lens Media"
+https://www.youtube.com/feeds/videos.xml?channel_id=UChzVhAwzGR7hV-4O8ZmBLHg Youtube Politics "~Gleen Greenwald"
+
+--Youtube_Kina--
+https://www.youtube.com/feeds/videos.xml?channel_id=UChvithwOECK5g_19TjldMKw Youtube Politics "red pill" "~laowhy86"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCl7mAGnY4jh4Ps8rhhh8XZg Youtube Politics "red pill" "~serpentza"
+
+--Youtube_Tech--
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA Youtube Tech "~Luke Smith"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCl2mFZoRqjw_ELax4Yisf6w Youtube Tech "~Louis Rossman"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw Youtube Tech "~Linus Tech Tips"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCeeFfhMcJa1kjtfZAGskOCA Youtube Tech "~TechLinked"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCO2x-p9gg9TLKneXlibGR7w Youtube Tech "~Snazzy Labs"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCTzLRZUgelatKZ4nyIKcAbg Youtube Tech "~Hardware Canucks"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCBJycsmduvYEL83R_U4JriQ Youtube Tech "~MKBHD"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCdBK94H6oZT2Q7l0-b0xmMg Youtube Tech "~ShortCircuit"
+
+--Youtube_Keyboard--
+https://www.youtube.com/feeds/videos.xml?channel_id=UCllGwtW6scxAjM28fIgEozg Youtube Tech Keyboards "~TaeKeyboards"
+
+--Youtube_Trains--
+https://www.youtube.com/feeds/videos.xml?channel_id=UCd18OhMfRmjMjzSHP7Zrzmw Youtube Trains "~Geoff Marshall"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCcHuNKYzVMc06FXqsBEAV3A Youtube Trains "~Jago Hazzard"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCN5-F-rUbrRVnC9PvUEV-PQ Youtube Trains "~Kennys Film"
+
+--Youtube_City_Planning--
+https://www.youtube.com/feeds/videos.xml?channel_id=UC0intLFzLaudFG-xAvUEO-A Youtube "City Planning" "~Not Just Bikes"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCGc8ZVCsrR3dAuhvUbkbToQ Youtube "City Planning" "~City Beautiful"
+
+--Youtube_Kaffe--
+https://www.youtube.com/feeds/videos.xml?channel_id=UCMb0O2CdPBNi-QqPk5T3gsQ Youtube Kaffe "~James Hoffman"
+
+--Youtube_Facts--
+https://www.youtube.com/feeds/videos.xml?channel_id=UC0intLFzLaudFG-xAvUEO-A Youtube Facts "~Real Life Lore"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC4QZ_LsYcvcq7qOsOhpAX4A Youtube Facts "~ColdFusion"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA Youtube Facts "~Veritasium"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCX6b17PVsYBQ0ip5gyeme-Q Youtube Facts "~Crash Course"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCuCkxoKLYO_EQ2GeFtbM_bw-Q Youtube Facts "~Half as Interesting"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCR1D15p_vdP3HkrH8wgjQRw Youtube Facts "~Internet Historian"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJm2TgUqtK1_NLBrjNQ1P-w Youtube Facts "~Second Thought"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCy0tKL1T7wFoYcxCe0xjN6Q Youtube Facts "~Technology Connections"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCBa659QWEk1AI4Tg--mrJ2A Youtube Facts Personligheder "~Tom Scott"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC9RM-iSvTu1uPJb8X5yp3EQ Youtube Facts "~Wendover Productions"
+
+--Youtube_Minimalisme--
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJ24N4O0bP7LGLBDvye7oCA Youtube Minimalisme "~Matt D'Avella"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCrdWRLq10OHuy7HmSckV3Vg Youtube Minimalisme "~Nathaniel Drew"
+
+--Youtube_Mad--
+https://www.youtube.com/feeds/videos.xml?channel_id=UCO3rOpb9W779WQBKgNT5bWA Youtube Mad "~James Price"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJHA_jMfCvEnv-3kRjTCQXw Youtube Mad "~Babish"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCedsqpl7jaIb8BiaUFuC9KQ Youtube Mad "~Pasta Grannies"
+
+--Youtube_Fitness--
+https://www.youtube.com/feeds/videos.xml?channel_id=UCXrqErU_TjqiHAHJkzITAvg Youtube Fitness "~Shredded Sports Science"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCRLOLGZl3-QTaJfLmAKgoAw Youtube Fitness "~Alan Thrall"
+
+--Youtube_Personligheder--
+https://www.youtube.com/feeds/videos.xml?channel_id=UC6KTwySUEApgGgu4n1kUTKA Youtube Personligheder "~Laura Keil"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCm325cMiw9B15xl22_gr6Dw Youtube Personligheder "~Beau Miles"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCbxQcz9k0NRRuy0ukgQTDQQ Youtube Personligheder "~Austin McConnnel"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCIIrzIijEWZJrMlD--n1Iqw Youtube Personligheder "~Anna Briand"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCTSRIY3GLFYIpkR2QwyeklA Youtube Personligheder "~Drew Gooden"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCimiUgDLbi6P17BdaCZpVbg Youtube Personligheder based "~exurb1a"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCLUXOvi9mq90L7wlfBisTRA Youtube Personligheder "~Grackle"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUgSn3_q1PF6RcPHkuVHFHA Youtube Personligheder "~Jordan Taylor"
+
+--YouTube_Fortællere--
+https://www.youtube.com/feeds/videos.xml?channel_id=UCFeqAfEuKm7lIg2ddQzh61A Youtube Fortællere "~Erimichu"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCZzR7tqZKAXWT8uOi-RHuVA Youtube Fortællere "~FootofaFerret"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCkQ3eqNNaFrBZ_WbnCIMN8w Youtube Fortællere "~shgurr"
+
+
+--YouTube_Physical_Media
+https://www.youtube.com/feeds/videos.xml?channel_id=UCroHvqRakNmvz7X7O95R41w Youtube "Fysiske Medier" "~Films At Home"
+
+--Youtube_Makers
+https://www.youtube.com/feeds/videos.xml?channel_id=UC1V-DYqsaj764uBis9-UDug Youtube Maker "~Chris Salomone"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC6mIxFTvXkWQVEHPsEdflzQ Youtube Maker "~GreatScott"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCcXhhVwCT6_WqjkEniejRJQ Youtube Maker "~Wintergatan"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCp68_FLety0O-n9QU6phsgw Youtube Maker "~Colin Furze"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCY1kMZp36IQSyNx_9h4mpCg Youtube Maker "~Mark Rober"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCPO4D4-UeeFQceK8XrgwXug Youtube Maker "~Rainfall Projects"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCSJWlswfVUgyVliZaEFoaBw Youtube Maker "~TheSorryGirls"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC5NO8MgTQKHAWXp6z8Xl7yQ Youtube Maker "~This Old Tony"
+
+--Youtube_Programmering--
+https://www.youtube.com/feeds/videos.xml?channel_id=UC0e3QhIYukixgh5VVpKHH9Q Youtube Programmering "~Code Bullet"
+
+--Youtube_Games--
+https://www.youtube.com/feeds/videos.xml?channel_id=UCWCw2Sd7RlYJ2yuNVHDWNOA Youtube Games "red pill" "~Jim Sterling"
+
+--Peertube_Luke_Smith--
+https://lukesmith.xyz/peertubeS "Luke Smith" based  "red pill""~Luke Smith Peertube"
+
+--Blogs--
+https://lukesmith.xyz/rss.xml "Luke Smith" based "red pill" "~Luke Smith, Blog"
+https://notrelated.xyz/rss "Luke Smith" based "red pill" "~Luke Smith, notrelated.xyz"
+
