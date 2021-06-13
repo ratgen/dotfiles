@@ -112,7 +112,8 @@ let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 "----- set vimtex options
 let g:vimtex_fold_enabled = 1
 let g:vim_fold_types = {'sections' : {'parse_levels' : 3}} "Fold to subsubsection levels
-let g:tex_flavor = 'latex'
+let g:vim_fold_manual = 1 "Recalculate the fold using zx
+
 
 "
 "----- fzf search in file
