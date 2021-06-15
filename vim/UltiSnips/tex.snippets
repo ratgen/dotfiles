@@ -5,6 +5,36 @@ $2
 $0
 endsnippet
 
+
+snippet beamerpres "Template for beamer presentation" bA
+\documentclass[10pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{booktabs}
+\usepackage{listingsutf8}
+
+\title{$1}
+\author{Peter Heilbo Ratgen}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{frame}
+	\frametitle{$2}
+\end{frame}
+
+\end{document}
+endsnippet
+
 snippet sampletemplateda "Sample template for all documents" bA
 \documentclass{article}
 
