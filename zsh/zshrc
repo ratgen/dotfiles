@@ -1,6 +1,6 @@
 # Use powerline
 USE_POWERLINE="true"
-EDITOR=vim
+EDITOR=nvim
 source ~/.vim/plugged/fzf/shell/completion.zsh
 source ~/.vim/plugged/fzf/shell/key-bindings.zsh
 # Source manjaro-zsh-configuration
@@ -11,5 +11,8 @@ fi
 if [[ -e ~/dotfiles/zsh/manjaro-zsh-prompt ]]; then
   source ~/dotfiles/zsh/manjaro-zsh-prompt
 fi
+
+alias vim="nvim"
+alias vi="nvim"
 
 neofetch
