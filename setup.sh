@@ -89,15 +89,15 @@ while true; do
     esac
 done
 
-packages="vim nodejs npm neofetch fzf \
+packages="nodejs npm neofetch fzf \
     tree lua ripgrep compton xfce4-terminal \
     brave rofi nitrogen clipit"
 aur_packages="vls texlab \
     bash-language-server vim-language-server \
-    light"
+    light nvim-nightly-bin"
 if [ $unameS = "Linux" ]; then
     linkAllFiles
     pamac install $packages 
 fi
 
-vim +PlugInstall +q! +q! +q!
+nvim +PlugInstall +q! +q! +q!
