@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir -p $HOME/.vim
+mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.config/i3
 dotFileDir=$(pwd)
 unameS=$(uname -s)
@@ -25,8 +25,8 @@ function dotfilelink {
 }
 
 function linkAllFiles {
-    dotfilelink vim/vimrc .vim/vimrc
-    dotfilelink vim/UltiSnips .vim/UltiSnips
+    dotfilelink vim/vimrc .config/nvim/init.vim
+    dotfilelink vim/UltiSnips .config/nvim/UltiSnips
     dotfilelink gitconfig .gitconfig
     dotfilelink inputrc .inputrc
 
@@ -53,6 +53,7 @@ function installDesktop {
     dotfilelink screenlayout .screenlayout
     dotfilelink config/Xresources/Xresources-desktop .Xresources
     dotfilelink config/nitrogen/desktop .config/nitrogen
+    dotfilelink xinitrc .xinitrc
 }
 
 function installLaptop {
