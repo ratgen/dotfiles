@@ -33,6 +33,7 @@ function linkAllFiles {
     dotfilelink config/zathura .config/zathura
     dotfilelink config/rofi .config/rofi
     dotfilelink config/newsboat .newsboat
+    dotfilelink config/xfce4/terminal .config/xfce4/terminal
 
     while true; do
         read -p "Desktop(d) or laptop(l)?" yn
