@@ -84,6 +84,7 @@ syntax on                               "Syntax highlighting on
 set cursorline                          "Highlight the line on which the cursor is
 colorscheme gruvbox                     "Use the gruvbox theme
 set background=dark                     "Use the dark theme of gruvbox
+hi Normal guibg=NONE ctermbg=NONE
 let g:gruvbox_contrast_dark='hard'      "Increase the constrast of the them 
 let g:airline_theme='gruvbox'           "Use the gruvbox theme for airline
 
