@@ -51,6 +51,7 @@ function installDesktop {
     dotfilelink config/polybar/polybar-desktop .config/polybar
     dotfilelink screenlayout .screenlayout
     dotfilelink config/Xresources/Xresources-desktop .Xresources
+    dotfilelink config/nitrogen/desktop .config/nitrogen
 }
 
 function installLaptop {
