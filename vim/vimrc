@@ -9,7 +9,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
             \| PlugInstall --sync | source $MYVIMRC
             \| endif
 
-call plug#begin('~/.config/vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
     "VimTeX extension for compiling tex documetns 
     Plug 'lervag/vimtex'                                  
     "Surrounding for quoting and parenthesizing
@@ -226,7 +226,8 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "pyright", "rust_analyzer", "tsserver", "vuels" , "texlab"}
+local servers = { "pyright", "rust_analyzer", "tsserver", "vuels" , "texlab", "java_language_server", "jdtls" }
+
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
@@ -250,7 +251,6 @@ require'compe'.setup {
     buffer = true;
     nvim_lsp = true;
     ultisnips = true;
-    spell = true;
   };
 }
 
@@ -295,3 +295,4 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 EOF
 
 "vim set filetype=vim
+
