@@ -56,7 +56,6 @@ font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=13;4"
 font-3 = "Font Awesome 5 Brands:pixelsize=13;3"
 
 modules-left = i3
-modules-center = spotify  firefox
 modules-right = tv steelseries razer  filesystem memory cpu temperature date 
 ; center: tradfri spotify-prev spotify-play-pause spotify-next
 ;cpu eth pulseaudio 
@@ -146,7 +145,7 @@ format-padding-right = 1
 
 [module/cpu]
 type = internal/cpu
-interval = 2
+interval = 5
 format-prefix = ""
 label = %percentage%%
 format-padding = 1
@@ -155,7 +154,7 @@ format-margin-right = 1
 
 [module/memory]
 type = internal/memory
-interval = 1
+interval = 5
 format-prefix = ""
 format-underline = ${colors.blue}
 label = %mb_used%/%mb_total%
@@ -166,7 +165,6 @@ format-margin = 1
 [module/eth]
 type = internal/network
 interface = enp4s0
-interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = ""
@@ -179,7 +177,7 @@ format-connected-margin = 1
 
 [module/date]
 type = internal/date
-interval = 1
+interval = 5
 
 time = %H:%M:%S
 label = %time%
@@ -249,7 +247,7 @@ format-padding = 1
 
 [module/steelseries]
 type = custom/script
-interval = 30
+interval = 45
 format = <label>
 exec = ~/.config/polybar/headset.sh
 ;format-background = ${colors.orange}
