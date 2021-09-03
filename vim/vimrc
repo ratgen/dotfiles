@@ -250,7 +250,6 @@ require'compe'.setup {
     buffer = true;
     nvim_lsp = true;
     ultisnips = true;
-    spell = true;
   };
 }
 
