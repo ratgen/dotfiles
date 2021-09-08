@@ -23,17 +23,16 @@ call plug#begin('~/.config/nvim/plugged')
     "Display colors of codes inside .css and .html documents
     Plug 'ap/vim-css-color'                               
     "Bottom line displaying insert and file info
-    Plug 'vim-airline/vim-airline'                        
+    Plug 'vim-airline/vim-airline'                          
     "Snippets
     Plug 'SirVer/ultisnips'                               
     "Library of snippets for ultisnips
     Plug 'honza/vim-snippets'                             
     "Linting of files
     Plug 'dense-analysis/ale'                             
-    "Completion, and language server support
-"    Plug 'ycm-core/YouCompleteMe'                         
     "Theme
-    Plug 'morhetz/gruvbox'                                
+    "Plug 'morhetz/gruvbox'                                
+    Plug 'sainnhe/sonokai'
     "File tree, if needed
     Plug 'preservim/nerdtree'                             
     "Improve folding, tex is unusable without
@@ -41,7 +40,11 @@ call plug#begin('~/.config/nvim/plugged')
     "lsp configuration for nvim 
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/nvim-compe'
+    Plug 'posva/vim-vue'
+    Plug 'Yggdroot/indentLine'
 call plug#end()
+
+let g:vue_pre_processor = ['scss']
 
 "move focus to NERDTreeToggle
 nnoremap <leader>n :NERDTreeFocus<CR>   
@@ -85,11 +88,13 @@ set conceallevel=2  "Conceal textbf and strings in tex
 "----- Set the color theme
 syntax on                               "Syntax highlighting on
 set cursorline                          "Highlight the line on which the cursor is
-colorscheme gruvbox                     "Use the gruvbox theme
-set background=dark                     "Use the dark theme of gruvbox
-hi Normal guibg=NONE ctermbg=NONE
-let g:gruvbox_contrast_dark='hard'      "Increase the constrast of the them 
-let g:airline_theme='gruvbox'           "Use the gruvbox theme for airline
+colorscheme sonokai                     "Use the gruvbox theme
+let g:sonokai_style="atlantis"
+let g:airline_theme='sonokai'           "Use the gruvbox theme for airline
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline_powerline_fonts = 1
 
 "----- Set aliases to improve efficiency
 command W w                     
