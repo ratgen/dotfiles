@@ -163,12 +163,6 @@ inoremap {;<CR> {<CR>};<ESC>O
 
 let g:ycm_log_level = 'debug'
 
-"---- YouCompleteMe language servers
-    ""\ {
-    ""\   'name': 'vue',
-    ""\   'filetypes': [ 'vue' ],
-    ""\   'cmdline': ['vls', '--stdio']
-    ""\ },
 let g:ycm_language_server = [
     \ {
     \   'name' : 'texlab' ,
