@@ -71,7 +71,7 @@ nmap <leader>y "+y
 filetype indent on
 set tabstop=4       "number of spaces a tab counts for
 set shiftwidth=4    "number of space arrows count for 
-set autoindent      "keep indentation when moving to a new line
+""set autoindent      "keep indentation when moving to a new line
 set smartindent     "do indentation automatically 
 set expandtab       "use spaces instead of tabs
 set incsearch       "automatically show the first result of a pattern
@@ -83,7 +83,7 @@ set relativenumber  "make numbers relative to current position
 set number          "Show numbers
 set confirm         "display confirmation when closing unsaved file
 set laststatus=2    "always show the statusbar (the one on the bottom)
-set conceallevel=2  "Conceal textbf and strings in tex
+"set conceallevel=2  "Conceal textbf and strings in tex
 
 "----- Set the color theme
 syntax on                               "Syntax highlighting on
