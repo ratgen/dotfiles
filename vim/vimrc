@@ -223,9 +223,9 @@ cmp.setup({
     },
 
     snippet = {
-      expand = function()
-        error('snippet engine is not configured.')
-      end,
+        expand = function(args)
+          vim.fn["UltiSnips#Anon"](args.body)
+        end,
     },
 
     preselect = cmp.PreselectMode.Item,
@@ -246,25 +246,36 @@ cmp.setup({
 
     event = {},
 
-    mapping = {},
+    mapping = {
+        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+        ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        })
+    },
 
     formatting = {
-      deprecated = true,
-      format = function(_, vim_item)
+        deprecated = true,
+        format = function(_, vim_item)
         return vim_item
-      end,
+    end,
     },
 
-    experimental = {
-      ghost_text = false,
+experimental = {
+    ghost_text = false,
     },
 
-    sources = {
-        { name = "path" },
-        { name = "buffer" },
-        { name = "nvim_lsp" },
-        { name = "calc" },
-        { name = "nvim_ultisnips" }
+sources = {
+    { name = "path" },
+    { name = "buffer" },
+    { name = "nvim_lsp" },
+    { name = "calc" },
+    { name = "nvim_ultisnips" }
     }
 })
 
