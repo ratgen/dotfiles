@@ -73,7 +73,7 @@ nmap <leader>y "+y
 filetype indent on
 set tabstop=4       "number of spaces a tab counts for
 set shiftwidth=4    "number of space arrows count for 
-""set autoindent      "keep indentation when moving to a new line
+set autoindent      "keep indentation when moving to a new line
 set smartindent     "do indentation automatically 
 set expandtab       "use spaces instead of tabs
 set incsearch       "automatically show the first result of a pattern
@@ -85,7 +85,7 @@ set relativenumber  "make numbers relative to current position
 set number          "Show numbers
 set confirm         "display confirmation when closing unsaved file
 set laststatus=2    "always show the statusbar (the one on the bottom)
-"set conceallevel=2  "Conceal textbf and strings in tex
+set conceallevel=0  "Conceal textbf and strings in tex
 
 "----- Set the color theme
 syntax on                               "Syntax highlighting on
@@ -168,30 +168,30 @@ local nvim_lsp = require('lspconfig')
 -- Use an on_attach function to only map the following keys 
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
+-- Mappings.
+local opts = { noremap=true, silent=true }
 
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+-- See `:help vim.lsp.*` for documentation on any of the below functions
+buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 end
 
@@ -200,49 +200,53 @@ end
 local servers = { "pyright", "rust_analyzer", "tsserver", "vuels" , "texlab", "java_language_server", "jdtls" }
 
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
+    nvim_lsp[lsp].setup { on_attach = on_attach }
 end
 
-require "cmp_buffer"
-require "cmp_nvim_lsp"
-require "cmp_calc"
-require "cmp_path"
-require "cmp_nvim_ultisnips"
+local t = function(str)
+return vim.api.nvim_replace_termcodes(str, true, true, true)
+  end
 
-WIDE_HEIGHT = 300
+  require "cmp_buffer"
+  require "cmp_nvim_lsp"
+  require "cmp_calc"
+  require "cmp_path"
+  require "cmp_nvim_ultisnips"
 
-local cmp = require'cmp'
-cmp.setup({
-    completion = {
+  WIDE_HEIGHT = 300
+
+  local cmp = require'cmp'
+  cmp.setup({
+  completion = {
       completeopt = 'menu,menuone,noselect',
       keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
       keyword_length = 1,
       get_trigger_characters = function(trigger_characters)
-        return trigger_characters
-      end,
-    },
+      return trigger_characters
+  end,
+  },
 
     snippet = {
         expand = function(args)
-          vim.fn["UltiSnips#Anon"](args.body)
-        end,
+        vim.fn["UltiSnips#Anon"](args.body)
+    end,
     },
 
-    preselect = cmp.PreselectMode.Item,
+preselect = cmp.PreselectMode.Item,
 
-    documentation = {
-      border = { '', '', '', ' ', '', '', '', ' ' },
-      winhighlight = 'NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder',
-      maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
-      maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
+documentation = {
+    border = { '', '', '', ' ', '', '', '', ' ' },
+    winhighlight = 'NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder',
+    maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
+    maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
     },
 
-    confirmation = {
-      default_behavior = cmp.ConfirmBehavior.Insert,
-      get_commit_characters = function(commit_characters)
-        return commit_characters
-      end,
-    },
+confirmation = {
+    default_behavior = cmp.ConfirmBehavior.Insert,
+    get_commit_characters = function(commit_characters)
+    return commit_characters
+end,
+},
 
     event = {},
 
@@ -254,10 +258,26 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        })
-    },
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+        }),
+    ["<C-Space>"] = cmp.mapping(function(fallback)
+    if vim.fn.pumvisible() == 1 then
+        if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
+            return vim.fn.feedkeys(t("<C-R>=UltiSnips#ExpandSnippet()<CR>"))
+        end
+
+        vim.fn.feedkeys(t("<C-n>"), "n")
+    elseif check_back_space() then
+        vim.fn.feedkeys(t("<cr>"), "n")
+    else
+        fallback()
+    end
+end, {
+    "i",
+    "s",
+    }),
+},
 
     formatting = {
         deprecated = true,
@@ -275,7 +295,7 @@ sources = {
     { name = "buffer" },
     { name = "nvim_lsp" },
     { name = "calc" },
-    { name = "nvim_ultisnips" }
+    { name = "ultisnips" }
     }
 })
 
