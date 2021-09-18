@@ -1,8 +1,9 @@
 # Use powerline
 USE_POWERLINE="true"
 EDITOR=nvim
-source ~/.config/nvim/plugged/fzf/shell/completion.zsh
-source ~/.config/nvim/plugged/fzf/shell/key-bindings.zsh
+source ~/.vim/plugged/fzf/shell/completion.zsh
+source ~/.vim/plugged/fzf/shell/key-bindings.zsh
+
 # Source manjaro-zsh-configuration
 if [[ -e ~/dotfiles/zsh/manjaro-zsh-config ]]; then
   source ~/dotfiles/zsh/manjaro-zsh-config
