@@ -32,6 +32,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'sainnhe/sonokai'
     "lsp configuration for nvim 
     Plug 'neovim/nvim-lspconfig'
+
+    "Autocompletion plugin
     Plug 'hrsh7th/nvim-cmp'
 
     " sources for cmp-nvim
@@ -41,9 +43,17 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'hrsh7th/cmp-calc'
     Plug 'hrsh7th/cmp-buffer'
 
-
+    "Plugin for better syntax highlighting with vue
     Plug 'posva/vim-vue'
+
+    "The bars for each indentation
     Plug 'Yggdroot/indentLine'
+
+    "Expands the targets for 'change inner'
+    Plug 'wellle/targets.vim'
+
+    "Autoclosing pairs
+    Plug 'Raimondi/delimitMate'
 call plug#end()
 
 let g:vue_pre_processor = ['scss']
@@ -154,13 +164,13 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "--- Auto expansion
-inoremap <nowait> " ""<left>
-inoremap <nowait> ' ''<left>
-inoremap <nowait> ( ()<left>
-inoremap <nowait> [ []<left>
-inoremap <nowait> { {}<left>
-inoremap <nowait> {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+"inoremap <nowait> " ""<left>
+"inoremap <nowait> ' ''<left>
+"inoremap <nowait> ( ()<left>
+"inoremap <nowait> [ []<left>
+"inoremap <nowait> { {}<left>
+"inoremap <nowait> {<CR> {<CR>}<ESC>O
+"inoremap {;<CR> {<CR>};<ESC>O
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
