@@ -89,6 +89,13 @@ set expandtab       "use spaces instead of tabs
 set incsearch       "automatically show the first result of a pattern
 set hlsearch        "highlight the results of a query.
 
+autocmd filetype javascript set shiftwidth=2
+autocmd filetype javascript set tabstop=2
+autocmd filetype typesript set shiftwidth=2
+autocmd filetype typesript set tabstop=2
+autocmd filetype vue set shiftwidth=2
+autocmd filetype vue set tabstop=2
+
 "----- Interface options
 set noshowmode      "Remove vim's own statusbar
 set relativenumber  "make numbers relative to current position
@@ -269,7 +276,7 @@ return vim.api.nvim_replace_termcodes(str, true, true, true)
   completion = {
       completeopt = 'menu,menuone,noselect',
       keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
-      keyword_length = 1,
+      keyword_length = 2,
       get_trigger_characters = function(trigger_characters)
       return trigger_characters
   end,
