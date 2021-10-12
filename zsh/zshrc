@@ -16,4 +16,6 @@ fi
 alias vim="nvim"
 alias vi="nvim"
 
+BROWSER=/usr/bin/brave
+
 neofetch
