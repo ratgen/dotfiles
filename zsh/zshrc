@@ -17,5 +17,6 @@ alias vim="nvim"
 alias vi="nvim"
 
 BROWSER=/usr/bin/brave
+ANDROID_SDK=/home/peter/Android/Sdk
 
 neofetch
