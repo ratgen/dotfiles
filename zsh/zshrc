@@ -16,6 +16,7 @@ fi
 alias vim="nvim"
 alias vi="nvim"
 
+ANDROID_SDK=/home/peter/Android/Sdk
 BROWSER=/usr/bin/brave
 ANDROID_SDK=/home/peter/Android/Sdk
 
