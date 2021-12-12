@@ -170,7 +170,7 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id ~/.config/polybar/polybar.sh
 
 gaps inner 5 
-gaps outer 10
+gaps outer 0
 
 client.focused #555555 #555555 #ffffff #FFFFFF     #0095e4
 
