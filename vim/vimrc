@@ -176,15 +176,6 @@ let g:UltiSnipsExpandTrigger="<c-space>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-"--- Auto expansion
-"inoremap <nowait> " ""<left>
-"inoremap <nowait> ' ''<left>
-"inoremap <nowait> ( ()<left>
-"inoremap <nowait> [ []<left>
-"inoremap <nowait> { {}<left>
-"inoremap <nowait> {<CR> {<CR>}<ESC>O
-"inoremap {;<CR> {<CR>};<ESC>O
-
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
