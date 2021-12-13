@@ -108,7 +108,6 @@ set relativenumber  "make numbers relative to current position
 set number          "Show numbers
 set confirm         "display confirmation when closing unsaved file
 set laststatus=2    "always show the statusbar (the one on the bottom)
-set conceallevel=0  "Conceal textbf and strings in tex
 
 "----- Set the color theme
 syntax on                               "Syntax highlighting on
@@ -139,6 +138,7 @@ set updatetime=300                  "Write the swapfile if nothings is written f
 
 "----- set vimtex options
 let g:vimtex_fold_enabled=1
+let g:vimtex_syntax_conceal_default=0
 
 "----- fzf search in file
 "Search in buffer names
