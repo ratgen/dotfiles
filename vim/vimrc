@@ -87,8 +87,8 @@ nmap <leader>y "+y
 
 "---- Set the view of indentation and indentation to 2.
 filetype indent on
-set tabstop=4       "number of spaces a tab counts for
-set shiftwidth=4    "number of space arrows count for 
+set tabstop=2       "number of spaces a tab counts for
+set shiftwidth=2    "number of space arrows count for 
 set autoindent      "keep indentation when moving to a new line
 set smartindent     "do indentation automatically 
 set expandtab       "use spaces instead of tabs
