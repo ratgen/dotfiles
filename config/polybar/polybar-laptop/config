@@ -1,5 +1,3 @@
-
-;
 ;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
 ;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
@@ -51,17 +49,17 @@ line-size = 2
 line-color = ${colors.red}
 
 font-0 = IBMPlexMono-Regular:size=9.5;2
-font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=13;4"
-font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=13;4"
-font-3 = "Font Awesome 5 Brands:pixelsize=13;3"
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=12;3"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
+font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
 
 modules-left = i3
-modules-right = battery cpu temperature date 
+modules-right = battery pulseaudio cpu temperature date 
 
 monitor = ${env:MONITOR:}
 
 tray-position = right
-tray-background = ${colors.shade5}
+tray-background = ${colors.shade6}
 wm-restack = i3
 
 enable-ipc = true
@@ -72,7 +70,6 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 dpi = 120
-;separator = "%{T5}%{F#919191}/%{T-}%{F#fbf1c7}"
 
 [module/xwindow]
 type = internal/xwindow
@@ -144,7 +141,7 @@ format-prefix = ""
 label = %percentage%%
 
 format-padding = 2
-format-background = ${colors.shade2}
+format-background = ${colors.shade3}
 
 [module/memory]
 type = internal/memory
@@ -156,20 +153,6 @@ format-padding = 1
 ;format-background = ${colors.blue}
 format-margin = 1
 
-[module/eth]
-type = internal/network
-interface = enp4s0
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = ""
-label-connected = %local_ip%
-
-format-disconnected =
-format-connected-padding = 1
-format-connected-background = ${colors.teal}
-format-connected-margin = 1
-
 [module/date]
 type = internal/date
 interval = 1
@@ -178,13 +161,14 @@ time = %H:%M:%S
 label = %time%
 
 format-padding = 2
-format-background = ${colors.shade4}
+format-background = ${colors.shade5}
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+;format-volume = <label-volume> <bar-volume>
+format-volume = <label-volume>
+label-volume =  %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted = "muted"
@@ -205,9 +189,8 @@ bar-volume-fill = 
 bar-volume-fill-font = 2
 bar-volume-empty = 
 bar-volume-empty-font = 2
-format-volume-background = ${colors.purple}
-format-volume-padding = 1
-format-volume-margin = 1
+format-volume-background = ${colors.shade2}
+format-volume-padding = 2
 
 [module/temperature]
 type = internal/temperature
@@ -222,17 +205,11 @@ label-warn = %temperature-c%
 label-warn-foreground = ${colors.gray}
 
 format-padding = 2
-format-background = ${colors.shade3}
+format-background = ${colors.shade4}
 
 [settings]
 screenchange-reload = true
 pseudo-transparency = true
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
-format-padding = 2
-format-background = ${colors.shade4}
 
 [module/battery]
 type = internal/battery
@@ -299,6 +276,5 @@ format-discharging-padding = 2
 format-discharging-background = ${colors.shade1}
 format-charging-padding = 2
 format-charging-background = #0ca00f
-
 
 ; vim:ft=dosini
