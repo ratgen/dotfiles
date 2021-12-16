@@ -47,6 +47,7 @@ exec --no-startup-id compton &
 bindsym $mod+b exec brave
 bindsym $mod+n exec xfce4-terminal --execute newsboat
 bindsym $mod+m exec evolution
+bindsym $mod+i exec xfce4-terminal --execute vifm
 
 # kill focused window
 bindsym $mod+Shift+q kill

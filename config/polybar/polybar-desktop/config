@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-background = #33FFFFFF
+background = #66000000
 background-alt = #3c3836
 foreground = #ebdbb2
 red        = #cc241d
@@ -31,53 +31,42 @@ gray       = #928374
 currentTab = #44ffffff
 white      = #ffffff
 
+shade1 = #0D47A1
+shade2 = #1565C0
+shade3 = #1976D2
+shade4 = #1E88E5
+shade5 = #2196F3
+shade6 = #42A5F5
+shade7 = #64B5F6
+shade8 = #90CAF9
+
 [bar/example]
 width = 100%
-height = 28
+height = 38
 border-color = #00000000
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
-line-color = ${colors.red}
-
-;padding-left = 1
-padding-right = 2
-
-module-margin-right = 0 
-
-;font-0 = IBMPlexMono-Regular:size=9.5;2
-font-0 = IBMPlexSans-Regular:size=10;2
-font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=13;4"
-font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=13;4"
-font-3 = "Font Awesome 5 Brands:pixelsize=13;3"
+font-0 = IBMPlexMono-Regular:size=9.5;2
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=11.5;5"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=11.5;2"
+font-3 = "Font Awesome 5 Brands:pixelsize=11.5;3"
 
 modules-left = i3
-modules-right = tv steelseries razer  filesystem cpu temperature date 
+modules-right = tv steelseries razer filesystem cpu temperature date 
 
 monitor = ${env:MONITOR:}
 
 tray-position = right
 wm-restack = i3
 
-separator = %{F#ffffff} | %{F-}
-
 cursor-click = pointer
 cursor-scroll = ns-resize
 
 dpi = 120
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-
-label-layout = %layout%
-format-background = ${colors.red}
 
 [module/filesystem]
 type = internal/fs
@@ -87,7 +76,10 @@ mount-0 = /
 
 label-mounted = %used%/%total%
 label-unmounted = %mountpoint% not mounted
-format-mounted-margin = 0.4
+format-unmounted-background = ${colors.shade4}
+format-unmounted-padding = 1
+format-mounted-background = ${colors.shade4}
+format-mounted-padding = 1
 
 [module/i3]
 type = internal/i3
@@ -98,7 +90,7 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
-label-mode-padding = 1
+label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.white}
 
@@ -106,11 +98,11 @@ label-mode-background = ${colors.white}
 label-focused = %index%
 label-focused-background = ${colors.currentTab}
 label-focused-underline= ${colors.white}
-label-focused-padding = 1
+label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 1
+label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
@@ -124,15 +116,14 @@ label-urgent-background = ${colors.red}
 label-urgent-padding = 2
 
 ; Separator in between workspaces
-label-separator = |
-format-padding-right = 1
 
 [module/cpu]
 type = internal/cpu
 interval = 5
 format-prefix = ""
 label = %percentage%%
-;format-background = ${colors.green}
+format-background = ${colors.shade5}
+format-padding = 1
 
 [module/memory]
 type = internal/memory
@@ -140,9 +131,7 @@ interval = 5
 format-prefix = ""
 format-underline = ${colors.blue}
 label = %mb_used%/%mb_total%
-format-padding = 1
 ;format-background = ${colors.blue}
-format-margin = 1
 
 [module/eth]
 type = internal/network
@@ -155,7 +144,6 @@ label-connected = %local_ip%
 format-disconnected =
 format-connected-padding = 1
 format-connected-background = ${colors.teal}
-format-connected-margin = 1
 
 [module/date]
 type = internal/date
@@ -163,37 +151,9 @@ interval = 5
 
 time = %H:%M:%S
 label = %time%
-;format-background = ${colors.orange}
-format-margin = 1
+format-background = ${colors.shade7}
+format-padding = 1
 
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted = "muted"
-label-muted-foreground = #666
-
-bar-volume-width = 5
-bar-volume-foreground-0 = ${colors.green}
-bar-volume-foreground-1 = ${colors.green}
-bar-volume-foreground-2 = ${colors.green}
-bar-volume-foreground-3 = ${colors.green}
-bar-volume-foreground-4 = ${colors.green}
-bar-volume-foreground-5 = ${colors.orange}
-bar-volume-foreground-6 = ${colors.red}
-bar-volume-gradient = false
-bar-volume-indicator = 
-bar-volume-indicator-font = 2
-bar-volume-fill = 
-bar-volume-fill-font = 2
-bar-volume-empty = 
-bar-volume-empty-font = 2
-format-volume-background = ${colors.purple}
-format-volume-padding = 1
-format-volume-margin = 1
 
 [module/temperature]
 type = internal/temperature
@@ -206,21 +166,18 @@ format = <label>
 label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.gray}
-
+format-background = ${colors.shade6}
+format-padding = 1
 
 [settings]
-screenchange-reload = true
 pseudo-transparency = true
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
 
 [module/razer]
 type = custom/script
 format = <label>
 exec = python ~/.config/polybar/razer.py
-;format-background = ${colors.green}
+format-background = ${colors.shade3}
+format-padding = 1
 
 [module/steelseries]
 type = custom/script
@@ -228,54 +185,8 @@ interval = 45
 format = <label>
 exec = ~/.config/polybar/headset.sh
 ;format-background = ${colors.orange}
-format-radius = 6.0
-format-border-size = 4
-format-border-color = #00000000
-format-margin = 1
-
-[module/spotify]
-type = custom/script
-tail = true
-; prefix symbol is shown before the text
-format-prefix = "  "
-format = <label>
-enable-ipc = true
-exec = ~/.config/polybar/polybar-spotify/scroll_spotify_status.sh
-
-[module/spotify-prev]
-type = custom/script
-exec = echo ""
-format = <label>
-click-left = playerctl --player=spotify previous
-
-[module/spotify-play-pause]
-type = custom/ipc
-hook-0 = echo ""
-hook-1 = echo ""
-initial = 1
-click-left = playerctl --player=spotify play-pause
-
-[module/spotify-next]
-type = custom/script
-exec = echo ""
-format = <label>
-click-left = playerctl --player=spotify next
-
-[module/tradfri]
-type = custom/script
-tail = true
-; prefix symbol is shown before the text
-format-prefix = ""
-format = <label>
-exec = ~/.config/polybar/scroll_lights.sh
-
-[module/firefox]
-type = custom/script
-tail = true
-; prefix symbol is shown before the text
-format-prefix = " "
-format = <label>
-exec = ~/.config/polybar/polybar-youtube/scroll_firefox_status.sh
+format-background = ${colors.shade2}
+format-padding = 1
 
 [module/tv]
 type = custom/script
@@ -283,10 +194,11 @@ tail = true
 ; prefix symbol is shown before the text
 format = "TV"
 exec = python tv.py
-;format-background = ${colors.green}
 scroll-up = python ~/.config/polybar/tv.py --vol-up
 click-left = python ~/.config/polybar/tv.py --off
 scroll-down = python ~/.config/polybar/tv.py --vol-down
-;cursor = pointer
+format-background = ${colors.shade1}
+format-padding = 1
+
 
 ; vim:ft=dosini
