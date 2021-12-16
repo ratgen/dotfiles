@@ -54,7 +54,7 @@ font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
 font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
 
 modules-left = i3
-modules-right = battery pulseaudio cpu temperature date 
+modules-right = battery pulseaudio backlight cpu temperature date 
 
 monitor = ${env:MONITOR:}
 
@@ -138,10 +138,11 @@ format-padding-right = 1
 type = internal/cpu
 interval = 2
 format-prefix = ""
-label = %percentage%%
+
+label =  %percentage%%
 
 format-padding = 2
-format-background = ${colors.shade3}
+format-background = ${colors.shade4}
 
 [module/memory]
 type = internal/memory
@@ -161,7 +162,7 @@ time = %H:%M:%S
 label = %time%
 
 format-padding = 2
-format-background = ${colors.shade5}
+format-background = ${colors.shade7}
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -198,18 +199,32 @@ thermal-zone = 0
 hwmon-path = /sys/devices/pci0000:00/0000:00:1d.0/0000:04:00.0/hwmon/hwmon2/temp1_input
 warn-temperature = 80
 
-format = <label>
+format =  <label>
 
 label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.gray}
 
 format-padding = 2
-format-background = ${colors.shade4}
+format-background = ${colors.shade5}
+
+[module/backlight]
+type = internal/backlight
+
+; Use the following command to list available cards:
+; $ ls -1 /sys/class/backlight/
+format =  <label>
+
+card = intel_backlight
+use-actual-brightness = true
+format-padding = 2
+format-background = ${colors.shade3}
+
 
 [settings]
 screenchange-reload = true
 pseudo-transparency = true
+
 
 [module/battery]
 type = internal/battery

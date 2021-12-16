@@ -34,8 +34,8 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl --player=spotify play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl --player=spotify next
 bindsym XF86AudioPrev exec --no-startup-id playerctl --player=spotify previous
 
-bindsym XF86MonBrightnessUp exec "backlight_control +10; notify-send -t 500 'brightness up' $(~/dotfiles/config/polybar/polybar-laptop/lightpercent.sh)"
-bindsym XF86MonBrightnessDown exec "backlight_control -10; notify-send -t 500 'brightness down' $(~/dotfiles/config/polybar/polybar-laptop/lightpercent.sh)"
+bindsym XF86MonBrightnessUp exec "backlight_control +10; "
+bindsym XF86MonBrightnessDown exec "backlight_control -10;"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -169,9 +169,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-gaps inner 5
-gaps outer 0
 
 client.focused #555555 #555555 #ffffff #FFFFFF     #0095e4
 

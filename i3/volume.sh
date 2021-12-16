@@ -8,8 +8,6 @@ then
   pactl set-sink-volume @DEFAULT_SINK@ -2%
 fi
 
-curvol=$(pactl get-sink-volume @DEFAULT_SINK@)
+#curvol=$(pactl get-sink-volume @DEFAULT_SINK@)
 
-echo $curvol
-
-notify-send -t 2000 "$curvol"
+#notify-send -t 2000 "$curvol"
