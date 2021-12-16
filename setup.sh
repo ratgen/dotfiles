@@ -52,7 +52,7 @@ function installDesktop {
     dotfilelink config/polybar/polybar-desktop .config/polybar
     dotfilelink screenlayout .screenlayout
     dotfilelink config/Xresources/Xresources-desktop .Xresources
-    dotfilelink config/nitrogen/desktop .config/nitrogen
+    dotfilelink config/nitrogen/desktop/ .config/nitrogen
     dotfilelink xinitrc .xinitrc
 }
 
@@ -60,6 +60,7 @@ function installLaptop {
     dotfilelink i3/laptop-config .config/i3/config
     dotfilelink config/polybar/polybar-laptop .config/polybar
     dotfilelink config/Xresources/Xresources-laptop .Xresources
+    dotfilelink config/nitrogen/laptop/ .config/nitrogen
 }
 
 function installFont {

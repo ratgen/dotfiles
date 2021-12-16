@@ -20,35 +20,35 @@
 background = #282828
 background-alt = #3c3836
 foreground = #ebdbb2
-red        = #cc241d
-green      = #98981a
-yellow     = #d79921
-blue       = #45858800
-purple     = #b1628600
-teal       = #689d6a00
-orange     = #d65d0e00
+
+tabselected = #44ffffff
+tabunselected = #bbffffff
+
+red = #dd1111
+yellow = #dddd22
 gray       = #928374
+
+shade1 = #0D47A1
+shade2 = #1565C0
+shade3 = #1976D2
+shade4 = #1E88E5
+shade5 = #2196F3
+shade6 = #42A5F5
+shade7 = #64B5F6
+shade8 = #90CAF9
+
 
 [bar/example]
 width = 100%
-height = 22
-radius = 6.0
-border-size = 4
-border-color = #00000000
-fixed-center = false
+height = 30
 
-;background = ${colors.background}
-background = #00000000
+fixed-center = true
+
+background = #44000000
 foreground = ${colors.foreground}
 
 line-size = 2
 line-color = ${colors.red}
-
-;padding-left = 1
-padding-right = 2
-
-;module-margin-left = 0
-module-margin-right = 0 
 
 font-0 = IBMPlexMono-Regular:size=9.5;2
 font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=13;4"
@@ -57,11 +57,12 @@ font-3 = "Font Awesome 5 Brands:pixelsize=13;3"
 
 modules-left = i3
 ;modules-right = filesystem memory cpu battery temperature date 
-modules-right = cpu battery temperature date 
+modules-right = battery cpu temperature date 
 
 monitor = ${env:MONITOR:}
 
 tray-position = right
+tray-background = ${colors.shade5}
 wm-restack = i3
 
 enable-ipc = true
@@ -95,8 +96,6 @@ mount-0 = /
 ;label-mounted = %{F#FFF}%mountpoint%%{F-}: %used%/%total%
 label-mounted = %used%/%total%
 label-unmounted = %mountpoint% not mounted
-;format-mounted-background = ${colors.teal}
-;format-mounted-padding = 1
 format-mounted-margin = 0.4
 
 
@@ -115,8 +114,8 @@ label-mode-background = ${colors.yellow}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.yellow}
+label-focused-background = ${colors.tabselected}
+label-focused-underline = #FFFFFF
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
@@ -144,9 +143,9 @@ type = internal/cpu
 interval = 2
 format-prefix = ""
 label = %percentage%%
-format-padding = 1
-;format-background = ${colors.green}
-format-margin-right = 1 
+
+format-padding = 2
+format-background = ${colors.shade2}
 
 [module/memory]
 type = internal/memory
@@ -178,9 +177,9 @@ interval = 1
 
 time = %H:%M:%S
 label = %time%
-format-padding = 1
-;format-background = ${colors.orange}
-format-margin = 1
+
+format-padding = 2
+format-background = ${colors.shade4}
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -223,9 +222,8 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.gray}
 
-;format-background = ${colors.green}
-format-padding = 1
-format-margin-right = 1
+format-padding = 2
+format-background = ${colors.shade3}
 
 [settings]
 screenchange-reload = true
@@ -234,16 +232,8 @@ pseudo-transparency = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
-
-
-[module/firefox]
-type = custom/script
-tail = true
-; prefix symbol is shown before the text
-format-prefix = " "
-format = <label>
-exec = ~/.config/polybar/polybar-youtube/scroll_firefox_status.sh
 format-padding = 2
+format-background = ${colors.shade4}
 
 [module/battery]
 type = internal/battery
@@ -265,38 +255,12 @@ poll-interval = 5
 ; Default: %H:%M:%S
 time-format = %H:%M
 
-; Available tags:
-;   <label-charging> (default)
-;   <bar-capacity>
-;   <ramp-capacity>
-;   <animation-charging>
 format-charging = <animation-charging> <label-charging> 
 
-; Available tags:
-;   <label-discharging> (default)
-;   <bar-capacity>
-;   <ramp-capacity>
-;   <animation-discharging>
 format-discharging = <ramp-capacity> <label-discharging> 
 
-; Available tags:
-;   <label-full> (default)
-;   <bar-capacity>
-;   <ramp-capacity>
-;format-full = <ramp-capacity> <label-full>
-
-; Available tokens:
-;   %percentage% (default) - is set to 100 if full-at is reached
-;   %percentage_raw%
-;   %time%
-;   %consumption% (shows current charge rate in watts)
 label-charging = %percentage%% 
 
-; Available tokens:
-;   %percentage% (default) - is set to 100 if full-at is reached
-;   %percentage_raw%
-;   %time%
-;   %consumption% (shows current discharge rate in watts)
 label-discharging = %percentage%%
 
 ; Available tokens:
@@ -332,8 +296,10 @@ animation-discharging-4 = 
 ; Framerate in milliseconds
 animation-discharging-framerate = 500
 
-format-padding = 1
-format-margin-left = 1
+format-discharging-padding = 2
+format-discharging-background = ${colors.shade1}
+format-charging-padding = 2
+format-charging-background = #0ca00f
 
 
 ; vim:ft=dosini
