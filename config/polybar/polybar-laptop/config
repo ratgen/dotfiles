@@ -161,6 +161,8 @@ interval = 1
 time = %H:%M:%S
 label = %time%
 
+label-foreground = #1f2f47
+
 format-padding = 2
 format-background = ${colors.shade7}
 
