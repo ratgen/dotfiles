@@ -57,6 +57,8 @@ font-3 = "Font Awesome 5 Brands:pixelsize=11.5;3"
 modules-left = i3
 modules-right = tv steelseries razer filesystem cpu temperature date 
 
+tray-background = ${colors.shade8}
+
 monitor = ${env:MONITOR:}
 
 tray-position = right
