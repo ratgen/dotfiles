@@ -50,7 +50,7 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 font-0 = IBMPlexMono-Regular:size=9.5;2
-font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=11.5;5"
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=11.5;2"
 font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=11.5;2"
 font-3 = "Font Awesome 5 Brands:pixelsize=11.5;3"
 
@@ -76,8 +76,8 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %used%/%total%
-label-unmounted = %mountpoint% not mounted
+label-mounted =  %used%/%total%
+label-unmounted =  %mountpoint% not mounted
 format-unmounted-background = ${colors.shade4}
 format-unmounted-padding = 1
 format-mounted-background = ${colors.shade4}
@@ -123,7 +123,7 @@ label-urgent-padding = 2
 type = internal/cpu
 interval = 5
 format-prefix = ""
-label = %percentage%%
+label =  %percentage%%
 format-background = ${colors.shade5}
 format-padding = 1
 
@@ -163,7 +163,7 @@ thermal-zone = 0
 hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input
 warn-temperature = 80
 
-format = <label>
+format =  <label>
 
 label = %temperature-c%
 label-warn = %temperature-c%
