@@ -90,14 +90,20 @@ while true; do
     esac
 done
 
+npm_packages="eslint  \
+  bash_language_server sass yarn npm \ 
+  typescript"
+aur_packages="vls \
+    nvim-nightly-bin headsetcontrol-git \
+    jdtls spotify postman-bin vim-language-server
+    vue-cli"
 packages="nodejs npm neofetch fzf \
     tree lua ripgrep compton xfce4-terminal \
-    brave rofi nitrogen clipit"
-aur_packages="vls texlab \
-    bash-language-server vim-language-server \
-    light nvim-nightly-bin"
+    brave rofi nitrogen clipit texlab \ 
+    brave-browser"$aur_packages
 if [ $unameS = "Linux" ]; then
     linkAllFiles
+    npm -g i $npm_packages
     pamac install $packages 
 fi
 
