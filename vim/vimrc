@@ -302,86 +302,78 @@ return vim.api.nvim_replace_termcodes(str, true, true, true)
 
   local cmp = require'cmp'
   cmp.setup({
-  completion = {
+    completion = {
       completeopt = 'menu,menuone,noselect',
       keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
       keyword_length = 1,
       get_trigger_characters = function(trigger_characters)
       return trigger_characters
-  end,
-  },
-
+    end,
+    },
     snippet = {
         expand = function(args)
         vim.fn["UltiSnips#Anon"](args.body)
     end,
     },
-
-preselect = cmp.PreselectMode.Item,
-
-documentation = {
-    border = { '', '', '', ' ', '', '', '', ' ' },
-    winhighlight = 'NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder',
-    maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
-    maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
+    preselect = cmp.PreselectMode.Item,
+    documentation = {
+      border = { '', '', '', ' ', '', '', '', ' ' },
+      winhighlight = 'NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder',
+      maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
+      maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
     },
-
-confirmation = {
-    default_behavior = cmp.ConfirmBehavior.Insert,
-    get_commit_characters = function(commit_characters)
-    return commit_characters
-end,
-},
-
+    confirmation = {
+        default_behavior = cmp.ConfirmBehavior.Insert,
+        get_commit_characters = function(commit_characters)
+        return commit_characters
+      end,
+    },
     event = {},
-
     mapping = {
-        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({
+      ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+      ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
+      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.close(),
+      ['<CR>'] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Replace
-        }),
-    ["<C-Space>"] = cmp.mapping(function(fallback)
-    if vim.fn.pumvisible() == 1 then
-        if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
-            return vim.fn.feedkeys(t("<C-R>=UltiSnips#ExpandSnippet()<CR>"))
+      }),
+      ["<C-Space>"] = cmp.mapping(function(fallback)
+        if vim.fn.pumvisible() == 1 then
+            if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
+                return vim.fn.feedkeys(t("<C-R>=UltiSnips#ExpandSnippet()<CR>"))
         end
 
-        vim.fn.feedkeys(t("<C-n>"), "n")
-    elseif check_back_space() then
-        vim.fn.feedkeys(t("<cr>"), "n")
-    else
-        fallback()
-    end
-end, {
-    "i",
-    "s",
-    }),
-},
-
+              vim.fn.feedkeys(t("<C-n>"), "n")
+--          elseif check_back_space() then
+ --             vim.fn.feedkeys(t("<cr>"), "n")
+          else
+              fallback()
+          end
+      end, {
+          "i",
+          "s",
+          }),
+    },
     formatting = {
         deprecated = true,
         format = function(_, vim_item)
         return vim_item
     end,
     },
-
-experimental = {
-    ghost_text = false,
+    experimental = {
+      ghost_text = false,
     },
-
-sources = {
-    { name = "path" },
-    { name = "buffer" },
-    { name = "nvim_lsp" },
-    { name = "calc" },
-    { name = "ultisnips" }
+    sources = {
+      { name = "path" },
+      { name = "buffer" },
+      { name = "nvim_lsp" },
+      { name = "calc" },
+      { name = "ultisnips" }
+      }
     }
-})
+  )
 
 nvim_lsp.diagnosticls.setup {
     on_attach = on_attach,
