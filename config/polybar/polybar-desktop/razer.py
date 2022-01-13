@@ -1,5 +1,4 @@
-from openrazer.client import DeviceManager
-import sys
+from openrazer import DeviceManager
 
 device_manager = DeviceManager()
 
