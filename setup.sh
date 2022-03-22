@@ -36,10 +36,11 @@ function linkAllFiles {
     dotfilelink config/xfce4/terminal .config/xfce4/terminal
 
     while true; do
-        read -p "Desktop(d) or laptop(l)?" yn
+	read -p "Desktop(d), laptop(l) or none(n)?" yn
         case $yn in
             [Dd]* ) installDesktop ; break;;
             [Ll]* ) installLaptop; break;;
+	    [Nn]* ) break;;
             * ) echo "Please answer deskop or laptop.";;
         esac
     done
@@ -82,7 +83,7 @@ if [ "$1" = "relink" ]; then
 fi
 
 while true; do
-    read -p "Pull in fonts?" yn
+    read -p "Pull in fonts? (y/n)" yn
     case $yn in
         [Yy]* ) installFont; break;;
         [Nn]* ) break;;
@@ -90,20 +91,16 @@ while true; do
     esac
 done
 
-npm_packages="eslint  \
-  bash_language_server sass yarn npm \ 
-  typescript"
+npm_packages="eslint bash-language-server sass yarn npm typescript"
 aur_packages="vls \
-    nvim-nightly-bin headsetcontrol-git \
+    neovim-nightly-bin headsetcontrol \
     jdtls spotify postman-bin vim-language-server
     vue-cli"
-packages="nodejs npm neofetch fzf \
-    tree lua ripgrep compton xfce4-terminal \
-    brave rofi nitrogen clipit texlab \ 
-    brave-browser"$aur_packages
+packages="nodejs npm neofetch fzf tree lua ripgrep compton xfce4-terminal  rofi nitrogen clipit texlab brave-browser polybar" 
 if [ $unameS = "Linux" ]; then
     linkAllFiles
     npm -g i $npm_packages
+    pamac build $aur_packages
     pamac install $packages 
 fi
 
