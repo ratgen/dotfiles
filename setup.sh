@@ -30,6 +30,7 @@ function linkAllFiles {
     dotfilelink gitconfig .gitconfig
     dotfilelink inputrc .inputrc
 
+    dotfilelink config/fish .config/fish
     dotfilelink config/zathura .config/zathura
     dotfilelink config/rofi .config/rofi
     dotfilelink config/newsboat .newsboat

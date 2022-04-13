@@ -61,6 +61,11 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'yuezk/vim-js'
     Plug 'maxmellon/vim-jsx-pretty'
+
+    "PlantUML Syntax
+    Plug 'aklt/plantuml-syntax'
+    Plug 'tyru/open-browser.vim'
+    Plug 'weirongxu/plantuml-previewer.vim'
 call plug#end()
 
 let g:vue_pre_processor = ['scss']
@@ -115,8 +120,6 @@ syntax on                               "Syntax highlighting on
 set cursorline                          "Highlight the line on which the cursor is
 set background=dark
 colorscheme PaperColor                     "Use the gruvbox theme
-let g:sonokai_style="atlantis"
-let g:airline_theme='sonokai'           "Use the gruvbox theme for airline
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -162,8 +165,8 @@ nnoremap <silent> <Leader>h/ :History/<CR>
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
 "---- Abbreviations
-set spell                       "Enable spellchecking
-set spelllang=en_gb             "Set language for spellchecking
+"set spell                       "Enable spellchecking
+"set spelllang=en_gb             "Set language for spellchecking
 set modeline                    "Set options in each file
 
 "-- Choose the first suggestion for mistake
