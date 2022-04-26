@@ -33,6 +33,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     "lsp configuration for nvim 
     Plug 'neovim/nvim-lspconfig'
+    Plug 'williamboman/nvim-lsp-installer'
 
     "Autocompletion plugin
     Plug 'hrsh7th/nvim-cmp'
@@ -66,6 +67,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'aklt/plantuml-syntax'
     Plug 'tyru/open-browser.vim'
     Plug 'weirongxu/plantuml-previewer.vim'
+
 call plug#end()
 
 let g:vue_pre_processor = ['scss']
@@ -182,10 +184,28 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 lua << EOF
-local nvim_lsp = require('lspconfig')
+local lsp_installer = require("nvim-lsp-installer")
 
--- Use an on_attach function to only map the following keys 
--- after the language server attaches to the current buffer
+-- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
+-- or if the server is already installed).
+
+lsp_installer.on_server_ready(
+  function(server)
+    local opts = {}
+
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
+
+    -- This setup() function will take the provided server configuration and decorate it with the necessary properties
+    -- before passing it onwards to lspconfig.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(opts)
+    end
+) 
+
+
 local on_attach = function(client, bufnr)
 local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -214,184 +234,93 @@ buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 end
 
-local opts = {
-    tools = { -- rust-tools options
-        autoSetHints = true,
-        hover_with_actions = true,
-        inlay_hints = {
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
-
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-    server = {
-        -- on_attach is a callback called when the language server attachs to the buffer
-        -- on_attach = on_attach,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
-            }
-        }
-    },
-}
-
-require('rust-tools').setup(opts)
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { "pyright", "rust_analyzer", "vuels" , "texlab", "java_language_server", "jdtls", "cssls", "html" }
-
-for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup { on_attach = on_attach }
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-nvim_lsp.tsserver.setup {
-    on_attach = function(client)
-        client.resolved_capabilities.document_formatting = false
-        on_attach(client)
-    end
-}
+require "cmp_buffer"
+require "cmp_nvim_lsp"
+require "cmp_calc"
+require "cmp_path"
+require "cmp_nvim_ultisnips"
 
-local filetypes = {
-    typescript = "eslint",
-    typescriptreact = "eslint",
-    vue = "eslint"
-}
-local linters = {
-    eslint = {
-        sourceName = "eslint",
-        command = "eslint_d",
-        rootPatterns = {".eslintrc.js", "package.json"},
-        debounce = 100,
-        args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
-        parseJson = {
-            errorsRoot = "[0].messages",
-            line = "line",
-            column = "column",
-            endLine = "endLine",
-            endColumn = "endColumn",
-            message = "${message} [${ruleId}]",
-            security = "severity"
-        },
-        securities = {[2] = "error", [1] = "warning"}
-    }
-}
-local formatters = {
-    prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}
-}
-local formatFiletypes = {
-    typescript = "prettier",
-    typescriptreact = "prettier"
-}
+WIDE_HEIGHT = 300
 
-local t = function(str)
-return vim.api.nvim_replace_termcodes(str, true, true, true)
-  end
-
-  require "cmp_buffer"
-  require "cmp_nvim_lsp"
-  require "cmp_calc"
-  require "cmp_path"
-  require "cmp_nvim_ultisnips"
-
-  WIDE_HEIGHT = 300
-
-  local cmp = require'cmp'
-  cmp.setup({
-    completion = {
-      completeopt = 'menu,menuone,noselect',
-      keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
-      keyword_length = 1,
-      get_trigger_characters = function(trigger_characters)
-      return trigger_characters
+local cmp = require'cmp'
+cmp.setup({
+  completion = {
+    completeopt = 'menu,menuone,noselect',
+    keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
+    keyword_length = 1,
+    get_trigger_characters = function(trigger_characters)
+    return trigger_characters
+  end,
+  },
+  snippet = {
+      expand = function(args)
+      vim.fn["UltiSnips#Anon"](args.body)
+  end,
+  },
+  preselect = cmp.PreselectMode.Item,
+  documentation = {
+    border = { '', '', '', ' ', '', '', '', ' ' },
+    winhighlight = 'NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder',
+    maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
+    maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
+  },
+  confirmation = {
+      default_behavior = cmp.ConfirmBehavior.Insert,
+      get_commit_characters = function(commit_characters)
+      return commit_characters
     end,
-    },
-    snippet = {
-        expand = function(args)
-        vim.fn["UltiSnips#Anon"](args.body)
-    end,
-    },
-    preselect = cmp.PreselectMode.Item,
-    documentation = {
-      border = { '', '', '', ' ', '', '', '', ' ' },
-      winhighlight = 'NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder',
-      maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
-      maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
-    },
-    confirmation = {
-        default_behavior = cmp.ConfirmBehavior.Insert,
-        get_commit_characters = function(commit_characters)
-        return commit_characters
-      end,
-    },
-    event = {},
-    mapping = {
-      ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
-      ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
-      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.close(),
-      ['<CR>'] = cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace
-      }),
-      ["<C-Space>"] = cmp.mapping(function(fallback)
-        if vim.fn.pumvisible() == 1 then
-            if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
-                return vim.fn.feedkeys(t("<C-R>=UltiSnips#ExpandSnippet()<CR>"))
-        end
+  },
+  event = {},
+  mapping = {
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace
+    }),
+    ["<C-Space>"] = cmp.mapping(function(fallback)
+      if vim.fn.pumvisible() == 1 then
+          if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
+              return vim.fn.feedkeys(t("<C-R>=UltiSnips#ExpandSnippet()<CR>"))
+      end
 
-              vim.fn.feedkeys(t("<C-n>"), "n")
+            vim.fn.feedkeys(t("<C-n>"), "n")
 --          elseif check_back_space() then
- --             vim.fn.feedkeys(t("<cr>"), "n")
-          else
-              fallback()
-          end
-      end, {
-          "i",
-          "s",
-          }),
-    },
-    formatting = {
-        deprecated = true,
-        format = function(_, vim_item)
-        return vim_item
-    end,
-    },
-    experimental = {
-      ghost_text = false,
-    },
-    sources = {
-      { name = "path" },
-      { name = "buffer" },
-      { name = "nvim_lsp" },
-      { name = "calc" },
-      { name = "ultisnips" }
-      }
+--             vim.fn.feedkeys(t("<cr>"), "n")
+        else
+            fallback()
+        end
+    end, {
+        "i",
+        "s",
+        }),
+  },
+  formatting = {
+      deprecated = true,
+      format = function(_, vim_item)
+      return vim_item
+  end,
+  },
+  experimental = {
+    ghost_text = false,
+  },
+  sources = {
+    { name = "path" },
+    { name = "buffer" },
+    { name = "nvim_lsp" },
+    { name = "calc" },
+    { name = "ultisnips" }
     }
-  )
-
-nvim_lsp.diagnosticls.setup {
-    on_attach = on_attach,
-    filetypes = vim.tbl_keys(filetypes),
-    init_options = {
-        filetypes = filetypes,
-        linters = linters,
-        formatters = formatters,
-        formatFiletypes = formatFiletypes
-    }
-}
+  }
+)
 
 EOF
 
 "vim set filetype=vim
-
