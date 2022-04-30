@@ -1,0 +1,21 @@
+completions/
+conf.d/
+functions/
+
+fishd.*
+fish_history
+generated_completions
+fish_read_history
+.idea
+# Private or local aliases
+aliases/private.fish
+
+# Private or local environment
+env/private.fish
+
+# Private or local config
+private.fish
+
+# fish generated files
+fishd*
+fish_variables
