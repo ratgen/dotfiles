@@ -55,7 +55,7 @@ font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=11.5;2"
 font-3 = "Font Awesome 5 Brands:pixelsize=11.5;3"
 
 modules-left = i3
-modules-right = tv steelseries razer filesystem cpu temperature date 
+modules-right = tv steelseries razer filesystem memory cpu temperature date 
 ;modules-right = tv steelseries filesystem cpu temperature date 
 
 tray-background = ${colors.shade8}
@@ -134,6 +134,7 @@ interval = 5
 format-prefix = ""
 format-underline = ${colors.blue}
 label = %mb_used%/%mb_total%
+format-background = ${colors.shade5}
 ;format-background = ${colors.blue}
 
 [module/eth]

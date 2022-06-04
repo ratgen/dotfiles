@@ -72,12 +72,7 @@ call plug#end()
 
 let g:vue_pre_processor = ['scss']
 
-"move focus to NERDTreeToggle
-nnoremap <leader>n :NERDTreeFocus<CR>   
-"launch NERDTree
-nnoremap <C-n> :NERDTree<CR>            
-"toggle NERDTree
-nnoremap <C-t> :NERDTreeToggle<CR>      
+nnoremap <C-t> :VimtexTocToggle<CR>      
 
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
