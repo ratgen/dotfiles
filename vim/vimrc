@@ -167,7 +167,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set modeline                    "Set options in each file
 
 "-- Choose the first suggestion for mistake
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u    
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 abbr SE Software Engineering
 abbr hte the

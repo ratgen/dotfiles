@@ -178,7 +178,6 @@ client.focused #555555 #555555 #ffffff #FFFFFF     #0095e4
 for_window [class="^.*"] border pixel 3
 
 exec source ~/.screenlayout/screen.sh
-exec setxkbmap -layout us -option compose:lwin
 
 exec --no-startup-id clipit
 exec --no-startup-id nitrogen --restore
