@@ -1,0 +1,12 @@
+#!/bin/bash
+sleep 1
+DISPLAY=":0.0"
+HOME=/home/peter/
+XAUTHORITY=$HOME/.Xauthority
+export DISPLAY XAUTHORITY HOME
+kbb_id=`xinput -list | grep -i 'AnnePro2' | grep -o id=[0-9]. | grep -o [0-9]. | head -1`
+
+xset r rate 200 30
+setxkbmap -option "compose:lwin" us
+
+echo "keyboard added to compu" >> /tmp/scripts.log

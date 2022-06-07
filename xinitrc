@@ -63,6 +63,10 @@ get_session(){
 	echo "dbus-launch ${dbus_args[*]}"
 }
 
-source /home/peter/.screenlayout/screen.sh
+xrandr \
+--output DP-4.8  --pos 0x0 --rotate normal \
+--output DP-2 --primary --mode 2560x1440 --pos 2560x0 --rotate normal \
+--output DP-0.8 --pos 5120x0 --rotate normal \
+
 
 exec $(get_session "$1")

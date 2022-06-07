@@ -72,12 +72,7 @@ call plug#end()
 
 let g:vue_pre_processor = ['scss']
 
-"move focus to NERDTreeToggle
-nnoremap <leader>n :NERDTreeFocus<CR>   
-"launch NERDTree
-nnoremap <C-n> :NERDTree<CR>            
-"toggle NERDTree
-nnoremap <C-t> :NERDTreeToggle<CR>      
+nnoremap <C-t> :VimtexTocToggle<CR>      
 
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
@@ -172,7 +167,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set modeline                    "Set options in each file
 
 "-- Choose the first suggestion for mistake
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u    
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 abbr SE Software Engineering
 abbr hte the

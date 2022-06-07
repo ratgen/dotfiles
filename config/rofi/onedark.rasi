@@ -26,7 +26,7 @@
   spacing: 0;
   background-color: transparent;
 
-  font: "Knack Nerd Font 14";
+  font: "IBM Plex Mono 20";
   text-color: @text;
 }
 
@@ -83,6 +83,10 @@ element urgent, element selected urgent {
 
 element active, element selected active {
   text-color: @purple;
+}
+
+element-icon {
+  size: 2ch;
 }
 
 message {

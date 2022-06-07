@@ -35,6 +35,9 @@ function linkAllFiles {
     dotfilelink config/rofi .config/rofi
     dotfilelink config/newsboat .newsboat
     dotfilelink config/xfce4/terminal .config/xfce4/terminal
+    dotfilelink config/vifm .config/vifm
+    dotfilelink config/userconfig/user-dirs.dirs .config/user-dirs.dirs
+    dotfilelink config/userconfig/user-dirs.locale .config/user-dirs.locale
 
     while true; do
 	read -p "Desktop(d), laptop(l) or none(n)?" yn
