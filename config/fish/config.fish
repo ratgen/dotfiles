@@ -1,6 +1,5 @@
 if status is-interactive
   alias vim "nvim"
-
   alias dotfiles "cd ~/dotfiles"
 
   alias pom "cd ~/documents/6semester/project_organization_management/"
@@ -19,7 +18,7 @@ if status is-interactive
 
   alias zathura "zathura --fork"
 
-  alias fm "vifm"
+  alias fm "vifm $(pwd)"
 
   neofetch
 end
