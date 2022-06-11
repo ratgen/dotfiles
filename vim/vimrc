@@ -257,12 +257,13 @@ cmp.setup({
   end,
   },
   preselect = cmp.PreselectMode.Item,
-  documentation = {
-    border = { '', '', '', ' ', '', '', '', ' ' },
-    winhighlight = 'NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder',
-    maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
-    maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
-  },
+
+  --documentation = {
+  --  border = { '', '', '', ' ', '', '', '', ' ' },
+  --  winhighlight = 'NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder',
+  --  maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
+  --  maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
+ -- },
   confirmation = {
       default_behavior = cmp.ConfirmBehavior.Insert,
       get_commit_characters = function(commit_characters)
@@ -315,6 +316,10 @@ cmp.setup({
     }
   }
 )
+window = {
+  documentation = "native"
+}
+
 
 EOF
 
