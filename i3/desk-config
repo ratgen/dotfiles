@@ -48,7 +48,7 @@ bindsym $mod+b exec brave
 bindsym $mod+n exec xfce4-terminal --execute newsboat
 bindsym $mod+m exec evolution
 bindsym $mod+i exec xfce4-terminal --execute vifm ~
-bindsym $mod+shift+s exec screenshot
+bindsym $mod+shift+s exec scrot -s /home/peter/screenshots/%y-%m-%d_%H:%M:%S.png
 
 # kill focused window
 bindsym $mod+Shift+q kill
