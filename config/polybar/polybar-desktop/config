@@ -55,10 +55,10 @@ font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=11.5;2"
 font-3 = "Font Awesome 5 Brands:pixelsize=11.5;3"
 
 modules-left = i3
-modules-right = tv steelseries razer filesystem memory cpu temperature date 
+modules-right = steelseries razer filesystem memory cpu temperature date 
 ;modules-right = tv steelseries filesystem cpu temperature date 
 
-tray-background = ${colors.shade8}
+;tray-background = ${colors.shade8}
 
 monitor = ${env:MONITOR:}
 
@@ -79,9 +79,9 @@ mount-0 = /
 
 label-mounted =  %used%/%total%
 label-unmounted =  %mountpoint% not mounted
-format-unmounted-background = ${colors.shade4}
+;format-unmounted-background = ${colors.shade4}
 format-unmounted-padding = 1
-format-mounted-background = ${colors.shade4}
+;format-mounted-background = ${colors.shade4}
 format-mounted-padding = 1
 
 [module/i3]
@@ -125,7 +125,7 @@ type = internal/cpu
 interval = 5
 format-prefix = ""
 label =  %percentage%%
-format-background = ${colors.shade5}
+; format-background = ${colors.shade5}
 format-padding = 1
 
 [module/memory]
@@ -134,14 +134,14 @@ interval = 5
 format-prefix = ""
 format-underline = ${colors.blue}
 label = %mb_used%/%mb_total%
-format-background = ${colors.shade5}
+;format-background = ${colors.shade5}
 ;format-background = ${colors.blue}
 
 [module/eth]
 type = internal/network
 interface = enp4s0
 
-format-connected-underline = #55aa55
+; format-connected-underline = #55aa55
 format-connected-prefix = ""
 label-connected = %local_ip%
 
@@ -155,7 +155,7 @@ interval = 5
 
 time = %H:%M:%S
 label = %time%
-format-background = ${colors.shade7}
+; format-background = ${colors.shade7}
 format-padding = 1
 
 
@@ -170,7 +170,7 @@ format =  <label>
 label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.gray}
-format-background = ${colors.shade6}
+; format-background = ${colors.shade6}
 format-padding = 1
 
 [settings]
@@ -180,7 +180,7 @@ pseudo-transparency = true
 type = custom/script
 format = <label>
 exec = python ~/.config/polybar/razer.py
-format-background = ${colors.shade3}
+; format-background = ${colors.shade3}
 format-padding = 1
 
 [module/steelseries]
@@ -189,7 +189,7 @@ interval = 45
 format = <label>
 exec = ~/.config/polybar/headset.sh
 ;format-background = ${colors.orange}
-format-background = ${colors.shade2}
+; format-background = ${colors.shade2}
 format-padding = 1
 
 [module/tv]
@@ -201,7 +201,7 @@ exec = python tv.py
 scroll-up = python ~/.config/polybar/tv.py --vol-up
 click-left = python ~/.config/polybar/tv.py --off
 scroll-down = python ~/.config/polybar/tv.py --vol-down
-format-background = ${colors.shade1}
+; format-background = ${colors.shade1}
 format-padding = 1
 
 
