@@ -95,17 +95,17 @@ while true; do
     esac
 done
 
-npm_packages="eslint bash-language-server sass yarn npm typescript"
-aur_packages="vls \
+npm_packages="eslint sass yarn npm typescript"
+aur_packages="\
     neovim-nightly-bin headsetcontrol \
-    jdtls spotify postman-bin vim-language-server
+    jdtls spotify  
     vue-cli"
 packages="nodejs npm neofetch fzf tree lua ripgrep compton xfce4-terminal  rofi nitrogen clipit texlab brave-browser polybar" 
 if [ $unameS = "Linux" ]; then
     linkAllFiles
     npm -g i $npm_packages
-    pamac build $aur_packages
-    pamac install $packages 
+    yay -Syu $aur_packages
+    pacman -S $packages 
 fi
 
 nvim +PlugInstall +q! +q! +q!
