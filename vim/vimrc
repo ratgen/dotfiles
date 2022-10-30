@@ -12,22 +12,31 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('~/.config/nvim/plugged')
     "VimTeX extension for compiling tex documetns 
     Plug 'lervag/vimtex'                                  
+
     "Surrounding for quoting and parenthesizing
     Plug 'machakann/vim-sandwich'                         
+
     "Fuzzy search in files systemwide
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   
+
     "Fuzzy search in files in vim
     Plug 'junegunn/fzf.vim' 
+
     "Git commands inside vim
     Plug 'tpope/vim-fugitive'                             
+
     "Display colors of codes inside .css and .html documents
     Plug 'ap/vim-css-color'                               
+
     "Bottom line displaying insert and file info
     Plug 'vim-airline/vim-airline'                          
+
     "Snippets
     Plug 'SirVer/ultisnips'                               
+
     "Library of snippets for ultisnips
     Plug 'honza/vim-snippets'                             
+
     "Theme
     Plug 'NLKNguyen/papercolor-theme'
 
@@ -57,9 +66,6 @@ call plug#begin('~/.config/nvim/plugged')
     "Expands the targets for 'change inner'
     Plug 'wellle/targets.vim'
 
-    "Autoclosing pairs
-    Plug 'Raimondi/delimitMate'
-
     Plug 'yuezk/vim-js'
     Plug 'maxmellon/vim-jsx-pretty'
 
@@ -68,6 +74,10 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tyru/open-browser.vim'
     Plug 'weirongxu/plantuml-previewer.vim'
 
+    "Autoclosing pairs
+    Plug 'windwp/nvim-autopairs'
+
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 let g:vue_pre_processor = ['scss']
@@ -179,6 +189,51 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 lua << EOF
+require("nvim-autopairs").setup {}
+
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = { "c", "lua", "rust" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  -- List of parsers to ignore installing (for "all")
+  ignore_install = { "javascript" },
+
+  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    disable = { "c", "rust" },
+    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+    disable = function(lang, buf)
+        local max_filesize = 100 * 1024 -- 100 KB
+        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+        if ok and stats and stats.size > max_filesize then
+            return true
+        end
+    end,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+
 local lsp_installer = require("nvim-lsp-installer")
 
 -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
