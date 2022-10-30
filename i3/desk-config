@@ -44,7 +44,7 @@ exec --no-startup-id compton &
 
 # start newsboat
 
-bindsym $mod+b exec brave
+bindsym $mod+b exec firefox
 bindsym $mod+n exec xfce4-terminal --execute newsboat
 bindsym $mod+m exec evolution
 bindsym $mod+i exec xfce4-terminal --execute vifm ~
@@ -171,8 +171,8 @@ bindsym $mod+r mode "resize"
 
 exec --no-startup-id ~/.config/polybar/polybar.sh
 
-gaps inner 30
-gaps outer 5
+gaps inner 5
+gaps outer 0
 
 client.focused #555555 #555555 #ffffff #FFFFFF     #0095e4
 
