@@ -54,7 +54,7 @@ font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
 font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
 
 modules-left = i3
-modules-right = battery pulseaudio backlight cpu temperature date 
+modules-right = battery pulseaudio backlight memory cpu temperature date 
 
 monitor = ${env:MONITOR:}
 
@@ -146,13 +146,12 @@ format-background = ${colors.shade4}
 
 [module/memory]
 type = internal/memory
-interval = 1
+interval = 5
 format-prefix = ""
 format-underline = ${colors.blue}
-label = %mb_used%/%mb_total%
-format-padding = 1
-;format-background = ${colors.blue}
-format-margin = 1
+label =  %mb_used%/%mb_total%
+format-background = ${colors.shade5}
+format-padding = 2
 
 [module/date]
 type = internal/date

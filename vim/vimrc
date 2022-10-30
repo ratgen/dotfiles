@@ -47,9 +47,6 @@ call plug#begin('~/.config/nvim/plugged')
     "Autocompletion plugin
     Plug 'hrsh7th/nvim-cmp'
     
-    "Rust
-    Plug 'simrat39/rust-tools.nvim'
-
     " sources for cmp-nvim
     Plug 'quangnguyen30192/cmp-nvim-ultisnips'
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -79,8 +76,6 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
-
-let g:vue_pre_processor = ['scss']
 
 nnoremap <C-t> :VimtexTocToggle<CR>      
 
@@ -137,6 +132,18 @@ command W w
 command Wq wq
 command WQ wq
 
+function LectureStart(arg)
+  execute '!mkdir -p lecture/' . a:arg
+  echo "creating lecture/" . a:arg . '/lecture.tex'
+  execute 'e lecture/' . a:arg. '/lecture.tex'
+  execute 'normal 5o'
+  call append(5,"% vim: spell spelllang=en")
+  execute 'normal gg'
+  execute 'w'
+
+endfunction
+
+command -nargs=1 Lecture :call LectureStart(<f-args>)
 "----- Set shortcuts in LaTeX documents
 set tw=80          "set textwidth to 80
 ""autocmd filetype markdown set tw=80
@@ -185,7 +192,7 @@ abbr nad and
 
 "--- Ultisnips options
 let g:UltiSnipsExpandTrigger="<c-space>"        
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 lua << EOF

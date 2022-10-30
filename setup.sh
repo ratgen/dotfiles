@@ -102,9 +102,9 @@ aur_packages="
 packages="nodejs npm neofetch fzf tree lua ripgrep compton xfce4-terminal rofi nitrogen clipit texlab  polybar" 
 if [ $unameS = "Linux" ]; then
     linkAllFiles
-    yay -S $aur_packages
-    pacman -S $packages 
     npm -g i $npm_packages
+    yay -Syu $aur_packages
+    pacman -S $packages 
 fi
 
 nvim +PlugInstall +q! +q! +q!
