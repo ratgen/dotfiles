@@ -63,10 +63,9 @@ get_session(){
 	echo "dbus-launch ${dbus_args[*]}"
 }
 
-xrandr \
---output DP-4.8  --pos 0x0 --rotate normal \
---output DP-2 --primary --mode 2560x1440 --pos 2560x0 --rotate normal \
---output DP-0.8 --pos 5120x0 --rotate normal \
+xrandr  --auto 
+  \ --output DP-4.8 --left-of DP-2 
+  \ --output DP-0.8 --right-of DP-2
 
 
 exec $(get_session "$1")
