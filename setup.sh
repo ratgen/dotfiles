@@ -96,11 +96,10 @@ while true; do
 done
 
 npm_packages="eslint sass yarn npm typescript"
-aur_packages="\
+aur_packages="
     neovim-nightly-bin headsetcontrol \
-    jdtls spotify  
-    vue-cli"
-packages="nodejs npm neofetch fzf tree lua ripgrep compton xfce4-terminal  rofi nitrogen clipit texlab brave-browser polybar" 
+     spotify vue-cli"
+packages="nodejs npm neofetch fzf tree lua ripgrep compton xfce4-terminal rofi nitrogen clipit texlab  polybar" 
 if [ $unameS = "Linux" ]; then
     linkAllFiles
     npm -g i $npm_packages
