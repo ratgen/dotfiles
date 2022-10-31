@@ -129,7 +129,14 @@ function LectureStart(arg)
   call append(5,"% vim: spell spelllang=en")
   execute 'normal gg'
   execute 'w'
-
+  execute 'e main.tex'
+  execute '/lecture'
+  execute 'normal N'
+  execute 'normal o' . '\include{./lecture/' . a:arg . '/lecture.tex}'
+  execute 'w'
+  execute '\ll'
+  execute 'tabnew'
+  execute 'e lecture/' . a:arg. '/lecture.tex'
 endfunction
 
 command -nargs=1 Lecture :call LectureStart(<f-args>)
