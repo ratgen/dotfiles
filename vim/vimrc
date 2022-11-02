@@ -145,7 +145,6 @@ function LectureStart(arg)
   execute 'normal N'
   execute 'normal o' . '\include{./lecture/' . a:arg . '/lecture.tex}'
   execute 'w'
-  execute '\ll'
   execute 'tabnew'
   execute 'e lecture/' . a:arg. '/lecture.tex'
 endfunction
