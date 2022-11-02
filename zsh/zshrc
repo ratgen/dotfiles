@@ -29,3 +29,5 @@ ANDROID_SDK=/home/peter/Android/Sdk
 neofetch
 
 alias zathura='zathura --fork'
+
+export PATH="/home/peter/documents/7semester/bin:$PATH"
