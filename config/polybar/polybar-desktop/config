@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-background = #00000000
+background = #990D47A1
 background-alt = #3c3836
 foreground = #ebdbb2
 red        = #cc241d
@@ -56,6 +56,7 @@ font-3 = "Font Awesome 5 Brands:pixelsize=11.5;3"
 
 modules-left = i3
 modules-right = steelseries razer filesystem memory cpu temperature date 
+modules-center = polybar-playerctl
 ;modules-right = tv steelseries filesystem cpu temperature date 
 
 tray-background = ${colors.shade8}
@@ -203,6 +204,10 @@ click-left = python ~/.config/polybar/tv.py --off
 scroll-down = python ~/.config/polybar/tv.py --vol-down
 format-background = ${colors.shade1}
 format-padding = 1
+
+[module/polybar-playerctl]
+type = custom/script
+exec = ~/.config/polybar/playing.sh
 
 
 ; vim:ft=dosini
