@@ -16,7 +16,7 @@ set $mod mod1
 font pango:monospace 8
 
 gaps inner 35
-gaps outer 0
+gaps outer 15
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -36,8 +36,8 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl --player=spotify play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl --player=spotify next
 bindsym XF86AudioPrev exec --no-startup-id playerctl --player=spotify previous
 
-bindsym XF86MonBrightnessUp exec "backlight_control +10; "
-bindsym XF86MonBrightnessDown exec "backlight_control -10;"
+bindsym XF86MonBrightnessUp exec "backlight_control +5; "
+bindsym XF86MonBrightnessDown exec "backlight_control -5;"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -49,7 +49,7 @@ exec --no-startup-id compton &
 
 # start newsboat
 
-bindsym $mod+b exec firefox
+bindsym $mod+b exec brave
 bindsym $mod+n exec gnome-terminal --command newsboat
 bindsym $mod+m exec evolution
 
@@ -178,9 +178,10 @@ client.focused #555555 #555555 #ffffff #FFFFFF     #0095e4
 
 for_window [class="^.*"] border pixel 3
 
-exec setxkbmap -layout dk
+exec setxkbmap -layout dk -option"caps:swapescape"
 
 exec --no-startup-id polybar example
 exec --no-startup-id clipit
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+

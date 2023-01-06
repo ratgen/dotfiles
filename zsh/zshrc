@@ -31,3 +31,5 @@ neofetch
 alias zathura='zathura --fork'
 
 export PATH="/home/peter/documents/7semester/bin:$PATH"
+
+export PATH="/home/peter/documents/7semester/ARX-3.9.0/bin:$PATH"
