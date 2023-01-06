@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-background = #66000000
+background = #990D47A1
 background-alt = #3c3836
 foreground = #ebdbb2
 red        = #cc241d
@@ -31,14 +31,14 @@ gray       = #928374
 currentTab = #44ffffff
 white      = #ffffff
 
-shade1 = #0D47A1
-shade2 = #1565C0
-shade3 = #1976D2
-shade4 = #1E88E5
-shade5 = #2196F3
-shade6 = #42A5F5
-shade7 = #64B5F6
-shade8 = #90CAF9
+shade1 = #770D47A1
+shade2 = #771565C0
+shade3 = #771976D2
+shade4 = #771E88E5
+shade5 = #772196F3
+shade6 = #7742A5F5
+shade7 = #7764B5F6
+shade8 = #7790CAF9
 
 [bar/example]
 width = 100%
@@ -55,7 +55,8 @@ font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=11.5;2"
 font-3 = "Font Awesome 5 Brands:pixelsize=11.5;3"
 
 modules-left = i3
-modules-right = tv steelseries razer filesystem memory cpu temperature date 
+modules-right = steelseries razer filesystem memory cpu temperature date 
+modules-center = polybar-playerctl
 ;modules-right = tv steelseries filesystem cpu temperature date 
 
 tray-background = ${colors.shade8}
@@ -203,6 +204,10 @@ click-left = python ~/.config/polybar/tv.py --off
 scroll-down = python ~/.config/polybar/tv.py --vol-down
 format-background = ${colors.shade1}
 format-padding = 1
+
+[module/polybar-playerctl]
+type = custom/script
+exec = ~/.config/polybar/playing.sh
 
 
 ; vim:ft=dosini

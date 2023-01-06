@@ -13,6 +13,8 @@ call plug#begin('~/.config/nvim/plugged')
     "VimTeX extension for compiling tex documetns 
     Plug 'lervag/vimtex'                                  
 
+    Plug 'junegunn/vim-easy-align'
+
     "Surrounding for quoting and parenthesizing
     Plug 'machakann/vim-sandwich'                         
 
@@ -78,7 +80,15 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
+xmap ga <Plug>(EasyAlign)
+
+nmap ga <Plug>(EasyAlign)
+
 nnoremap <C-t> :VimtexTocToggle<CR>      
+let g:vimtex_toc_config = {
+      \ 'show_help': 0
+      \}
+
 
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
@@ -119,7 +129,6 @@ set confirm         "display confirmation when closing unsaved file
 set laststatus=2    "always show the statusbar (the one on the bottom)
 
 "----- Set the color theme
-syntax on                               "Syntax highlighting on
 set cursorline                          "Highlight the line on which the cursor is
 set background=dark
 colorscheme PaperColor                     "Use the gruvbox theme
@@ -197,11 +206,6 @@ abbr SE Software Engineering
 abbr hte the
 abbr nad and
 
-"--- Ultisnips options
-let g:UltiSnipsExpandTrigger="<c-space>"        
-let g:UltiSnipsJumpForwardTrigger="<s-tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 lua << EOF
 require("nvim-autopairs").setup({})
 
@@ -240,24 +244,7 @@ require'nvim-treesitter.configs'.setup {
     -- `false` will disable the whole extension
     enable = true,
 
-    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-    -- the name of the parser)
-    -- list of language that will be disabled
-    disable = { "c", "rust" },
-    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-    disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-            return true
-        end
-    end,
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
+    disable = { "latex", "tex"},
     additional_vim_regex_highlighting = false,
   },
 }
@@ -293,6 +280,12 @@ end
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
+
+vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'      
+vim.g.UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
+vim.g.UltiSnipsJumpBackwardTrigger = '<Plug>(ultisnips_jump_backward)'
+vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
+vim.g.UltiSnipsRemoveSelectModeMappings = 0
 
 require "cmp_buffer"
 require "cmp_nvim_lsp"
@@ -333,30 +326,103 @@ cmp.setup({
   },
   event = {},
   mapping = {
-    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace
-    }),
-    ["<C-Space>"] = cmp.mapping(function(fallback)
-      if vim.fn.pumvisible() == 1 then
-          if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
-              return vim.fn.feedkeys(t("<C-R>=UltiSnips#ExpandSnippet()<CR>"))
-      end
-
-            vim.fn.feedkeys(t("<C-n>"), "n")
---          elseif check_back_space() then
---             vim.fn.feedkeys(t("<cr>"), "n")
-        else
-            fallback()
-        end
-    end, {
-        "i",
-        "s",
+        ["<Tab>"] = cmp.mapping({
+            c = function()
+                if cmp.visible() then
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+                else
+                    cmp.complete()
+                end
+            end,
+            i = function(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+                elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+                    vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), 'm', true)
+                else
+                    fallback()
+                end
+            end,
+            s = function(fallback)
+                if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+                    vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), 'm', true)
+                else
+                    fallback()
+                end
+            end
+        }),
+        ["<S-Tab>"] = cmp.mapping({
+            c = function()
+                if cmp.visible() then
+                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+                else
+                    cmp.complete()
+                end
+            end,
+            i = function(fallback)
+                if cmp.visible() then
+                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+                elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+                    return vim.api.nvim_feedkeys( t("<Plug>(ultisnips_jump_backward)"), 'm', true)
+                else
+                    fallback()
+                end
+            end,
+            s = function(fallback)
+                if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+                    return vim.api.nvim_feedkeys( t("<Plug>(ultisnips_jump_backward)"), 'm', true)
+                else
+                    fallback()
+                end
+            end
+        }),
+        ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+        ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+        ['<C-n>'] = cmp.mapping({
+            c = function()
+                if cmp.visible() then
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                else
+                    vim.api.nvim_feedkeys(t('<Down>'), 'n', true)
+                end
+            end,
+            i = function(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                else
+                    fallback()
+                end
+            end
+        }),
+        ['<C-p>'] = cmp.mapping({
+            c = function()
+                if cmp.visible() then
+                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+                else
+                    vim.api.nvim_feedkeys(t('<Up>'), 'n', true)
+                end
+            end,
+            i = function(fallback)
+                if cmp.visible() then
+                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+                else
+                    fallback()
+                end
+            end
+        }),
+        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+        ['<C-e>'] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
+        ['<CR>'] = cmp.mapping({
+            i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+            c = function(fallback)
+                if cmp.visible() then
+                    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+                else
+                    fallback()
+                end
+            end
         }),
   },
   formatting = {
@@ -370,10 +436,10 @@ cmp.setup({
   },
   sources = {
     { name = "path" },
-    { name = "buffer" },
+    { name = "ultisnips" },
     { name = "nvim_lsp" },
-    { name = "calc" },
-    { name = "ultisnips" }
+    --{ name = "buffer" },
+    { name = "calc" }
     }
   }
 )
