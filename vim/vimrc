@@ -84,8 +84,11 @@ xmap ga <Plug>(EasyAlign)
 
 nmap ga <Plug>(EasyAlign)
 
-
 nnoremap <C-t> :VimtexTocToggle<CR>      
+let g:vimtex_toc_config = {
+      \ 'show_help': 0
+      \}
+
 
 "----- Unmap the arrow keys in normal and visual mode
 noremap <Up> <Nop>
@@ -126,7 +129,6 @@ set confirm         "display confirmation when closing unsaved file
 set laststatus=2    "always show the statusbar (the one on the bottom)
 
 "----- Set the color theme
-syntax on                               "Syntax highlighting on
 set cursorline                          "Highlight the line on which the cursor is
 set background=dark
 colorscheme PaperColor                     "Use the gruvbox theme
@@ -241,6 +243,9 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     -- `false` will disable the whole extension
     enable = true,
+
+    disable = { "latex", "tex"},
+    additional_vim_regex_highlighting = false,
   },
 }
 
