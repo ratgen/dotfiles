@@ -56,6 +56,7 @@ font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
 modules-left = i3
 ; modules-right = battery  pulseaudio backlight filesystem  memory cpu temperature date 
 modules-right = battery  pulseaudio backlight date 
+modules-center = polybar-playerctl
 
 monitor = ${env:MONITOR:}
 
@@ -296,5 +297,9 @@ format-discharging-padding = 2
 format-discharging-background = ${colors.shade1}
 format-charging-padding = 2
 format-charging-background = #770ca00f
+
+[module/polybar-playerctl]
+type = custom/script
+exec = ~/dotfiles/config/polybar/polybar-desktop/playing.sh
 
 ; vim:ft=dosini
