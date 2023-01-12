@@ -64,8 +64,8 @@ get_session(){
 }
 
 xrandr  --auto 
-  \ --output DP-4.8 --left-of DP-2 
-  \ --output DP-0.8 --right-of DP-2
+  \ --output DP-4.8 --right-of DP-2 
+  \ --output DP-0.8 --left-of DP-2
 
 
 exec $(get_session "$1")
