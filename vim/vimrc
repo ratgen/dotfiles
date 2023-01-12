@@ -56,6 +56,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-calc'
     Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-cmdline'
+    Plug 'hrsh7th/cmp-git'
 
     "Plugin for better syntax highlighting with vue
     Plug 'posva/vim-vue'
@@ -141,6 +143,7 @@ let g:airline_powerline_fonts = 1
 command W w                     
 command Wq wq
 command WQ wq
+set completeopt=menu,menuone,noselect
 
 function LectureStart(arg)
   execute '!mkdir -p lecture/' . a:arg
@@ -312,12 +315,10 @@ cmp.setup({
   },
   preselect = cmp.PreselectMode.Item,
 
-  --documentation = {
-  --  border = { '', '', '', ' ', '', '', '', ' ' },
-  --  winhighlight = 'NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder',
-  --  maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
-  --  maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
- -- },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
   confirmation = {
       default_behavior = cmp.ConfirmBehavior.Insert,
       get_commit_characters = function(commit_characters)
@@ -329,7 +330,7 @@ cmp.setup({
         ["<Tab>"] = cmp.mapping({
             c = function()
                 if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+                  cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
                 else
                     cmp.complete()
                 end
@@ -415,7 +416,7 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
         ['<C-e>'] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
         ['<CR>'] = cmp.mapping({
-            i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+            i = cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
             c = function(fallback)
                 if cmp.visible() then
                     cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
@@ -446,6 +447,38 @@ cmp.setup({
 window = {
   documentation = "native"
 }
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  completion = { autocomplete = false },
+
+  -- mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+
+cmp.setup.cmdline(':', {
+ -- mapping = cmp.mapping.preset.cmdline(),
+  completion = { autocomplete = false },
+  sources = cmp.config.sources({
+    { name = 'path' }
+    }, {
+      { name = 'cmdline', 
+    }
+  })
+})
+
 
 EOF
 
