@@ -57,7 +57,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'hrsh7th/cmp-calc'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-cmdline'
-    Plug 'hrsh7th/cmp-git'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'petertriho/cmp-git'
+
 
     "Plugin for better syntax highlighting with vue
     Plug 'posva/vim-vue'
@@ -247,7 +249,7 @@ require'nvim-treesitter.configs'.setup {
     -- `false` will disable the whole extension
     enable = true,
 
-    disable = { "latex", "tex"},
+    disable = { "latex", "tex", "gitcommit"},
     additional_vim_regex_highlighting = false,
   },
 }
@@ -436,11 +438,11 @@ cmp.setup({
     ghost_text = false,
   },
   sources = {
-    { name = "path" },
-    { name = "ultisnips" },
-    { name = "nvim_lsp" },
-    --{ name = "buffer" },
-    { name = "calc" }
+      { name = "path" },
+      { name = "ultisnips" },
+      { name = "nvim_lsp" },
+      -- { name = "buffer" },
+      { name = "calc" },
     }
   }
 )
@@ -450,12 +452,18 @@ window = {
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
-  sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-  }, {
-    { name = 'buffer' },
-  })
+  sources = cmp.config.sources(
+    {
+      { name = 'git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+      { name = 'buffer' },
+    }
+  )
 })
+
+require("cmp_git").setup()
+
+
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
