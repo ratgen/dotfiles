@@ -84,7 +84,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'weirongxu/plantuml-previewer.vim'
 
     "Autoclosing pairs
-    Plug 'windwp/nvim-autopairs'
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
@@ -217,7 +216,6 @@ abbr hte the
 abbr nad and
 
 lua << EOF
-require("nvim-autopairs").setup({})
 
 require("mason").setup()
 require("mason-lspconfig").setup()
