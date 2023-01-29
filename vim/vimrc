@@ -140,6 +140,11 @@ set laststatus=2    "always show the statusbar (the one on the bottom)
 set cursorline                          "Highlight the line on which the cursor is
 set background=dark
 colorscheme PaperColor                     "Use the gruvbox theme
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+
+set mouse=
+
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
