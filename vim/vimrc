@@ -47,6 +47,11 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'williamboman/mason-lspconfig.nvim'
     Plug 'neovim/nvim-lspconfig'
 
+    "Debug Adapter Protocol
+    Plug 'mfussenegger/nvim-dap'
+    Plug 'jayp0521/mason-nvim-dap.nvim'
+
+
     "Autocompletion plugin
     Plug 'hrsh7th/nvim-cmp'
     
@@ -225,6 +230,10 @@ require("mason-lspconfig").setup_handlers {
   -- Next, you can provide a dedicated handler for specific servers.
   -- For example, a handler override for the `rust_analyzer`:
 }
+require("mason-nvim-dap").setup({
+    automatic_setup = true,
+})
+
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
