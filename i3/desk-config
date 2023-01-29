@@ -182,7 +182,4 @@ exec source ~/.screenlayout/screen.sh
 
 exec --no-startup-id clipit
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
-
-
-
+exec --no-startup-id gnome-keyring-daemon --start
