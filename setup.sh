@@ -58,7 +58,7 @@ function installDesktop {
     dotfilelink screenlayout .screenlayout
     dotfilelink config/Xresources/Xresources-desktop .Xresources
     dotfilelink config/nitrogen/desktop/ .config/nitrogen
-    dotfilelink xinitrc .xinitrc
+    dotfilelink xprofile .xprofile
 }
 
 function installLaptop {

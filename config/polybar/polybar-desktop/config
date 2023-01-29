@@ -206,6 +206,7 @@ format-background = ${colors.shade1}
 format-padding = 1
 
 [module/polybar-playerctl]
+interval = 2s
 type = custom/script
 exec = ~/.config/polybar/playing.sh
 
