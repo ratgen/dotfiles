@@ -46,7 +46,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
 
-exec --no-startup-id compton &
+exec_always --no-startup-id picom &
 
 # start newsboat
 bindsym $mod+b exec brave
