@@ -175,7 +175,7 @@ bindsym $mod+r mode "resize"
 
 client.focused #555555 #555555 #ffffff #FFFFFF #0095e4
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
 
 exec setxkbmap -layout dk -option "caps:swapescape"
 
@@ -183,4 +183,6 @@ exec --no-startup-id polybar example
 exec --no-startup-id clipit
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id gnome-keyring-daemon --start
+
+exec_always --no-startup-id redshift
 
