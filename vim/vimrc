@@ -40,7 +40,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'honza/vim-snippets'                             
 
     "Theme
-    Plug 'NLKNguyen/papercolor-theme'
+    Plug 'projekt0n/github-nvim-theme', { 'tag': 'v0.0.7' }
 
     "lsp configuration for nvim 
     Plug 'williamboman/mason.nvim'
@@ -66,8 +66,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'petertriho/cmp-git'
 
 
-    "Plugin for better syntax highlighting with vue
-    Plug 'posva/vim-vue'
+    Plug 'windwp/nvim-autopairs'
+
 
     "The bars for each indentation
     Plug 'Yggdroot/indentLine'
@@ -139,12 +139,9 @@ set laststatus=2    "always show the statusbar (the one on the bottom)
 "----- Set the color theme
 set cursorline                          "Highlight the line on which the cursor is
 set background=dark
-colorscheme PaperColor                     "Use the gruvbox theme
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
+colorscheme github_*
 
 set mouse=
-
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -222,6 +219,28 @@ abbr nad and
 
 lua << EOF
 
+require("nvim-autopairs").setup {}
+
+require("github-theme").setup({
+  theme_style = "dark",
+  function_style = "italic",
+  sidebars = {"qf", "vista_kind", "terminal", "packer"},
+
+  -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+  colors = {hint = "orange", error = "#ff0000"},
+
+  -- Overwrite the highlight groups
+  overrides = function(c)
+    return {
+      htmlTag = {fg = c.red, bg = "#282c34", sp = c.hint, style = "underline"},
+      DiagnosticHint = {link = "LspDiagnosticsDefaultHint"},
+      -- this will remove the highlight groups
+      TSField = {},
+    }
+  end
+})
+
+
 require("mason").setup()
 require("mason-lspconfig").setup()
 
@@ -296,6 +315,8 @@ require "cmp_path"
 require "cmp_nvim_ultisnips"
 
 WIDE_HEIGHT = 300
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 local cmp = require'cmp'
 cmp.setup({
@@ -439,15 +460,24 @@ window = {
   documentation = "native"
 }
 
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources(
     {
+      { name = "ultisnips" },
+    },
+    {
       { name = 'git' }, -- You can specify the `cmp_git` source if you were installed it.
-    }, {
+    }, 
+    {
       { name = 'buffer' },
     }
-  )
+    )
 })
 
 require("cmp_git").setup()
