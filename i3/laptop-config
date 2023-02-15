@@ -64,6 +64,8 @@ bindsym $mod+d exec rofi -theme onedark -matching fuzzy -show drun -show-icons
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+bindsym $mod+o exec xdg-open "$(echo "/home/peter/documents/8semester/slides/")$(find /home/peter/documents/8semester/slides/ -type f | sed -e 's/\/home\/peter\/documents\/8semester\/slides/\./' | rofi -matching fuzzy -dmenu | cut -c 3-)" & disown
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -173,7 +175,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-client.focused #555555 #555555 #ffffff #FFFFFF #0095e4
+client.focused #555555 #555555 #ffffff #FFFFFF #ffffff
 
 for_window [class="^.*"] border pixel 0
 
@@ -183,6 +185,7 @@ exec --no-startup-id polybar example
 exec --no-startup-id clipit
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id gnome-keyring-daemon --start
+exec --no-startup-id /home/peter/.local/bin/xborders -c ~/.config/example_config.json
 
 exec_always --no-startup-id redshift
 
