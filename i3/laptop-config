@@ -64,7 +64,7 @@ bindsym $mod+d exec rofi -theme onedark -matching fuzzy -show drun -show-icons
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-bindsym $mod+o exec xdg-open "$(echo "/home/peter/documents/8semester/slides/")$(find /home/peter/documents/8semester/slides/ -type f | sed -e 's/\/home\/peter\/documents\/8semester\/slides/\./' | rofi -matching fuzzy -dmenu | cut -c 3-)" & disown
+bindsym $mod+o exec /home/peter/dotfiles/i3/rofi-files.sh
 
 # change focus
 bindsym $mod+h focus left
