@@ -13,7 +13,8 @@ for needle in "${RESULT[@]}" ; do # result is quoted to view contents as strings
   echo $needle | sed -e 's/\/home\/peter\/documents\/8semester\/slides/\./' >> /tmp/rofi-files.txt
 done
 
-res=$(cat /tmp/rofi-files.txt | rofi -matching normal -dmenu)
+res=$(cat /tmp/rofi-files.txt | rofi -theme onedark -matching normal -dmenu)
+echo $res
 
 res=$(echo $res | cut -c 3-)
 
@@ -23,4 +24,4 @@ if [ "$res" = "" ]; then
   exit 1
 fi
 
-xdg-open $BASE_PATH$res & disown
+xdg-open "$BASE_PATH$res" & disown
