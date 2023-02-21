@@ -188,7 +188,7 @@ let g:vimtex_syntax_conceal_disable=1
 
 "----- fzf search in file
 "Search in buffer names
-nnoremap <silent> <Leader>b :Buffers<CR>
+"nnoremap <silent> <Leader>b :Buffers<CR>
 "Search in files in directory
 nnoremap <silent> <C-f> :Files<CR>
 "Grep in files in the directory
@@ -204,6 +204,10 @@ nnoremap <silent> <Leader>hh :History<CR>
 nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR>
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+
+nnoremap <silent> <Leader>bp <Cmd>lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <Leader>dl <Cmd>lua require'dap'.run_last()<CR>
+
 
 "---- Abbreviations
 "set spell                       "Enable spellchecking
@@ -257,6 +261,10 @@ require("mason-lspconfig").setup_handlers {
 require("mason-nvim-dap").setup({
     automatic_setup = true,
 })
+require 'mason-nvim-dap'.setup_handlers {}
+
+
+
 
 
  require'lspconfig'.pylsp.setup{

@@ -10,6 +10,7 @@ if status is-interactive
 
   set fish_greeting
 
+  set -x TERMINAL xfce4-terminal
   set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
   set -x PATH $PATH:$ANDROID_SDK_ROOT/emulator
   set -x PATH $PATH:$ANDROID_SDK_ROOT/platform-tools

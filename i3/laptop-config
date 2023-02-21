@@ -66,6 +66,9 @@ bindsym $mod+d exec rofi -theme onedark -matching fuzzy -show drun -show-icons
 
 bindsym $mod+o exec /home/peter/dotfiles/i3/rofi-files.sh
 
+bindsym $mod+Shift+s exec rofi -show ssh -theme onedark
+bindsym $mod+Shift+w exec rofi -show window -theme onedark
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -185,7 +188,7 @@ exec --no-startup-id polybar example
 exec --no-startup-id clipit
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id gnome-keyring-daemon --start
-exec --no-startup-id /home/peter/.local/bin/xborders -c ~/.config/example_config.json
+exec --no-startup-id exec /home/peter/.local/bin/xborders -c ~/.config/example_config.json
 
 exec_always --no-startup-id redshift
 
