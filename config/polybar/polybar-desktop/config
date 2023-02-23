@@ -212,7 +212,7 @@ exec = ~/.config/polybar/playing.sh
 
 [module/yay]
 type = custom/script
-exec = ~/.config/polybar/updates-pacman.sh
+exec = ~/dotfiles/config/polybar/polybar-desktop/updates-pacman.sh
 interval = 600
 
 
