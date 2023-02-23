@@ -64,7 +64,7 @@ font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
 modules-left = i3
 ; modules-right = battery  pulseaudio backlight filesystem  memory cpu temperature date 
 modules-right =  yay battery pulseaudio backlight filesystem memory cpu date 
-modules-center = polybar-playerctl
+modules-center = prices polybar-playerctl
 
 monitor = ${env:MONITOR:}
 
@@ -316,5 +316,13 @@ exec = ~/dotfiles/config/polybar/polybar-desktop/updates-pacman.sh
 interval = 60
 format-padding = 1
 format-background = ${colors.shade1}
+click-left = xfce4-terminal -x yay -Syyu
+
+
+[module/prices]
+type = custom/script
+exec = ~/dotfiles/config/polybar/polybar-laptop/price.sh
+interval = 600
+format-padding = 1
 
 ; vim:ft=dosini
