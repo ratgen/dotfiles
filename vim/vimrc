@@ -51,6 +51,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'mfussenegger/nvim-dap'
     Plug 'jayp0521/mason-nvim-dap.nvim'
 
+    Plug 'nvim-tree/nvim-web-devicons'
+    Plug 'folke/trouble.nvim'
+
 
     "Autocompletion plugin
     Plug 'hrsh7th/nvim-cmp'
@@ -513,6 +516,12 @@ cmp.setup.cmdline(':', {
     }
   })
 })
+
+  require("trouble").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
 
 
 EOF
