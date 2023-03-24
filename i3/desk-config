@@ -38,7 +38,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl -a previous
 floating_modifier $mod
 
 
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec kitty
 
 exec --no-startup-id compton &
 
