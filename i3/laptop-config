@@ -44,7 +44,7 @@ bindsym XF86MonBrightnessDown exec "backlight_control -5;"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec kitty
 
 exec_always --no-startup-id picom &
 
