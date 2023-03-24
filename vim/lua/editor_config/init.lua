@@ -14,3 +14,5 @@ set.confirm = true
 
 set.cursorline = true
 set.mouse = nil
+
+set.textwidth = 80
