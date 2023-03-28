@@ -25,8 +25,7 @@ function dotfilelink {
 }
 
 function linkAllFiles {
-    dotfilelink vim/vimrc .config/nvim/init.vim
-    dotfilelink vim/UltiSnips .config/nvim/UltiSnips
+    dotfilelink nvim/vimrc .config/nvim
     dotfilelink gitconfig .gitconfig
     dotfilelink inputrc .inputrc
 

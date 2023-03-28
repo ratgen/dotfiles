@@ -1,8 +1,6 @@
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-
-vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'      
-vim.g.UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
-vim.g.UltiSnipsJumpBackwardTrigger = '<Plug>(ultisnips_jump_backward)'
+-- vim.g.UltiSnipsExpandTrigger = '<plug>(ultisnips_expand)'      
+vim.g.UltiSnipsJumpForwardTrigger = '<plug>(ultisnips_jump_forward)'
+vim.g.UltiSnipsJumpBackwardTrigger = '<plug>(ultisnips_jump_backward)'
 vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
 vim.g.UltiSnipsRemoveSelectModeMappings = 0
 
@@ -147,6 +145,8 @@ cmp.setup({
 window = {
   documentation = "native"
 }
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 cmp.event:on(
   'confirm_done',

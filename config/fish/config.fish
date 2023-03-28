@@ -17,6 +17,7 @@ if status is-interactive
   set -x ANDROID_HOME $HOME/Android/Sdk
 
   alias gitrm "git ls-files -i -c --exclude-from=.gitignore | xargs git rm --cached"
+  alias icat "kitty +kitten icat"
 
   set -xU LS_COLORS 'di=36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 
