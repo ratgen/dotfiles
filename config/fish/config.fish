@@ -26,6 +26,7 @@ if status is-interactive
   alias ls "ls --hyperlink=auto --color=auto"
 
   alias ssh "kitty +kitten ssh"
+  alias e "edit-in-kitty"
 
   neofetch
 end
