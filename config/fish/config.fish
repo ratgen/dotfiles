@@ -23,6 +23,7 @@ if status is-interactive
   alias zathura "zathura --fork"
 
   alias fm "vifm $(pwd)"
+  alias ls "ls --hyperlink=auto --color=auto"
 
   neofetch
 end
