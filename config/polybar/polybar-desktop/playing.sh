@@ -1,3 +1,4 @@
+#!/bin/bash
 
 PLAYER="mpv"
 
@@ -9,6 +10,11 @@ else
   then
 	  echo "$(playerctl metadata --player="spotify" --format "{{ artist }} - {{ title }}")"
   else
-	  echo "No player is running"
+    if [ "$(pidof "spotifyd")" != "" ];
+    then
+      echo "$(playerctl metadata --player="spotifyd" --format "{{ artist }} - {{ title }}")"
+    else
+      echo "No player is running"
+    fi
   fi
 fi

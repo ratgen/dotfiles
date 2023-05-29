@@ -25,11 +25,11 @@ function dotfilelink {
 }
 
 function linkAllFiles {
-    dotfilelink vim/vimrc .config/nvim/init.vim
-    dotfilelink vim/UltiSnips .config/nvim/UltiSnips
+    dotfilelink nvim/vimrc .config/nvim
     dotfilelink gitconfig .gitconfig
     dotfilelink inputrc .inputrc
 
+    dotfilelink config/redshift .config/redshift
     dotfilelink config/fish .config/fish
     dotfilelink config/zathura .config/zathura
     dotfilelink config/rofi .config/rofi
@@ -58,7 +58,7 @@ function installDesktop {
     dotfilelink screenlayout .screenlayout
     dotfilelink config/Xresources/Xresources-desktop .Xresources
     dotfilelink config/nitrogen/desktop/ .config/nitrogen
-    dotfilelink xinitrc .xinitrc
+    dotfilelink xprofile .xprofile
 }
 
 function installLaptop {

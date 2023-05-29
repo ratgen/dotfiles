@@ -1,0 +1,18 @@
+#!/bin/bash
+
+speed=20
+
+liquidctl initialize --pump-mode quiet all
+liquidctl -m NZXT set fan1 speed $speed
+liquidctl -m NZXT set fan2 speed $speed
+liquidctl -m Corsair set fan1 speed $speed
+liquidctl -m Corsair set fan2 speed $speed
+liquidctl -m "Corsair" set led color fixed ffffff
+
+source ~/.screenlayout/screenlayout.sh
+
+setxkbmap -option "compose:lwin" us
+
+gnome-keyring-daemon --start
+
+# vim: ft=bash
