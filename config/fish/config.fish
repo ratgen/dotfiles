@@ -25,8 +25,7 @@ if status is-interactive
   alias fm "vifm $(pwd)"
   alias ls "ls --hyperlink=auto --color=auto"
 
-  alias ssh "kitty +kitten ssh"
-  alias e "edit-in-kitty"
+  alias s "kitty +kitten ssh"
 
   neofetch
 end

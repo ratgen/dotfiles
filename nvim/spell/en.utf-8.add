@@ -2,3 +2,5 @@ backend
 frontend
 MQTT
 timeseries
+Grafana
+So/!
