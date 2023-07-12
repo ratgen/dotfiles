@@ -9,6 +9,11 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  use{
+    'folke/trouble.nvim',
+    requires = { {'nvim-tree/nvim-web-devicons'} }
+  }
+
    use { "nvim-telescope/telescope-bibtex.nvim" }
 
   use ({ 'projekt0n/github-nvim-theme', tag = 'v0.0.7' })
