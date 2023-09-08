@@ -1,7 +1,7 @@
 app=sxiv
 last_user=
 last_extension=png
-screenshot_dir=file:/home/peter/documents/8semester/emli_individual/images
+screenshot_dir=file:/home/peter/screenshot
 enable_imgur_upload=true
 show_in_folder=true
 action=1
