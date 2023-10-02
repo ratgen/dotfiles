@@ -59,7 +59,23 @@ return require('packer').startup(function(use)
   use 'weirongxu/plantuml-previewer.vim'
 
   use 'nvim-tree/nvim-web-devicons'
-
-  use 'subnut/nvim-ghost.nvim'
-
+  use {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
+  }
+  use {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  }
+  use 'onsails/lspkind.nvim'
 end)

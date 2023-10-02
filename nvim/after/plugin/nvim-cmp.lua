@@ -140,11 +140,12 @@ cmp.setup({
     ghost_text = false,
   },
   sources = {
-      { name = "path" },
-      { name = "ultisnips" },
-      { name = "nvim_lsp" },
+      { name = "nvim_lsp", group_index = 2 },
+      { name = "copilot", group_index = 2 },
+      { name = "path", group_index = 2},
       -- { name = "buffer" },
-      { name = "calc" },
+      { name = "calc", group_index = 2 },
+      { name = "ultisnips", group_index = 2 },
     }
   }
 )
@@ -158,3 +159,4 @@ cmp.event:on(
   'confirm_done',
   cmp_autopairs.on_confirm_done()
 )
+
