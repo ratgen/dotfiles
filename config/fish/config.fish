@@ -23,7 +23,6 @@ if status is-interactive
 
   alias zathura "zathura --fork"
   alias fm "vifm $(pwd)"
-
   fish_add_path /opt/homebrew/bin
   fish_add_path /opt/homebrew/opt/openjdk/bin
   fish_add_path /opt/homebrew/opt/openjdk@11/bin
