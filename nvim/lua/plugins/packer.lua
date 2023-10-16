@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
 
    use { "nvim-telescope/telescope-bibtex.nvim" }
 
-  use ({ 'projekt0n/github-nvim-theme', tag = 'v0.0.7' })
+  use 'folke/tokyonight.nvim'
   use("nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"})
 
   use 'lervag/vimtex'
@@ -27,7 +27,6 @@ return require('packer').startup(function(use)
 
   -- Git commands inside vim
   use 'tpope/vim-fugitive'
-  use 'vim-airline/vim-airline'
   use 'SirVer/ultisnips'
   use 'honza/vim-snippets'
 
@@ -78,4 +77,14 @@ return require('packer').startup(function(use)
     end
   }
   use 'onsails/lspkind.nvim'
+
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+
 end)
