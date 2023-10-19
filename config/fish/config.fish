@@ -12,7 +12,7 @@ if status is-interactive
       set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
       set -x PATH $PATH:$ANDROID_SDK_ROOT/emulator
       set -x PATH $PATH:$ANDROID_SDK_ROOT/platform-tools
-      set -x ANDROID_HOME /Users/peter/Library/Android/sdk
+      set -x ANDROID_HOME $HOME/Android/Sdk
 
       alias gitrm "git ls-files -i -c --exclude-from=.gitignore | xargs git rm --cached"
 
@@ -25,6 +25,7 @@ if status is-interactive
       alias zathura "zathura --fork"
       alias fm "vifm $(pwd)"
     case MacOS
+      set -x ANDROID_HOME /Users/peter/Library/Android/sdk
       fish_add_path /opt/homebrew/bin
       fish_add_path /opt/homebrew/opt/openjdk/bin
       fish_add_path /opt/homebrew/opt/openjdk@11/bin
@@ -32,6 +33,8 @@ if status is-interactive
       fish_add_path /Applications/MongoDB.app/Contents/Resources/Vendor/mongodb/bin
       fish_add_path /Users/peter/Library/Android/sdk/platform-tools
       set -x DOTNET_ROOT /opt/homebrew/opt/dotnet/libexec
+    case '*'
+      echo "Unknown OS"
   end
 
   neofetch
