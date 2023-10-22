@@ -11,6 +11,7 @@ if status is-interactive
       set -x TERMINAL xfce4-terminal
       set -x PATH $PATH:$ANDROID_SDK_ROOT/emulator
       set -x PATH $PATH:$ANDROID_SDK_ROOT/platform-tools
+      set -x ANDROID_HOME $HOME/Android/Sdk
 
       alias gitrm "git ls-files -i -c --exclude-from=.gitignore | xargs git rm --cached"
 
@@ -30,12 +31,12 @@ if status is-interactive
       fish_add_path /Applications/MongoDB.app/Contents/Resources/Vendor/mongodb/bin
       fish_add_path /Users/peter/Library/Android/sdk/platform-tools
       set -x DOTNET_ROOT /opt/homebrew/opt/dotnet/libexec
-
       set -x ANDROID_HOME /Users/peter/Library/Android/sdk
       set -x ANDROID_SDK_ROOT /Users/peter/Library/Android/sdk
       set -x ANDROID_AVD_HOME /Users/peter/.android/avd
-
       nvm install
+    case '*'
+      echo "Unknown OS"
   end
 
   neofetch
