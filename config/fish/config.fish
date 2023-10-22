@@ -9,10 +9,8 @@ if status is-interactive
   switch (uname) 
     case Linux
       set -x TERMINAL xfce4-terminal
-      set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
       set -x PATH $PATH:$ANDROID_SDK_ROOT/emulator
       set -x PATH $PATH:$ANDROID_SDK_ROOT/platform-tools
-      set -x ANDROID_HOME /Users/peter/Library/Android/sdk
 
       alias gitrm "git ls-files -i -c --exclude-from=.gitignore | xargs git rm --cached"
 
@@ -24,7 +22,7 @@ if status is-interactive
 
       alias zathura "zathura --fork"
       alias fm "vifm $(pwd)"
-    case MacOS
+    case Darwin
       fish_add_path /opt/homebrew/bin
       fish_add_path /opt/homebrew/opt/openjdk/bin
       fish_add_path /opt/homebrew/opt/openjdk@11/bin
@@ -32,6 +30,12 @@ if status is-interactive
       fish_add_path /Applications/MongoDB.app/Contents/Resources/Vendor/mongodb/bin
       fish_add_path /Users/peter/Library/Android/sdk/platform-tools
       set -x DOTNET_ROOT /opt/homebrew/opt/dotnet/libexec
+
+      set -x ANDROID_HOME /Users/peter/Library/Android/sdk
+      set -x ANDROID_SDK_ROOT /Users/peter/Library/Android/sdk
+      set -x ANDROID_AVD_HOME /Users/peter/.android/avd
+
+      nvm install
   end
 
   neofetch
