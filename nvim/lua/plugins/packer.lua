@@ -1,4 +1,3 @@
-
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -23,7 +22,7 @@ return require('packer').startup(function(use)
   use 'junegunn/vim-easy-align'
 
   -- Surrounding for quoting and parenthesizing
-  use 'machakann/vim-sandwich'
+  use 'machakann/vim-sandwich'                         
 
   -- Git commands inside vim
   use 'tpope/vim-fugitive'
@@ -36,7 +35,7 @@ return require('packer').startup(function(use)
 
   -- Autocompletion plugin
   use 'hrsh7th/nvim-cmp'
-
+  
   --  sources for cmp-nvim
   use 'quangnguyen30192/cmp-nvim-ultisnips'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -54,7 +53,7 @@ return require('packer').startup(function(use)
   use 'wellle/targets.vim'
   use 'yuezk/vim-js'
   use 'maxmellon/vim-jsx-pretty'
-
+  
   use 'aklt/plantuml-syntax'
   use 'tyru/open-browser.vim'
   use 'weirongxu/plantuml-previewer.vim'
@@ -88,10 +87,22 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
+
   use({
-  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function()
       require("lsp_lines").setup()
     end,
   })
+
+  use 'mfussenegger/nvim-lint'
+  use {
+    "rshkarin/mason-nvim-lint",
+    config = function ()
+      require ('mason-nvim-lint').setup({
+        ensure_installed = {'eslint_d'},
+    })
+    end
+  }
+
 end)

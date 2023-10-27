@@ -26,7 +26,6 @@ set.modeline = true
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 
-
 local opts = {buffer = bufnr, remap = false}
 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -39,4 +38,17 @@ vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts
 vim.keymap.set("n", "<leader>vtr", function() require('telescope.builtin').lsp_references() end, opts)
 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-vim.keymap.set("n", "<leader>e", function() vim.diagnostic.open_float() end, opts)
+vim.keymap.set("n", "<leader>r", function() vim.diagnostic.open_float() end, opts)
+
+vim.keymap.set("n", "<leader>e", "mF:%!eslint_d % --fix<CR>`F")
+
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
+})
+
+vim.diagnostic.config({
+  virtual_text = false,
+})
