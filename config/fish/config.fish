@@ -24,6 +24,10 @@ if status is-interactive
 
       alias zathura "zathura --fork"
       alias fm "vifm $(pwd)"
+      
+      alias cat "bat"
+      alias ls "exa"
+
     case MacOS
       set -x ANDROID_HOME /Users/peter/Library/Android/sdk
       fish_add_path /opt/homebrew/bin
