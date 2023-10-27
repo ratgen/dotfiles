@@ -5,12 +5,9 @@ if status is-interactive
   alias sa "cd ~/documents/6semester/software_architecture/"
 
   set fish_greeting
-
   switch (uname) 
     case Linux
       set -x TERMINAL xfce4-terminal
-      set -x PATH $PATH:$ANDROID_SDK_ROOT/emulator
-      set -x PATH $PATH:$ANDROID_SDK_ROOT/platform-tools
       set -x ANDROID_HOME $HOME/Android/Sdk
 
       alias gitrm "git ls-files -i -c --exclude-from=.gitignore | xargs git rm --cached"
