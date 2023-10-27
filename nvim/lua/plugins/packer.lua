@@ -1,4 +1,3 @@
-
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -46,6 +45,8 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-cmdline'
   use 'nvim-lua/plenary.nvim'
   use 'petertriho/cmp-git'
+  use 'lervag/cmp-vimtex'
+
   use 'windwp/nvim-autopairs'
 
   use 'Yggdroot/indentLine'
@@ -85,6 +86,23 @@ return require('packer').startup(function(use)
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+
+  use({
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function()
+      require("lsp_lines").setup()
+    end,
+  })
+
+  use 'mfussenegger/nvim-lint'
+  use {
+    "rshkarin/mason-nvim-lint",
+    config = function ()
+      require ('mason-nvim-lint').setup({
+        ensure_installed = {'eslint_d'},
+    })
+    end
   }
 
 end)
