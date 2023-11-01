@@ -45,7 +45,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-cmdline'
   use 'nvim-lua/plenary.nvim'
   use 'petertriho/cmp-git'
-  use 'lervag/cmp-vimtex'
+  --  use 'lervag/cmp-vimtex' causes bad things
 
   use 'windwp/nvim-autopairs'
 
