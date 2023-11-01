@@ -45,6 +45,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-cmdline'
   use 'nvim-lua/plenary.nvim'
   use 'petertriho/cmp-git'
+  use 'micangl/cmp-vimtex'
   --  use 'lervag/cmp-vimtex' causes bad things
 
   use 'windwp/nvim-autopairs'
@@ -95,14 +96,6 @@ return require('packer').startup(function(use)
     end,
   })
 
-  use 'mfussenegger/nvim-lint'
-  use {
-    "rshkarin/mason-nvim-lint",
-    config = function ()
-      require ('mason-nvim-lint').setup({
-        ensure_installed = {'eslint_d'},
-    })
-    end
-  }
+  use 'nvimtools/none-ls.nvim'
 
 end)

@@ -33,21 +33,17 @@ vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end
 vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
 vim.keymap.set("n", "gn", function() vim.diagnostic.goto_next() end, opts)
 vim.keymap.set("n", "gp", function() vim.diagnostic.goto_prev() end, opts)
-vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-vim.keymap.set("n", "<leader>vtr", function() require('telescope.builtin').lsp_references() end, opts)
-vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+vim.keymap.set("n", "<leader>r", function() vim.lsp.buf.references() end, opts)
+vim.keymap.set("n", "<leader>lr", function() require('telescope.builtin').lsp_references() end, opts)
+vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 vim.keymap.set("n", "<leader>r", function() vim.diagnostic.open_float() end, opts)
 
-vim.keymap.set("n", "<leader>e", "mF:%!eslint_d % --fix<CR>`F")
+vim.keymap.set("n", "<leader>e", function () vim.lsp.buf.format {
+  filter = function(client) return client.name ~= "tsserver" end
+} end, opts)
 
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-})
 
 vim.diagnostic.config({
   virtual_text = false,
