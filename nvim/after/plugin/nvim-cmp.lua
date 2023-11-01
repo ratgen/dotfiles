@@ -1,4 +1,3 @@
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 -- vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'      
 vim.g.UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
@@ -11,6 +10,7 @@ local t = function(str)
 end
 
 local cmp = require'cmp'
+local lspkind = require('lspkind')
 cmp.setup({
   completion = {
     completeopt = 'menu,menuone,noselect',
@@ -131,17 +131,14 @@ cmp.setup({
 
   },
   formatting = {
-      deprecated = true,
-      format = function(_, vim_item)
-      return vim_item
-  end,
+    format = lspkind.cmp_format(),
   },
   experimental = {
     ghost_text = false,
   },
   sources = {
-      { name = "nvim_lsp", group_index = 2 },
-      { name = 'vimtex', },
+      { name = "nvim_lsp", group_index = 1 },
+      -- { name = 'vimtex', },
       { name = "copilot", group_index = 2 },
       { name = "path", group_index = 2},
       -- { name = "buffer" },
@@ -150,9 +147,6 @@ cmp.setup({
     }
   }
 )
-window = {
-  documentation = "native"
-}
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
@@ -161,3 +155,21 @@ cmp.event:on(
   cmp_autopairs.on_confirm_done()
 )
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+require("mason").setup()
+
+require("mason-lspconfig").setup()
+
+require("mason-lspconfig").setup_handlers {
+  -- The first entry (without a key) will be the default handler
+  -- and will be called for each installed server that doesn't have
+  -- a dedicated handler.
+  function (server_name) -- default handler (optional)
+      require("lspconfig")[server_name].setup {
+          capabilities = capabilities,
+      }
+  end,
+  -- Next, you can provide a dedicated handler for specific servers.
+  -- For example, a handler override for the `rust_analyzer`:
+}
