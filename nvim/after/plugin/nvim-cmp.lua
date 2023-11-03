@@ -139,7 +139,7 @@ cmp.setup({
   sources = {
       { name = "nvim_lsp", group_index = 1 },
       -- { name = 'vimtex', },
-      { name = "copilot", group_index = 2 },
+      { name = "copilot", group_index = 1 },
       { name = "path", group_index = 2},
       -- { name = "buffer" },
       { name = "calc", group_index = 2 },
