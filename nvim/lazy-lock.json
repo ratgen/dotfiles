@@ -40,5 +40,6 @@
   "vim-jsx-pretty": { "branch": "master", "commit": "6989f1663cc03d7da72b5ef1c03f87e6ddb70b41" },
   "vim-sandwich": { "branch": "master", "commit": "c5a2cc438ce6ea2005c556dc833732aa53cae21a" },
   "vim-snippets": { "branch": "master", "commit": "b039190177d97a968d80518470910aae7faf182a" },
-  "vimtex": { "branch": "master", "commit": "7d1dbd0eebe041fbda4d1132622bf051b1546497" }
+  "vimtex": { "branch": "master", "commit": "7d1dbd0eebe041fbda4d1132622bf051b1546497" },
+  "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }
