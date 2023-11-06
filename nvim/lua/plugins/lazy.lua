@@ -1,7 +1,6 @@
 vim.g.mapleader = ' '
 
 require('lazy').setup({
-  'wbthomason/packer.nvim',
   {
     'nvim-telescope/telescope.nvim',
     -- or                            , branch = '0.1.x',
@@ -75,7 +74,6 @@ require('lazy').setup({
     end
   },
   'onsails/lspkind.nvim',
-
   {
     "iamcco/markdown-preview.nvim",
       cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -93,19 +91,18 @@ require('lazy').setup({
       require("lsp_lines").setup()
     end,
   },
-
   'nvimtools/none-ls.nvim',
   {
-  "folke/which-key.nvim",
-  event = "VeryLazy",
-  init = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-  end,
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
-}
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {
+    }
+  },
+  'ThePrimeagen/harpoon',
+  'nvim-tree/nvim-tree.lua',
+  'nvim-tree/nvim-web-devicons'
 })
