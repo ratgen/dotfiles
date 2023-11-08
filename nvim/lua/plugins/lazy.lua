@@ -76,9 +76,9 @@ require('lazy').setup({
   'onsails/lspkind.nvim',
   {
     "iamcco/markdown-preview.nvim",
-      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-      ft = { "markdown" },
-      build = function() vim.fn["mkdp#util#install"]() end,
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
   },
   {
     'nvim-lualine/lualine.nvim',
@@ -104,5 +104,6 @@ require('lazy').setup({
   },
   'ThePrimeagen/harpoon',
   'nvim-tree/nvim-tree.lua',
-  'nvim-tree/nvim-web-devicons'
+  'nvim-tree/nvim-web-devicons',
+  'tpope/vim-obsession'
 })

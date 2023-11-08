@@ -20,6 +20,8 @@ if status is-interactive
 
       alias zathura "zathura --fork"
       alias fm "vifm $(pwd)"
+
+      alias tf "bash ~/dotfiles/tmux-fzf.sh"
       
       alias cat "bat"
       alias ls "exa"

@@ -25,7 +25,7 @@ function dotfilelink {
 }
 
 function linkAllFiles {
-    dotfilelink nvim/vimrc .config/nvim
+    dotfilelink nvim .config/nvim
     dotfilelink gitconfig .gitconfig
     dotfilelink inputrc .inputrc
 
@@ -33,6 +33,7 @@ function linkAllFiles {
     dotfilelink config/fish .config/fish
     dotfilelink config/zathura .config/zathura
     dotfilelink config/rofi .config/rofi
+    dotfilelink config/tmux .config/tmux
     dotfilelink config/newsboat .newsboat
     dotfilelink config/xfce4/terminal .config/xfce4/terminal
     dotfilelink config/vifm .config/vifm
