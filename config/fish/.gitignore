@@ -4,3 +4,11 @@ functions/**
 conf.d/
 completions/**
 !completions/fisher.fish
+fishd*
+fishfile
+/completions
+/functions
+/conf.d
+secret.fish
+DIRCOLORS
+

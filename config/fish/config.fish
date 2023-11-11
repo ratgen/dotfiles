@@ -21,10 +21,6 @@ if status is-interactive
       alias zathura "zathura --fork"
       alias fm "vifm $(pwd)"
 
-      alias tf "bash ~/dotfiles/tmux-fzf.sh"
-      
-      alias cat "bat"
-      alias ls "exa"
 
 
     case Darwin
@@ -38,10 +34,13 @@ if status is-interactive
       set -x ANDROID_HOME /Users/peter/Library/Android/sdk
       set -x ANDROID_SDK_ROOT /Users/peter/Library/Android/sdk
       set -x ANDROID_AVD_HOME /Users/peter/.android/avd
-      nvm install
     case '*'
       echo "Unknown OS"
   end
+
+  alias cat "bat"
+  alias ls "exa"
+  alias tf "bash ~/dotfiles/tmux-fzf.sh"
 
 
   fish_vi_key_bindings
