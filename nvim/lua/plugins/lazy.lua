@@ -105,5 +105,9 @@ require('lazy').setup({
   'ThePrimeagen/harpoon',
   'nvim-tree/nvim-tree.lua',
   'nvim-tree/nvim-web-devicons',
-  'tpope/vim-obsession'
+  'tpope/vim-obsession',
+  {
+    'stevearc/dressing.nvim',
+    opts = {},
+  }
 })
