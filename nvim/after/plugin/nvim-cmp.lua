@@ -183,7 +183,7 @@ require 'lspconfig'.pylsp.setup {
           enabled = true,
           include_params = true,
           fuzzy = true,
-          cache_for = {"pandas", "numpy", "tensorflow", "matplotlib", "os", "json", "skimage", "torch"},
+          cache_for = {"pandas", "numpy", "tensorflow", "matplotlib", "os", "json", "skimage", "torch", "fastapi"},
           include_function_objects = true
         },
       }
