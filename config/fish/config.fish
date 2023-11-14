@@ -34,9 +34,14 @@ if status is-interactive
       set -x ANDROID_HOME /Users/peter/Library/Android/sdk
       set -x ANDROID_SDK_ROOT /Users/peter/Library/Android/sdk
       set -x ANDROID_AVD_HOME /Users/peter/.android/avd
+
+      alias python "python3"
+
     case '*'
       echo "Unknown OS"
   end
+
+  bind -M insert \cf "tmux new -n sessionizer ~/dotfiles/tmux-sessionizer"
 
   alias cat "bat"
   alias ls "exa"
