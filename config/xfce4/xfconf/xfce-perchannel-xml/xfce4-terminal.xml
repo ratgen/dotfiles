@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <channel name="xfce4-terminal" version="1.0">
-  <property name="background-mode" type="string" value="TERMINAL_BACKGROUND_SOLID"/>
-  <property name="background-darkness" type="double" value="0.84999999999999998"/>
+  <property name="background-mode" type="string" value="TERMINAL_BACKGROUND_TRANSPARENT"/>
+  <property name="background-darkness" type="double" value="1"/>
   <property name="color-background" type="string" value="#1a1b26"/>
   <property name="color-palette" type="string" value="#15161e;#f7768e;#9ece6a;#e0af68;#7aa2f7;#bb9af7;#7dcfff;#a9b1d6;#414868;#f7768e;#9ece6a;#e0af68;#7aa2f7;#bb9af7;#7dcfff;#c0caf5"/>
   <property name="color-bold-is-bright" type="bool" value="true"/>

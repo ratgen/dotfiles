@@ -13,7 +13,8 @@ require('lazy').setup({
 
   { "nvim-telescope/telescope-bibtex.nvim" },
 
-  'folke/tokyonight.nvim',
+  --'folke/tokyonight.nvim',
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   "nvim-treesitter/nvim-treesitter",
 
   'lervag/vimtex',
