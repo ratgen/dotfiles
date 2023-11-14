@@ -47,3 +47,5 @@ vim.keymap.set("n", "<leader>e", function () vim.lsp.buf.format {
 vim.diagnostic.config({
   virtual_text = false,
 })
+
+set.conceallevel = 0
