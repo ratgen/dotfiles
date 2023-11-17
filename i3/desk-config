@@ -39,6 +39,7 @@ floating_modifier $mod
 
 
 bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Shift+Return exec xfce4-terminal -e "xfce4-terminal -e 'tmux new -n sessionizer ~/dotfiles/tmux-sessionizer'"
 
 exec --no-startup-id compton &
 
