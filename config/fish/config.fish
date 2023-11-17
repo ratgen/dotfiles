@@ -43,6 +43,8 @@ if status is-interactive
 
   bind -M insert \cf "tmux new -n sessionizer ~/dotfiles/tmux-sessionizer"
 
+  alias sesh "tmux new -n sessionizer ~/dotfiles/tmux-sessionizer"
+
   alias cat "bat"
   alias ls "exa"
   alias tf "bash ~/dotfiles/tmux-fzf.sh"
