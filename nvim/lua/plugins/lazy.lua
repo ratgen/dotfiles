@@ -52,13 +52,9 @@ require('lazy').setup({
   'wellle/targets.vim',
   'yuezk/vim-js',
 
+  'weirongxu/plantuml-previewer.vim',
+  'tyru/open-browser.vim',
   'aklt/plantuml-syntax',
-  {
-    'https://gitlab.com/itaranto/plantuml.nvim',
-    version = '*',
-    config = function() require('plantuml').setup() end,
-  },
-
 
   'nvim-tree/nvim-web-devicons',
   {
@@ -94,6 +90,7 @@ require('lazy').setup({
       require("lsp_lines").setup()
     end,
   },
+  'davidmh/cspell.nvim',
   'nvimtools/none-ls.nvim',
   {
     "folke/which-key.nvim",
