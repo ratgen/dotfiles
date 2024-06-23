@@ -45,7 +45,6 @@ if status is-interactive
 
   alias sesh "tmux new -n sessionizer ~/dotfiles/tmux-sessionizer"
 
-  alias cat "bat"
   alias ls "exa"
   alias tf "bash ~/dotfiles/tmux-fzf.sh"
 
