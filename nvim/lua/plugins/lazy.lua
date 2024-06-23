@@ -45,18 +45,16 @@ require('lazy').setup({
   'nvim-lua/plenary.nvim',
   'petertriho/cmp-git',
   'micangl/cmp-vimtex',
-  --   'lervag/cmp-vimtex' causes bad things
 
   'windwp/nvim-autopairs',
 
   'Yggdroot/indentLine',
   'wellle/targets.vim',
   'yuezk/vim-js',
-  'maxmellon/vim-jsx-pretty',
 
-  'aklt/plantuml-syntax',
-  'tyru/open-browser.vim',
   'weirongxu/plantuml-previewer.vim',
+  'tyru/open-browser.vim',
+  'aklt/plantuml-syntax',
 
   'nvim-tree/nvim-web-devicons',
   {
@@ -92,6 +90,7 @@ require('lazy').setup({
       require("lsp_lines").setup()
     end,
   },
+  'davidmh/cspell.nvim',
   'nvimtools/none-ls.nvim',
   'ThePrimeagen/harpoon',
   'nvim-tree/nvim-tree.lua',
@@ -101,4 +100,13 @@ require('lazy').setup({
     'stevearc/dressing.nvim',
     opts = {},
   },
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = true,
+  }
 })

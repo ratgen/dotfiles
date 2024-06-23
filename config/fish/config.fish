@@ -4,6 +4,8 @@ if status is-interactive
 
   alias sa "cd ~/documents/6semester/software_architecture/"
 
+  set -x EDITOR nvim
+
   set fish_greeting
   switch (uname) 
     case Linux
@@ -13,7 +15,6 @@ if status is-interactive
       alias gitrm "git ls-files -i -c --exclude-from=.gitignore | xargs git rm --cached"
 
       set -xU LS_COLORS 'di=36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
-      set -x EDITOR nvim
 
       alias screenshot "scrot -s /home/peter/screenshot/%d-%m-%y_%H:%M:%S.png"
       alias screenshot_here "scrot -s (pwd)/%d-%m-%y_%H:%M:%S.png"
@@ -30,6 +31,7 @@ if status is-interactive
       fish_add_path /opt/homebrew/opt/openjdk@17/bin
       fish_add_path /Applications/MongoDB.app/Contents/Resources/Vendor/mongodb/bin
       fish_add_path /Users/peter/Library/Android/sdk/platform-tools
+      fish_add_path /Users/peter/.android/sdk/tools/bin
       set -x DOTNET_ROOT /opt/homebrew/opt/dotnet/libexec
       set -x ANDROID_HOME /Users/peter/Library/Android/sdk
       set -x ANDROID_SDK_ROOT /Users/peter/Library/Android/sdk
@@ -66,3 +68,7 @@ if status is-interactive
   neofetch
 end
 
+pyenv init - | source
+
+# Created by `pipx` on 2024-01-19 17:39:55
+set PATH $PATH /Users/peter/.local/bin
