@@ -1,0 +1,41 @@
+snippet uml "UML Diagram"
+@startuml 
+title "$1"
+
+$0
+
+@enduml
+endsnippet
+
+snippet component "Component UML"
+component "$1" as $2 
+$0
+endsnippet
+
+snippet port "Port"
+port "$1" as p$2
+$0
+endsnippet
+
+snippet - "Connection"
+$1 -- $2
+$0
+endsnippet
+
+snippet service "Service and connection"
+
+() "$1" as $2Service
+$3 -- $2Service
+$4 -( $2Service
+$0
+endsnippet
+
+snippet db "Database"
+database "$1" as $2db
+$0
+endsnippet
+
+snippet actorr "Actor"
+actor "$1" as $2
+$0
+endsnippet

@@ -48,8 +48,8 @@ require('lazy').setup({
 
   'windwp/nvim-autopairs',
 
-  'Yggdroot/indentLine',
   'wellle/targets.vim',
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   'yuezk/vim-js',
 
   'weirongxu/plantuml-previewer.vim',
