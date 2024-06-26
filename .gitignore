@@ -3,5 +3,6 @@ __MACOSX/
 .DS_Store
 
 **/nvim/spell
+nvim/lazy-lock.json
 
 Session.vim
