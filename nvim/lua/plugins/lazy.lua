@@ -48,8 +48,8 @@ require('lazy').setup({
 
   'windwp/nvim-autopairs',
 
-  'Yggdroot/indentLine',
   'wellle/targets.vim',
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   'yuezk/vim-js',
 
   'weirongxu/plantuml-previewer.vim',
@@ -77,16 +77,6 @@ require('lazy').setup({
   },
   'davidmh/cspell.nvim',
   'nvimtools/none-ls.nvim',
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-    end,
-    opts = {
-    }
-  },
   'ThePrimeagen/harpoon',
   'nvim-tree/nvim-tree.lua',
   'nvim-tree/nvim-web-devicons',

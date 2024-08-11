@@ -5,6 +5,11 @@ if status is-interactive
   alias sa "cd ~/documents/6semester/software_architecture/"
 
   set -x EDITOR nvim
+  
+  fish_add_path ~/.pyenv/bin
+  fish_add_path /opt/nvim/
+  fish_add_path /opt/jetbrains-toolbox-2.3.2.31487/
+  fish_add_path /home/linuxbrew/.linuxbrew/bin
 
   set fish_greeting
   switch (uname) 
@@ -19,7 +24,7 @@ if status is-interactive
       alias screenshot_here "scrot -s (pwd)/%d-%m-%y_%H:%M:%S.png"
 
       alias zathura "zathura --fork"
-      alias fm "vifm $(pwd)"
+      alias fm "vifm (pwd)"
 
 
 
@@ -48,8 +53,7 @@ if status is-interactive
 
   alias sesh "tmux new -n sessionizer ~/dotfiles/tmux-sessionizer"
 
-  alias tf "bash ~/dotfiles/tmux-fzf.sh"
-
+  set --universal nvm_default_version v22.2.0
 
   fish_vi_key_bindings
 

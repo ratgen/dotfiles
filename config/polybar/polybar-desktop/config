@@ -186,7 +186,7 @@ format-padding = 1
 
 [module/steelseries]
 type = custom/script
-interval = 45
+interval = 5
 format = <label>
 exec = ~/.config/polybar/headset.sh
 ;format-background = ${colors.orange}
