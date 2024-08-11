@@ -57,21 +57,6 @@ require('lazy').setup({
   'aklt/plantuml-syntax',
 
   'nvim-tree/nvim-web-devicons',
-  {
-    "zbirenbaum/copilot.lua",
-    config = function()
-      require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      })
-    end,
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end
-  },
   'onsails/lspkind.nvim',
   {
     "iamcco/markdown-preview.nvim",

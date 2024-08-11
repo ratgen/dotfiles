@@ -15,7 +15,6 @@ if status is-interactive
       alias gitrm "git ls-files -i -c --exclude-from=.gitignore | xargs git rm --cached"
 
       set -xU LS_COLORS 'di=36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
-
       alias screenshot "scrot -s /home/peter/screenshot/%d-%m-%y_%H:%M:%S.png"
       alias screenshot_here "scrot -s (pwd)/%d-%m-%y_%H:%M:%S.png"
 
@@ -37,6 +36,8 @@ if status is-interactive
       set -x ANDROID_SDK_ROOT /Users/peter/Library/Android/sdk
       set -x ANDROID_AVD_HOME /Users/peter/.android/avd
 
+      fish_add_path /Users/peter/.pub-cache/bin
+
       alias python "python3"
 
     case '*'
@@ -47,8 +48,6 @@ if status is-interactive
 
   alias sesh "tmux new -n sessionizer ~/dotfiles/tmux-sessionizer"
 
-  alias cat "bat"
-  alias ls "exa"
   alias tf "bash ~/dotfiles/tmux-fzf.sh"
 
 
