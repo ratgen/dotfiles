@@ -75,7 +75,6 @@ require('lazy').setup({
       require("lsp_lines").setup()
     end,
   },
-  'davidmh/cspell.nvim',
   'nvimtools/none-ls.nvim',
   'ThePrimeagen/harpoon',
   'nvim-tree/nvim-tree.lua',
