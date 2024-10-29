@@ -186,4 +186,8 @@ exec --no-startup-id clipit
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id gnome-keyring-daemon --start
 
-exec dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &
+# exec dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &
+
+exec xrandr --setprovideroutputsource modesetting NVIDIA-0
+exec xrandr --auto
+
