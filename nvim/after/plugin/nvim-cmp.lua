@@ -1,3 +1,4 @@
+-- spell-checker: disable
 -- vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'
 vim.g.UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
 vim.g.UltiSnipsJumpBackwardTrigger = '<Plug>(ultisnips_jump_backward)'
@@ -170,26 +171,54 @@ require("mason-lspconfig").setup_handlers {
       capabilities = capabilities,
     }
   end,
+
+  ["sqls"] = function()
+    require('lspconfig').sqls.setup {
+      on_attach = function(client, bufnr)
+        require('sqls').on_attach(client, bufnr)
+      end,
+      capabilities = capabilities,
+      settings = {
+        sqls = {
+          connections = {
+            {
+              driver = 'postgresql',
+              dataSourceName = 'host=127.0.0.1 port=5432 user=postgres password=example dbname=data-vault sslmode=disable',
+            },
+          },
+        },
+      },
+    };
+  end,
+
+  ["pylsp"] = function()
+    require 'lspconfig'.pylsp.setup {
+      capabilities = capabilities,
+      settings = {
+        pylsp = {
+          plugins = {
+            jedi = {
+              extra_paths = { "/home/perat/.cache/pypoetry/virtualenvs/queue-api--xA5mosK-py3.11" }
+            },
+            jedi_completion = {
+              enabled = true,
+              include_params = true,
+              include_class_objects = true,
+              compltion_eager = true,
+              fuzzy = true,
+              cache_for = { "pandas", "numpy", "tensorflow", "matplotlib", "os", "json", "skimage", "torch", "fastapi", "starlette" },
+              include_function_objects = true
+            },
+          }
+        }
+      }
+    }
+  end
+
   -- Next, you can provide a dedicated handler for specific servers.
   -- For example, a handler override for the `rust_analyzer`:
 }
 
-require 'lspconfig'.pylsp.setup {
-  capabilities = capabilities,
-  settings = {
-    pylsp = {
-      plugins = {
-        jedi_completion = {
-          enabled = true,
-          include_params = true,
-          fuzzy = true,
-          cache_for = {"pandas", "numpy", "tensorflow", "matplotlib", "os", "json", "skimage", "torch", "fastapi"},
-          include_function_objects = true
-        },
-      }
-    }
-  }
-}
 
 require 'lspconfig'.lua_ls.setup {
   settings = {
