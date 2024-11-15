@@ -1,3 +1,4 @@
+# spell-checker: disable
 if status is-interactive
   alias vim "nvim"
   alias dotfiles "cd ~/dotfiles"
@@ -10,6 +11,8 @@ if status is-interactive
   fish_add_path /opt/nvim/
   fish_add_path /opt/jetbrains-toolbox-2.3.2.31487/
   fish_add_path /home/linuxbrew/.linuxbrew/bin
+  fish_add_path ~/.local/bin/
+  fish_add_path /home/linuxbrew/.linuxbrew/opt/node@20/bin
 
   set fish_greeting
   switch (uname) 
@@ -55,7 +58,6 @@ if status is-interactive
   alias ls "exa"
   alias tf "bash ~/dotfiles/tmux-fzf.sh"
 
-
   set --universal nvm_default_version v22.2.0
 
   fish_vi_key_bindings
@@ -79,3 +81,7 @@ pyenv init - | source
 
 # Created by `pipx` on 2024-01-19 17:39:55
 set PATH $PATH /Users/peter/.local/bin
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
