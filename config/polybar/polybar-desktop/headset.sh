@@ -21,7 +21,7 @@ BATTERY_LEVEL="$(echo $OUTPUT | jq '.devices[0].battery.level')"
 CHATMIX="$(echo $OUTPUT | jq '.devices[0].chatmix')"
 
 print_battery_level() {
-  echo " $1 $BATTERY_LEVEL%  Mix: $CHATMIX"
+  echo " $1  $BATTERY_LEVEL%  Mix: $CHATMIX"
 }
 
 if [ "$BATTERY_LEVEL" -lt 10 ];then

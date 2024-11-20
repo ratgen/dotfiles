@@ -75,8 +75,24 @@ require('lazy').setup({
       require("lsp_lines").setup()
     end,
   },
-  'nvimtools/none-ls.nvim',
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = {
+      "nvimtools/none-ls-extras.nvim",
+    },
+  },
   'ThePrimeagen/harpoon',
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    lazy = false,
+    config = function()
+      require("refactoring").setup()
+    end,
+  },
   'nvim-tree/nvim-tree.lua',
   'nvim-tree/nvim-web-devicons',
   'tpope/vim-obsession',
@@ -88,8 +104,8 @@ require('lazy').setup({
     'akinsho/flutter-tools.nvim',
     lazy = false,
     dependencies = {
-        'nvim-lua/plenary.nvim',
-        'stevearc/dressing.nvim', -- optional for vim.ui.select
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
     },
     config = true,
   }

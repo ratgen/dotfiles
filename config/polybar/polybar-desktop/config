@@ -49,14 +49,12 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-font-0 = IBMPlexMono-Regular:size=9.5;2
-font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=11.5;2"
-font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=11.5;2"
-font-3 = "Font Awesome 5 Brands:pixelsize=11.5;3"
+font-0 = LigaSFMonoNerdFont-Regular:size=9.5;2
 
 modules-left = i3
-modules-right = yay steelseries razer filesystem memory cpu temperature date 
-;modules-center = prices polybar-playerctl
+modules-right = steelseries yay filesystem memory cpu temperature date 
+# modules-right = yay steelseries razer filesystem memory cpu temperature date 
+modules-center = polybar-playerctl
 ;modules-right = tv steelseries filesystem cpu temperature date 
 
 tray-background = ${colors.shade8}
@@ -132,15 +130,15 @@ format-padding = 1
 [module/memory]
 type = internal/memory
 interval = 5
-format-prefix = ""
+format-prefix = " "
 format-underline = ${colors.blue}
-label = %mb_used%/%mb_total%
+label = %gb_used%/%gb_total% 
 format-background = ${colors.shade5}
 ;format-background = ${colors.blue}
 
 [module/eth]
 type = internal/network
-interface = enp4s0
+interface = enp5s0
 
 format-connected-underline = #55aa55
 format-connected-prefix = ""
@@ -152,10 +150,11 @@ format-connected-background = ${colors.teal}
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
+date = %d/%m/%Y
 time = %H:%M:%S
-label = %time%
+label = %time% %date%
 format-background = ${colors.shade7}
 format-padding = 1
 
@@ -186,24 +185,13 @@ format-padding = 1
 
 [module/steelseries]
 type = custom/script
-interval = 5
+interval = 120
 format = <label>
 exec = ~/.config/polybar/headset.sh
 ;format-background = ${colors.orange}
 format-background = ${colors.shade2}
 format-padding = 1
 
-[module/tv]
-type = custom/script
-tail = true
-; prefix symbol is shown before the text
-format = "TV"
-exec = python tv.py
-scroll-up = python ~/.config/polybar/tv.py --vol-up
-click-left = python ~/.config/polybar/tv.py --off
-scroll-down = python ~/.config/polybar/tv.py --vol-down
-format-background = ${colors.shade1}
-format-padding = 1
 
 [module/polybar-playerctl]
 interval = 2s
@@ -213,6 +201,7 @@ exec = ~/.config/polybar/playing.sh
 [module/yay]
 type = custom/script
 exec = ~/dotfiles/config/polybar/polybar-desktop/updates-pacman.sh
+format-background = ${colors.shade3}
 interval = 600
 
 [module/prices]

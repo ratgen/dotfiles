@@ -38,8 +38,8 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl -a previous
 floating_modifier $mod
 
 
-bindsym $mod+Return exec xfce4-terminal
-bindsym $mod+Shift+Return exec xfce4-terminal -e "xfce4-terminal -e 'tmux new -n sessionizer ~/dotfiles/tmux-sessionizer'"
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec alacritty -e "xfce4-terminal -e 'tmux new -n sessionizer ~/dotfiles/tmux-sessionizer'"
 
 exec --no-startup-id compton &
 
