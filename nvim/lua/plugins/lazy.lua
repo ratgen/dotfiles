@@ -58,12 +58,16 @@ require('lazy').setup({
 
   'nvim-tree/nvim-web-devicons',
   'onsails/lspkind.nvim',
-  {
+    {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npm install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
     ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
   },
+
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons', opt = true }
