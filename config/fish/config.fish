@@ -58,7 +58,7 @@ if status is-interactive
   alias ls "exa"
   alias tf "bash ~/dotfiles/tmux-fzf.sh"
 
-  set --universal nvm_default_version v22.2.0
+  set --universal nvm_default_version latest
 
   fish_vi_key_bindings
 
