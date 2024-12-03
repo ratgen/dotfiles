@@ -6,3 +6,6 @@ TERM = "xterm-256color"
 [font]
 normal = { family = "BlexMono Nerd Font Mono", style = "Regular"}
 size = 12
+
+[shell]
+program = "/bin/fish"
