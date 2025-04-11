@@ -45,8 +45,8 @@ exec --no-startup-id compton &
 
 # start newsboat
 
-bindsym $mod+b exec firefox
-bindsym $mod+m exec evolution
+bindsym $mod+b exec zen-browser
+bindsym $mod+m exec thunderbird
 bindsym $mod+i exec xfce4-terminal --execute vifm ~
 bindsym $mod+shift+s exec scrot -s /home/peter/screenshots/%y-%m-%d_%H:%M:%S.png
 

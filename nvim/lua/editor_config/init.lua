@@ -31,7 +31,7 @@ vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end
 vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
 vim.keymap.set("n", "gn", function() vim.diagnostic.goto_next() end, opts)
 vim.keymap.set("n", "gp", function() vim.diagnostic.goto_prev() end, opts)
-vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+vim.keymap.set("x", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
 vim.keymap.set("n", "<leader>r", function() vim.lsp.buf.references() end, opts)
 vim.keymap.set("n", "<leader>lr", function() require('telescope.builtin').lsp_references() end, opts)
 vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)

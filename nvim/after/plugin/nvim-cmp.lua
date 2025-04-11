@@ -197,17 +197,10 @@ require("mason-lspconfig").setup_handlers {
       settings = {
         pylsp = {
           plugins = {
-            jedi = {
-              extra_paths = { "/home/perat/.cache/pypoetry/virtualenvs/queue-api--xA5mosK-py3.11" }
-            },
             jedi_completion = {
               enabled = true,
               include_params = true,
-              include_class_objects = true,
-              compltion_eager = true,
-              fuzzy = true,
-              cache_for = { "pandas", "numpy", "tensorflow", "matplotlib", "os", "json", "skimage", "torch", "fastapi", "starlette" },
-              include_function_objects = true
+              cache_for = { "pandas", "numpy", "tensorflow", "matplotlib", "os", "json", "skimage", "torch", "fastapi", "starlette", "uvicorn" },
             },
           }
         }

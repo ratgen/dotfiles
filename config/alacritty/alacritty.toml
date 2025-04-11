@@ -6,7 +6,10 @@ TERM = "xterm-256color"
 
 [font]
 normal = { family = "BlexMono Nerd Font Mono", style = "Medium"}
-size = 11
+size = 10
+
+[keyboard]
+bindings = [{  key =  "F",  mods = "Control|Shift", action = "ReceiveChar" }]
 
 [terminal.shell]
 program = "/bin/fish"

@@ -53,7 +53,7 @@ if status is-interactive
 
   alias sesh "tmux new -n sessionizer ~/dotfiles/tmux-sessionizer"
 
-  set --universal nvm_default_version v22.2.0
+  set --universal nvm_default_version latest
 
   fish_vi_key_bindings
 
