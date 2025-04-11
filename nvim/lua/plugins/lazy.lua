@@ -26,21 +26,58 @@ require('lazy').setup({
 
   'williamboman/mason-lspconfig.nvim',
   'williamboman/mason.nvim',
-  'neovim/nvim-lspconfig',
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = { 'saghen/blink.cmp' },
+  },
+  "folke/noice.nvim", {
+  event = "VeryLazy",
+  opts = {
+    -- add any options here
+  },
+  dependencies = {
+    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    "MunifTanjim/nui.nvim",
+    -- OPTIONAL:
+    --   `nvim-notify` is only needed, if you want to use the notification view.
+    --   If not available, we use `mini` as the fallback
+    "rcarriga/nvim-notify",
+    }
+  },
+  {
+    'saghen/blink.cmp',
+    -- optional: provides snippets for the snippet source
+    dependencies = { 'rafamadriz/friendly-snippets' },
 
-  -- Autocompletion plugin
-  'hrsh7th/nvim-cmp',
+    -- use a release tag to download pre-built binaries
+    version = '1.*',
+    opts = {
+      -- All presets have the following mappings:
+      -- C-space: Open menu or open docs if already open
+      -- C-n/C-p or Up/Down: Select next/previous item
+      -- C-e: Hide menu
+      -- C-k: Toggle signature help (if signature.enabled = true)
+      keymap = { preset = 'enter' },
+      signature = { enabled = true },
 
-  --  sources for cmp-nvim
-  'quangnguyen30192/cmp-nvim-ultisnips',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-calc',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-cmdline',
-  'nvim-lua/plenary.nvim',
-  'petertriho/cmp-git',
-  'micangl/cmp-vimtex',
+      appearance = {
+        -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- Adjusts spacing to ensure icons are aligned
+        nerd_font_variant = 'normal'
+      },
+
+      -- (Default) Only show the documentation popup when manually triggered
+      completion = { documentation = { auto_show = true } },
+
+      -- Default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, due to `opts_extend`
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+      fuzzy = { implementation = "prefer_rust_with_warning" }
+    },
+    OPTS_EXTEND = { "SOURCES.DEFAULT" }
+  },
 
   'windwp/nvim-autopairs',
 
