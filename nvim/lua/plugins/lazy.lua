@@ -10,7 +10,6 @@ require('lazy').setup({
   { "nvim-telescope/telescope-bibtex.nvim" },
 
   --'folke/tokyonight.nvim',
-  { "catppuccin/nvim",                     name = "catppuccin", priority = 1000 },
   "nvim-treesitter/nvim-treesitter",
 
   'lervag/vimtex',
@@ -30,6 +29,17 @@ require('lazy').setup({
 
   -- Autocompletion plugin
   'hrsh7th/nvim-cmp',
+
+  -- Themes
+  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+
+
 
   --  sources for cmp-nvim
   'quangnguyen30192/cmp-nvim-ultisnips',
@@ -77,6 +87,13 @@ require('lazy').setup({
       "nvimtools/none-ls-extras.nvim",
       "gwinn/none-ls-jsonlint.nvim",
     },
+    config = function ()
+      local null_ls = require("null-ls")
+
+      null_ls.setup({
+        sources = null_ls.builtins.code_actions.refactoring
+      })
+    end
   },
   'nanotee/sqls.nvim',
   'ThePrimeagen/harpoon',
@@ -280,3 +297,6 @@ require('lazy').setup({
     },
   },
 })
+
+
+vim.cmd.colorscheme "tokyonight"

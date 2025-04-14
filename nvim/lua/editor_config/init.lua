@@ -24,6 +24,19 @@ set.updatetime = 50
 
 set.modeline = true
 
+local function code_action_with_visual_range()
+  -- Store the visual selection marks.
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos   = vim.fn.getpos("'>")
+
+  -- Call the LSP code action (or your refactoring.nvim function).
+  vim.lsp.buf.code_action()
+
+  -- (Optional) Reselect the previous visual selection if you need to.
+  vim.cmd('normal! gv')
+end
+
+
 local opts = {buffer = bufnr, remap = false}
 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -32,6 +45,11 @@ vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, op
 vim.keymap.set("n", "gn", function() vim.diagnostic.goto_next() end, opts)
 vim.keymap.set("n", "gp", function() vim.diagnostic.goto_prev() end, opts)
 vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+vim.keymap.set(
+  'x', -- map in visual mode
+  '<leader>ca', function() code_action_with_visual_range() end,
+  { noremap = true, silent = true }
+)
 vim.keymap.set("n", "<leader>r", function() vim.lsp.buf.references() end, opts)
 vim.keymap.set("n", "<leader>lr", function() require('telescope.builtin').lsp_references() end, opts)
 vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
