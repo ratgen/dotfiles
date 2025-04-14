@@ -70,6 +70,12 @@ require('lazy').setup({
   },
 
   'windwp/nvim-autopairs',
+  {
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+},
 
   'wellle/targets.vim',
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
