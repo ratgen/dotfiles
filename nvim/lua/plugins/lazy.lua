@@ -31,9 +31,15 @@ require('lazy').setup({
     dependencies = { 'saghen/blink.cmp' },
   },
   {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+    end,
+  },
+  {
     "folke/noice.nvim", 
     event = "VeryLazy",
-    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", "smjonas/inc-rename.nvim" }
+    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
   },
   {
     'saghen/blink.cmp',
