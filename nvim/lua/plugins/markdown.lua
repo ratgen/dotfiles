@@ -1,20 +1,13 @@
 return {
   {
-    'weirongxu/plantuml-previewer.vim',
-    ft = { "markdown"}
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    ft = { 'markdown' }
+
+    -- For blink.cmp's completion
+    -- source
+    -- dependencies = {
+    --     "saghen/blink.cmp"
+    -- },
   },
-  {
-    'tyru/open-browser.vim',
-    ft = { "markdown" }
-  },
-  {
-    'aklt/plantuml-syntax',
-    ft = { "markdown" }
-  },
-  {
-     "iamcco/markdown-preview.nvim",
-     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-     ft = { "markdown" },
-     build = function() vim.fn["mkdp#util#install"]() end,
-   },
 }

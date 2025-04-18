@@ -2,8 +2,19 @@ vim.g.mapleader = ' '
 
 ---@diagnostic disable: missing-fields
 require('lazy').setup({
+  -- LSP Configuration 
+  require("plugins.lsp-config"),
+
+  -- Markdown related plugins
+  require("plugins.markdown"),
+
+  -- snacks configuration
   require("plugins.snacks"),
-  {
+
+  -- Import dap plugins from the dap.lua file 
+  require("plugins.dap"),
+
+  { -- Enhances the lua configuration of nvim, by adding types for plugins
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
     opts = {
@@ -17,8 +28,8 @@ require('lazy').setup({
 
   --'folke/tokyonight.nvim',
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  "nvim-treesitter/nvim-treesitter",
 
+  "nvim-treesitter/nvim-treesitter",
   'lervag/vimtex',
 
   -- Surrounding ,fo quoting and parenthesizing, and additional objects for this
@@ -38,11 +49,6 @@ require('lazy').setup({
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", "smjonas/inc-rename.nvim" }
   },
 
-  -- LSP Configuration 
-  require("plugins.lsp-config"),
-
-  -- Markdown related plugins
-  require("plugins.markdown"),
 
   -- Buttom line pluging
   {
@@ -100,7 +106,6 @@ require('lazy').setup({
     },
     config = true,
   },
-  require("plugins.dap"), -- Import dap plugins from the dap.lua file 
 
   {
     "folke/trouble.nvim",
