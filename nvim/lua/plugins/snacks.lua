@@ -10,10 +10,36 @@ return {
       -- refer to the configuration section below
       bigfile = { enabled = true },
       dashboard = { enabled = true },
-      explorer = { enabled = true },
+      explorer = {
+        enabled = true,
+        ui_select = true,
+      },
       indent = { enabled = true },
       input = { enabled = true },
-      picker = { enabled = true },
+      picker = {
+        enabled = true,
+        sources = {
+          explorer = {
+            enabled = true,
+            ui_select = true,
+            win = {
+              input = {
+                keys = {
+                  ["<C-t>"] = { "tab", mode = { "n", "i" } },
+                  ["<C-q>"] = { "qflist", mode = { "n", "i" } },
+                },
+              },
+              list = {
+                keys = {
+                  ["<C-t>"] = { "tab", mode = { "n", "i" } },
+                  ["<C-q>"] = { "qflist", mode = { "n", "i" } },
+                },
+              },
+            },
+          },
+        }
+
+      },
       notifier = { enabled = true },
       quickfile = { enabled = true },
       scope = { enabled = true },
@@ -29,7 +55,7 @@ return {
       { "<leader>/",       function() Snacks.picker.grep() end,                                    desc = "Grep" },
       { "<leader>:",       function() Snacks.picker.command_history() end,                         desc = "Command History" },
       { "<leader>n",       function() Snacks.picker.notifications() end,                           desc = "Notification History" },
-      { "<leader>fm",       function() Snacks.explorer() end,                                       desc = "File Explorer" },
+      { "<leader>fm",      function() Snacks.explorer() end,                                       desc = "File Explorer" },
       -- find
       { "<leader>fb",      function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
       { "<leader>fc",      function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },

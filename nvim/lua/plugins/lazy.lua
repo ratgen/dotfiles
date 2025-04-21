@@ -82,6 +82,13 @@ require('lazy').setup({
     end,
   },
 
+  {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+    end,
+  },
+
   -- Plugin for auto opening sessions
   {
     'rmagatti/auto-session',
