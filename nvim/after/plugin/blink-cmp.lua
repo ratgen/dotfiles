@@ -45,8 +45,8 @@ require 'lspconfig'.lua_ls.setup {
   },
 }
 
-require("lspconfig").dartls.setup({
-  cmd = { "dart", "language-server", "--protocol=lsp" },
-})
+--require("lspconfig").dartls.setup({
+--cmd = { "dart", "language-server", "--protocol=lsp" },
+--})
 
 
