@@ -46,7 +46,7 @@ require('lazy').setup({
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", "smjonas/inc-rename.nvim" }
+    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
   },
 
 

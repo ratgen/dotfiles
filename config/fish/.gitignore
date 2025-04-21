@@ -1,3 +1,4 @@
+themes/
 fish_variables
 functions/**
 !**/functions/fisher.fish
