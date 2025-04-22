@@ -23,15 +23,19 @@ require("mason-lspconfig").setup_handlers {
 }
 
 require 'lspconfig'.lua_ls.setup {
-  settings = {
+    settings = {
     Lua = {
       runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        -- Tell the language server which version of Lua you're using
+        -- (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
+        globals = {
+          'vim',
+          'require'
+        },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -44,9 +48,3 @@ require 'lspconfig'.lua_ls.setup {
     },
   },
 }
-
-require("lspconfig").dartls.setup({
-  cmd = { "dart", "language-server", "--protocol=lsp" },
-})
-
-
