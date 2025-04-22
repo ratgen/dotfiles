@@ -29,11 +29,11 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
   },
-  {
-    "folke/noice.nvim", 
-    event = "VeryLazy",
-    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", }
-  },
+--  {
+--    "folke/noice.nvim", 
+--    event = "VeryLazy",
+--    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", }
+--  },
   {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
