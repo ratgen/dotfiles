@@ -29,6 +29,7 @@ return {
 
     -- use a release tag to download pre-built binaries
     version = '1.*',
+
     opts = {
       -- All presets have the following mappings:
       -- C-space: Open menu or open docs if already open
@@ -56,5 +57,4 @@ return {
     },
     OPTS_EXTEND = { "SOURCES.DEFAULT" }
   },
-
 }
