@@ -26,6 +26,8 @@ require('lazy').setup({
     },
   },
 
+  "zbirenbaum/copilot.lua",
+
   --'folke/tokyonight.nvim',
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
@@ -62,6 +64,7 @@ require('lazy').setup({
     dependencies = {
       "nvimtools/none-ls-extras.nvim",
       "gwinn/none-ls-jsonlint.nvim",
+      "nvim-lua/plenary.nvim",
     },
   },
 
@@ -74,12 +77,12 @@ require('lazy').setup({
   -- Pluging for refactoring, eg extract function, etc.
   {
     "ThePrimeagen/refactoring.nvim",
-    dependencies = { "nvim-lua/plenary.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    config = function()
-      require("refactoring").setup()
-    end,
+    lazy = false,
+    opts = {},
   },
 
   {
