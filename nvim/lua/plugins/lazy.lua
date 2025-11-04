@@ -28,6 +28,7 @@ require('lazy').setup({
 
   --'folke/tokyonight.nvim',
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  "xiyaowong/transparent.nvim",
 
   "nvim-treesitter/nvim-treesitter",
   'lervag/vimtex',

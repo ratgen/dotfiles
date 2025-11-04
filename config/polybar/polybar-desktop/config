@@ -52,8 +52,8 @@ foreground = ${colors.foreground}
 font-0 = LigaSFMonoNerdFont-Regular:size=9.5;2
 
 modules-left = i3
-modules-right = steelseries yay filesystem memory cpu temperature date 
-# modules-right = yay steelseries razer filesystem memory cpu temperature date 
+modules-right = yay filesystem memory cpu temperature date 
+; modules-right = steelseries yay filesystem memory cpu temperature date 
 modules-center = polybar-playerctl
 ;modules-right = tv steelseries filesystem cpu temperature date 
 
