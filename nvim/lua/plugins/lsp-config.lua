@@ -9,6 +9,13 @@ return {
     end,
   },
 
+  {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+    end,
+  },
+
   'williamboman/mason-lspconfig.nvim',
   'williamboman/mason.nvim',
   {
@@ -16,25 +23,32 @@ return {
     dependencies = { 'saghen/blink.cmp' },
   },
   {
-    "giuxtaposition/blink-cmp-copilot",
-  },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "nvim-lua/plenary.nvim", branch = "master" },
-    },
-    build = "make tiktoken",
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({})
+    end,
     opts = {
-      -- See Configuration section for options
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+      filetypes = {
+        markdown = true,
+        help = true,
+      },
     },
   },
   {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
-    dependencies = { 'rafamadriz/friendly-snippets' },
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+      'fang2hou/blink-copilot',
+    },
 
     -- use a release tag to download pre-built binaries
-    version = '1.6',
+    version = '1.*',
+
     opts = {
       -- All presets have the following mappings:
       -- C-space: Open menu or open docs if already open
@@ -47,40 +61,7 @@ return {
       appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = 'normal',
-        kind_icons = {
-          Copilot = "",
-          Text = '󰉿',
-          Method = '󰊕',
-          Function = '󰊕',
-          Constructor = '󰒓',
-
-          Field = '󰜢',
-          Variable = '󰆦',
-          Property = '󰖷',
-
-          Class = '󱡠',
-          Interface = '󱡠',
-          Struct = '󱡠',
-          Module = '󰅩',
-
-          Unit = '󰪚',
-          Value = '󰦨',
-          Enum = '󰦨',
-          EnumMember = '󰦨',
-
-          Keyword = '󰻾',
-          Constant = '󰏿',
-
-          Snippet = '󱄽',
-          Color = '󰏘',
-          File = '󰈔',
-          Reference = '󰬲',
-          Folder = '󰉋',
-          Event = '󱐋',
-          Operator = '󰪚',
-          TypeParameter = '󰬛',
-        },
+        nerd_font_variant = 'normal'
       },
 
       -- (Default) Only show the documentation popup when manually triggered
@@ -89,22 +70,13 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+        default = { 'copilot', 'lsp', 'path', 'snippets', 'buffer' },
         providers = {
           copilot = {
             name = "copilot",
-            module = "blink-cmp-copilot",
+            module = "blink-copilot",
             score_offset = 100,
             async = true,
-            transform_items = function(_, items)
-              local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-              local kind_idx = #CompletionItemKind + 1
-              CompletionItemKind[kind_idx] = "Copilot"
-              for _, item in ipairs(items) do
-                item.kind = kind_idx
-              end
-              return items
-            end,
           },
         },
       },
@@ -112,5 +84,4 @@ return {
     },
     OPTS_EXTEND = { "SOURCES.DEFAULT" }
   },
-
 }

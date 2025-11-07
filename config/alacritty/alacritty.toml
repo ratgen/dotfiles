@@ -1,14 +1,15 @@
+[general]
+import = ["./catppuccin-mocha.toml"]
+
+[window]
+opacity = 0.94
+
 [env]
 TERM = "xterm-256color"
 
 [font]
 normal = { family = "BlexMono Nerd Font Mono", style = "Medium"}
-size = 10.9
-
-[general]
-import = ["./catppuccin-mocha.toml"]
-
-[terminal]
+size = 10.7
 
 [terminal.shell]
 program = "/bin/fish"

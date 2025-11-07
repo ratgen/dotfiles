@@ -5,9 +5,6 @@ require('lazy').setup({
   -- LSP Configuration 
   require("plugins.lsp-config"),
 
-  -- Markdown related plugins
-  -- require("plugins.markdown"),
-
   -- snacks configuration
   require("plugins.snacks"),
 
@@ -26,10 +23,9 @@ require('lazy').setup({
     },
   },
 
-  "zbirenbaum/copilot.lua",
-
   --'folke/tokyonight.nvim',
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  "xiyaowong/transparent.nvim",
 
   "nvim-treesitter/nvim-treesitter",
   'lervag/vimtex',
@@ -64,7 +60,6 @@ require('lazy').setup({
     dependencies = {
       "nvimtools/none-ls-extras.nvim",
       "gwinn/none-ls-jsonlint.nvim",
-      "nvim-lua/plenary.nvim",
     },
   },
 
@@ -77,12 +72,12 @@ require('lazy').setup({
   -- Pluging for refactoring, eg extract function, etc.
   {
     "ThePrimeagen/refactoring.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
+    dependencies = { "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    lazy = false,
-    opts = {},
+    config = function()
+      require("refactoring").setup()
+    end,
   },
 
   {
