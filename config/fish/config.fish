@@ -30,6 +30,7 @@ if status is-interactive
       alias zathura "zathura --fork"
       alias fm "vifm (pwd)"
 
+      alias nvim "/opt/nvim/nvim"
 
 
     case Darwin
