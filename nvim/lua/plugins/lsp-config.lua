@@ -22,28 +22,23 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
   },
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({})
-    end,
+    {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
+    build = "make tiktoken",
     opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-      filetypes = {
-        markdown = true,
-        help = true,
-      },
+      -- See Configuration section for options
     },
   },
+  'github/copilot.vim',
   {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
     dependencies = {
       'rafamadriz/friendly-snippets',
-      'fang2hou/blink-copilot',
+      'fang2hou/blink-copilot'
     },
 
     -- use a release tag to download pre-built binaries
