@@ -65,7 +65,22 @@ return {{
 
           -- You can provide additional configuration to the handlers,
           -- see mason-nvim-dap README for more information
-          handlers = {},
+          handlers = {
+            -- fallback for all other adapters:
+            function(config)
+              require("mason-nvim-dap").default_setup(config)
+            end,
+
+            -- our custom handler for the 'python' adapter:
+            python = function(config)
+              -- disable justMyCode on *all* of the Python configurations:
+              for _, cfg in ipairs(config.configurations) do
+                cfg.justMyCode = false
+              end
+              -- then let mason-nvim-dap install & register it as usual:
+              require("mason-nvim-dap").default_setup(config)
+            end,
+          },
 
           -- You'll need to check that you have the required things installed
           -- online, please don't ask me how to install them :)

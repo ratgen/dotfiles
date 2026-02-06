@@ -5,9 +5,6 @@ require('lazy').setup({
   -- LSP Configuration 
   require("plugins.lsp-config"),
 
-  -- Markdown related plugins
-  require("plugins.markdown"),
-
   -- snacks configuration
   require("plugins.snacks"),
 
