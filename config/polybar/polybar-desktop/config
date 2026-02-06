@@ -55,7 +55,7 @@ font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=11.5;2"
 font-3 = "Font Awesome 5 Brands:pixelsize=11.5;3"
 
 modules-left = i3
-modules-right = yay steelseries razer filesystem memory cpu temperature date 
+modules-right = yay filesystem memory cpu temperature date 
 ;modules-center = prices polybar-playerctl
 ;modules-right = tv steelseries filesystem cpu temperature date 
 
