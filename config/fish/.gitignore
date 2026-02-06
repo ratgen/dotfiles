@@ -15,6 +15,8 @@ DIRCOLORS
 
 *.tmp
 
+fish_variables*
+
 # Note that some of the patterns below should be in an individual's
 # ~/.config/git/ignore file. For example, ".DS_Store" from people working on
 # MacOS.
