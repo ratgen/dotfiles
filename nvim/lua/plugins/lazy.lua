@@ -2,16 +2,16 @@ vim.g.mapleader = ' '
 
 ---@diagnostic disable: missing-fields
 require('lazy').setup({
-  -- LSP Configuration 
+  -- LSP Configuration
   require("plugins.lsp-config"),
 
   -- snacks configuration
   require("plugins.snacks"),
 
-  -- Import dap plugins from the dap.lua file 
+  -- Import dap plugins from the dap.lua file
   require("plugins.dap"),
 
-  { -- Enhances the lua configuration of nvim, by adding types for plugins
+  {             -- Enhances the lua configuration of nvim, by adding types for plugins
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
     opts = {
@@ -37,7 +37,7 @@ require('lazy').setup({
 
   -- Git commands inside vim
   'tpope/vim-fugitive',
-  -- 'SirVer/ultisnips',
+  'SirVer/ultisnips',
   'honza/vim-snippets',
 
   -- Cmdline UI improvement
@@ -110,6 +110,25 @@ require('lazy').setup({
       'stevearc/dressing.nvim', -- optional for vim.ui.select
     },
     config = true,
+  },
+
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
   },
 
   {
