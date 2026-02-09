@@ -31,10 +31,11 @@ vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 --vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
 vim.keymap.set("n", "gn", function() vim.diagnostic.jump({ count = 1 }) end, opts)
 vim.keymap.set("n", "gp", function() vim.diagnostic.jump({ count = -1 }) end, opts)
-vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-vim.keymap.set("x", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+
 --vim.keymap.set("n", "<leader>r", function() vim.lsp.buf.references() end, opts)
 --vim.keymap.set("n", "<leader>lr", function() require('telescope.builtin').lsp_references() end, opts)
+--
 vim.keymap.set("n", "<leader>rn", function()
   return ":IncRename " .. vim.fn.expand("<cword>")
 end, { expr = true })

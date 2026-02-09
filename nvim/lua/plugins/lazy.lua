@@ -37,7 +37,7 @@ require('lazy').setup({
 
   -- Git commands inside vim
   'tpope/vim-fugitive',
-  'SirVer/ultisnips',
+  -- 'SirVer/ultisnips',
   'honza/vim-snippets',
 
   -- Cmdline UI improvement
