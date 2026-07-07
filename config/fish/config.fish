@@ -30,7 +30,12 @@ if status is-interactive
       alias zathura "zathura --fork"
       alias fm "vifm (pwd)"
 
+
       alias nvim "/opt/nvim/nvim"
+
+      alias pysource "source .venv/bin/activate.fish"
+
+      ln -s $(which fdfind) ~/.local/bin/fd
 
 
     case Darwin
