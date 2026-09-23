@@ -24,10 +24,6 @@ set.updatetime = 250
 
 set.modeline = true
 
-local opts = { remap = false }
-vim.keymap.set("n", "gn", function() vim.diagnostic.jump({ count = 1 }) end, opts)
-vim.keymap.set("n", "gp", function() vim.diagnostic.jump({ count = -1 }) end, opts)
-
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp_keymaps", { clear = true }),
   callback = function(args)

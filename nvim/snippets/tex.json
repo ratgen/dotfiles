@@ -1,0 +1,128 @@
+{
+  "lstlisting": {
+    "prefix": "listing",
+    "body": [
+      "\\begin{lstlisting}[inputencoding=utf8/latin1,basicstyle=\\ttfamily, language=$1, keywordstyle=\\color{blue}\\bfseries, rulecolor=\\color{black}]",
+      "$2",
+      "\\end{lstlisting}",
+      "$0"
+    ],
+    "description": "lstlisting"
+  },
+  "Template for beamer presentation": {
+    "prefix": "beamerpres",
+    "body": [
+      "\\documentclass[10pt]{beamer}",
+      "",
+      "\\usepackage[utf8]{inputenc}",
+      "\\usepackage[danish]{babel}",
+      "\\usepackage{float}",
+      "\\usepackage{fancyhdr}",
+      "\\usepackage{amsmath}",
+      "\\usepackage{color}",
+      "\\usepackage{listings}",
+      "\\usepackage{graphicx}",
+      "\\usepackage{pdfpages}",
+      "\\usepackage{booktabs}",
+      "\\usepackage{listingsutf8}",
+      "",
+      "\\title{$1}",
+      "\\author{Peter Heilbo Ratgen}",
+      "\\date{\\today}",
+      "",
+      "\\begin{document}",
+      "\\maketitle",
+      "",
+      "\\begin{frame}",
+      "\t\\frametitle{$2}",
+      "\\end{frame}",
+      "",
+      "\\end{document}"
+    ],
+    "description": "Template for beamer presentation"
+  },
+  "Sample template for all documents": {
+    "prefix": "sampletemplateda",
+    "body": [
+      "\\documentclass{article}",
+      "",
+      "\\usepackage[utf8]{inputenc}",
+      "\\usepackage[danish]{babel}",
+      "\\usepackage{float}",
+      "\\usepackage{fancyhdr}",
+      "\\usepackage{amsmath}",
+      "\\usepackage{color}",
+      "\\usepackage{listings}",
+      "\\usepackage{graphicx}",
+      "\\usepackage{pdfpages}",
+      "\\usepackage{booktabs}",
+      "\\usepackage{listingsutf8}",
+      "\\usepackage{enumitem}",
+      "\\usepackage[a4paper, top = 1in, bottom = 1in, left=1in,right=1in]{geometry}",
+      "\\usepackage{csquotes}",
+      "\\usepackage[backend=biber, citestyle=ieee]{biblatex}",
+      "",
+      "\\title{$1}",
+      "\\author{Peter Heilbo Ratgen}",
+      "\\date{\\today}",
+      "",
+      "\\begin{document}",
+      "\\maketitle",
+      "$2",
+      "",
+      "\\end{document}"
+    ],
+    "description": "Sample template for all documents"
+  },
+  "Textt": {
+    "prefix": "tt",
+    "body": [
+      "\\texttt{$1} $2"
+    ],
+    "description": "Textt"
+  },
+  "Create UML Class": {
+    "prefix": "umlclass",
+    "body": [
+      "\\umlclass[x=${1:0},y=${2:0}]{${3:name}}{$4}{$5}"
+    ],
+    "description": "Create UML Class"
+  },
+  "Less than": {
+    "prefix": [
+      "<",
+      "textless"
+    ],
+    "body": [
+      "\\textless$1"
+    ],
+    "description": "Less than"
+  },
+  "Greater than": {
+    "prefix": [
+      ">",
+      "textgreater"
+    ],
+    "body": [
+      "\\textgreater$1"
+    ],
+    "description": "Greater than"
+  },
+  "Create UML Package": {
+    "prefix": "umlpackage",
+    "body": [
+      "\\begin{umlpackage}[x=${1:0}, y=${2:0}]{${3:name}}",
+      "$4\t",
+      "\\end{umlpackage}",
+      "$5"
+    ],
+    "description": "Create UML Package"
+  },
+  "subitem": {
+    "prefix": "sit",
+    "body": [
+      "\\subitem $0"
+    ],
+    "description": "subitem"
+  }
+}

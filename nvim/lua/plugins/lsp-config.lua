@@ -80,9 +80,13 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { 'copilot', 'lsp', 'path', 'snippets', 'tmux', 'buffer', 'env' },
+        default = { 'copilot', 'lsp', 'path', 'snippets', 'buffer' },
         per_filetype = {
           gitcommit = { 'git', 'conventional_commits', inherit_defaults = true },
+          sh = { 'tmux', 'env', inherit_defaults = true },
+          bash = { 'tmux', 'env', inherit_defaults = true },
+          zsh = { 'tmux', 'env', inherit_defaults = true },
+          fish = { 'tmux', 'env', inherit_defaults = true },
         },
         providers = {
           copilot = {
