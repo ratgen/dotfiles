@@ -10,18 +10,14 @@ return {
       -- refer to the configuration section below
       bigfile = { enabled = true },
       dashboard = { enabled = true },
-      explorer = {
-        enabled = true,
-        ui_select = true,
-      },
+      explorer = { enabled = true },
       indent = { enabled = true },
       input = { enabled = true },
       picker = {
         enabled = true,
+        ui_select = true, -- use the picker for vim.ui.select
         sources = {
           explorer = {
-            enabled = true,
-            ui_select = true,
             win = {
               input = {
                 keys = {
@@ -37,8 +33,7 @@ return {
               },
             },
           },
-        }
-
+        },
       },
       notifier = { enabled = true },
       quickfile = { enabled = true },
@@ -54,7 +49,6 @@ return {
       { "<leader>,",       function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
       { "<leader>/",       function() Snacks.picker.grep() end,                                    desc = "Grep" },
       { "<leader>:",       function() Snacks.picker.command_history() end,                         desc = "Command History" },
-      { "<leader>n",       function() Snacks.picker.notifications() end,                           desc = "Notification History" },
       { "<leader>fm",      function() Snacks.explorer() end,                                       desc = "File Explorer" },
       -- find
       { "<leader>fb",      function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
@@ -80,7 +74,6 @@ return {
       { '<leader>s"',      function() Snacks.picker.registers() end,                               desc = "Registers" },
       { '<leader>s/',      function() Snacks.picker.search_history() end,                          desc = "Search History" },
       { "<leader>sa",      function() Snacks.picker.autocmds() end,                                desc = "Autocmds" },
-      { "<leader>sb",      function() Snacks.picker.lines() end,                                   desc = "Buffer Lines" },
       { "<leader>sc",      function() Snacks.picker.command_history() end,                         desc = "Command History" },
       { "<leader>sC",      function() Snacks.picker.commands() end,                                desc = "Commands" },
       { "<leader>sd",      function() Snacks.picker.diagnostics() end,                             desc = "Diagnostics" },
@@ -101,7 +94,7 @@ return {
       -- LSP
       { "gd",              function() Snacks.picker.lsp_definitions() end,                         desc = "Goto Definition" },
       { "gD",              function() Snacks.picker.lsp_declarations() end,                        desc = "Goto Declaration" },
-      { "gr",              function() Snacks.picker.lsp_references() end,                          nowait = true,                     desc = "References" },
+      { "grr",             function() Snacks.picker.lsp_references() end,                          desc = "References" },
       { "gI",              function() Snacks.picker.lsp_implementations() end,                     desc = "Goto Implementation" },
       { "gy",              function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
       { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },

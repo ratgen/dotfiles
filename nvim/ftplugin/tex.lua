@@ -1,1 +1,1 @@
-vim.cmd("nmap <Leader>t :VimtexTocToggle<CR>")
+vim.keymap.set("n", "<leader>t", "<cmd>VimtexTocToggle<CR>", { buffer = true, desc = "Vimtex TOC" })

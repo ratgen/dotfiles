@@ -1,14 +1,4 @@
 return {
-  'onsails/lspkind.nvim',
-
-  -- Render errors, from the lsp on the line which they occour
-  {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    config = function()
-      require("lsp_lines").setup()
-    end,
-  },
-
   {
     "smjonas/inc-rename.nvim",
     config = function()
@@ -18,18 +8,8 @@ return {
 
   {
     'williamboman/mason-lspconfig.nvim',
-    config = function()
-      require("mason-lspconfig").setup {
-        automatic_installation = true,
-      }
-    end,
-
-  },
-  {
-    'williamboman/mason.nvim',
-    config = function()
-      require("mason").setup()
-    end,
+    dependencies = { { 'williamboman/mason.nvim', opts = {} } },
+    opts = {},
   },
   {
     'neovim/nvim-lspconfig',
@@ -45,7 +25,24 @@ return {
       -- See Configuration section for options
     },
   },
-  'github/copilot.vim',
+  {
+    'github/copilot.vim',
+    init = function()
+      vim.g.copilot_no_maps = true
+    end,
+    config = function()
+      -- Suggestions come through blink-copilot in the completion menu, so
+      -- replace copilot.vim's autocmds to stop its inline ghost text
+      vim.api.nvim_create_augroup("github_copilot", { clear = true })
+      vim.api.nvim_create_autocmd({ "FileType", "BufUnload" }, {
+        group = "github_copilot",
+        callback = function(args)
+          vim.fn["copilot#On" .. args.event]()
+        end,
+      })
+      vim.fn["copilot#OnFileType"]()
+    end,
+  },
   {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
@@ -53,7 +50,6 @@ return {
       'rafamadriz/friendly-snippets',
       'fang2hou/blink-copilot',
       "bydlw98/blink-cmp-sshconfig",
-      build = 'make',
       "mgalliou/blink-cmp-tmux",
       "bydlw98/blink-cmp-env",
       'disrupted/blink-cmp-conventional-commits',
@@ -84,7 +80,10 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { 'git', 'conventional_commits', 'copilot', 'lsp', 'path', 'snippets', 'tmux', 'buffer', 'env' },
+        default = { 'copilot', 'lsp', 'path', 'snippets', 'tmux', 'buffer', 'env' },
+        per_filetype = {
+          gitcommit = { 'git', 'conventional_commits', inherit_defaults = true },
+        },
         providers = {
           copilot = {
             name = "copilot",
@@ -117,9 +116,6 @@ return {
           conventional_commits = {
             name = 'Conventional Commits',
             module = 'blink-cmp-conventional-commits',
-            enabled = function()
-              return vim.bo.filetype == 'gitcommit'
-            end,
             ---@module 'blink-cmp-conventional-commits'
             ---@type blink-cmp-conventional-commits.Options
           },
@@ -199,6 +195,6 @@ return {
       },
       fuzzy = { implementation = "prefer_rust_with_warning" }
     },
-    OPTS_EXTEND = { "SOURCES.DEFAULT" }
+    opts_extend = { "sources.default" }
   },
 }

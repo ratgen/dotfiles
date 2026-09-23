@@ -13,72 +13,49 @@ set.number = true
 set.confirm = true
 
 set.cursorline = true
-set.mouse = nil
+set.mouse = ""
 
 set.scrolloff = 10
 set.signcolumn = "yes"
 
 set.textwidth = 80
 set.termguicolors = true
-set.updatetime = 50
+set.updatetime = 250
 
 set.modeline = true
 
-local opts = { buffer = bufnr, remap = false }
---vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
---vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
---vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+local opts = { remap = false }
 vim.keymap.set("n", "gn", function() vim.diagnostic.jump({ count = 1 }) end, opts)
 vim.keymap.set("n", "gp", function() vim.diagnostic.jump({ count = -1 }) end, opts)
-vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-vim.keymap.set("x", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
---vim.keymap.set("n", "<leader>r", function() vim.lsp.buf.references() end, opts)
---vim.keymap.set("n", "<leader>lr", function() require('telescope.builtin').lsp_references() end, opts)
-vim.keymap.set("n", "<leader>rn", function()
-  return ":IncRename " .. vim.fn.expand("<cword>")
-end, { expr = true })
--- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-vim.keymap.set("n", "<leader>e", function()
-  vim.lsp.buf.format {
-    filter = function(client) return client.name ~= "tsserver" end
-  }
-end, opts)
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("lsp_keymaps", { clear = true }),
+  callback = function(args)
+    local function map(mode, lhs, rhs, map_opts)
+      vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("force", { buffer = args.buf }, map_opts or {}))
+    end
 
+    map({ "n", "x" }, "<leader>ca", function() vim.lsp.buf.code_action() end, { desc = "Code action" })
+    map("n", "<leader>rn", function()
+      return ":IncRename " .. vim.fn.expand("<cword>")
+    end, { expr = true, desc = "Rename" })
 
+    map("n", "<leader>e", function()
+      vim.lsp.buf.format {
+        filter = function(client) return client.name ~= "ts_ls" end
+      }
+    end, { desc = "Format" })
+
+    map("n", "<leader>ul", function()
+      vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
+    end, { desc = "Toggle code lens" })
+  end,
+})
+
+-- Show diagnostics as lines below the code (built in since Neovim 0.11)
 vim.diagnostic.config({
   virtual_text = false,
+  virtual_lines = true,
 })
 
 set.conceallevel = 0
-
-vim.lsp.config('intelephense', {
-  settings = {
-    ['intelephense'] = {
-      -- enable WordPress stubs so you get auto‑complete for WP functions/constants
-      stubs = {
-        "wordpress",
-        "woocommerce",
-        "wp-cli",       -- if you use WP‑CLI
-        "acf",          -- if using Advanced Custom Fields
-      },
-
-      -- add any paths where your WordPress code lives
-      environment = {
-        includePaths = {
-          vim.fn.expand("~/documents/pet_books/wp_plugin/wp/wp-content/plugins/petbooks-plugin/"),
-        },
-      },
-
-      -- if you need custom file associations
-      files = {
-        associations = { "*.php", "*.inc", "*.module", "*.theme" },
-        maxSize = 5000000,       -- increase if you have huge mixed files
-      },
-
-      -- (optional) point at your intelephense license key
-      licenseKey = os.getenv("INTELEPHENSE_LICENSE_KEY"),
-    },
-  }
-})

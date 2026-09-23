@@ -1,4 +1,2 @@
-./plugin
-./spell/
-
-lazy-lock.json
+/plugin/
+/spell/
