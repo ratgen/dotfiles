@@ -16,8 +16,21 @@ return {
     end,
   },
 
-  'williamboman/mason-lspconfig.nvim',
-  'williamboman/mason.nvim',
+  {
+    'williamboman/mason-lspconfig.nvim',
+    config = function()
+      require("mason-lspconfig").setup {
+        automatic_installation = true,
+      }
+    end,
+
+  },
+  {
+    'williamboman/mason.nvim',
+    config = function()
+      require("mason").setup()
+    end,
+  },
   {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
@@ -109,15 +122,77 @@ return {
             end,
             ---@module 'blink-cmp-conventional-commits'
             ---@type blink-cmp-conventional-commits.Options
-            opts = {
-              -- See Configuration section below for available options
-            },
           },
           git = {
-            module = 'blink-cmp-git',
-            name = 'Git',
+            module = "blink-cmp-git",
+            name = "Git",
             opts = {
-              -- options for the blink-cmp-git
+              git_centers = {
+                gitlab = {
+                  issue = {
+                    enable = function()
+                      local enable = require("blink-cmp-git.default.gitlab").issue.enable()
+                      local utils = require("blink-cmp-git.utils")
+                      return enable or utils.get_repo_remote_url():find("gitlab.sdu.dk", 1, true)
+                    end,
+                    get_command_args = function(command, token)
+                      local d = require("blink-cmp-git.default.gitlab").issue
+                      local args = d.get_command_args(command, token)
+
+                      -- For glab, inject: --hostname gitlab.sdu.dk
+                      if command ~= "curl" then
+                        local endpoint = args[#args]
+                        args[#args] = nil
+                        table.insert(args, "--hostname")
+                        table.insert(args, "gitlab.sdu.dk")
+                        table.insert(args, endpoint)
+                      end
+                      return args
+                    end,
+                  },
+
+                  -- NOTE: still called pull_request even though GitLab uses merge requests
+                  pull_request = {
+                    enable = function()
+                      local enable = require("blink-cmp-git.default.gitlab").pull_request.enable()
+                      local utils = require("blink-cmp-git.utils")
+                      return enable or utils.get_repo_remote_url():find("gitlab.sdu.dk", 1, true)
+                    end,
+                    get_command_args = function(command, token)
+                      local d = require("blink-cmp-git.default.gitlab").pull_request
+                      local args = d.get_command_args(command, token)
+                      if command ~= "curl" then
+                        local endpoint = args[#args]
+                        args[#args] = nil
+                        table.insert(args, "--hostname")
+                        table.insert(args, "gitlab.sdu.dk")
+                        table.insert(args, endpoint)
+                      end
+                      return args
+                    end,
+                  },
+
+                  mention = {
+                    enable = function()
+                      local enable = require("blink-cmp-git.default.gitlab").mention.enable()
+                      local utils = require("blink-cmp-git.utils")
+                      return enable or utils.get_repo_remote_url():find("gitlab.sdu.dk", 1, true)
+                    end,
+                    get_command_args = function(command, token)
+                      local d = require("blink-cmp-git.default.gitlab").mention
+                      local args = d.get_command_args(command, token)
+                      if command ~= "curl" then
+                        local endpoint = args[#args]
+                        args[#args] = nil
+                        table.insert(args, "--hostname")
+                        table.insert(args, "gitlab.sdu.dk")
+                        table.insert(args, endpoint)
+                      end
+                      return args
+                    end,
+                  },
+                },
+              },
             },
           },
         },

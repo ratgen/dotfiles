@@ -24,10 +24,22 @@ require('lazy').setup({
   },
 
   --'folke/tokyonight.nvim',
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true},
   "xiyaowong/transparent.nvim",
 
-  "nvim-treesitter/nvim-treesitter",
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate",
+    opts = {
+      install_dir = vim.fn.stdpath("data") .. "/site",
+    },
+    config = function(_, opts)
+      require("nvim-treesitter").setup(opts)
+    end,
+  },
   'lervag/vimtex',
 
   -- Surrounding ,fo quoting and parenthesizing, and additional objects for this
@@ -37,7 +49,7 @@ require('lazy').setup({
 
   -- Git commands inside vim
   'tpope/vim-fugitive',
-  'SirVer/ultisnips',
+  -- 'SirVer/ultisnips',
   'honza/vim-snippets',
 
   -- Cmdline UI improvement
@@ -72,8 +84,8 @@ require('lazy').setup({
   -- Pluging for refactoring, eg extract function, etc.
   {
     "ThePrimeagen/refactoring.nvim",
-    dependencies = { "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "lewis6991/async.nvim",
     },
     config = function()
       require("refactoring").setup()

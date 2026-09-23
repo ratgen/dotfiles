@@ -9,3 +9,6 @@
 	defaultBranch = main
 [credential]
 	helper = cache
+[push]
+	setupAutoConfig = true
+	autoSetupRemote = true
