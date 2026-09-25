@@ -54,15 +54,6 @@ require('lazy').setup({
     dependencies = { 'nvim-tree/nvim-web-devicons', opt = true }
   },
 
-  -- Plugins for linter attachment
-  {
-    "nvimtools/none-ls.nvim",
-    dependencies = {
-      "nvimtools/none-ls-extras.nvim",
-      "gwinn/none-ls-jsonlint.nvim",
-    },
-  },
-
   {
     'ThePrimeagen/harpoon',
     branch = "harpoon2",
@@ -72,9 +63,10 @@ require('lazy').setup({
   -- Pluging for refactoring, eg extract function, etc.
   {
     "ThePrimeagen/refactoring.nvim",
-    dependencies = { "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "lewis6991/async.nvim",
     },
+    lazy = false,
     config = function()
       require("refactoring").setup()
     end,

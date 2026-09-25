@@ -13,8 +13,3 @@ size = 10
 
 [terminal.shell]
 program = "/bin/fish"
-
-[[keyboard.bindings]]
-key = "Return"
-mods = "Shift"
-chars = "\u001B\r"

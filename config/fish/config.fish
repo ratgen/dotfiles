@@ -10,6 +10,7 @@ if status is-interactive
   fish_add_path /opt/nvim/
   fish_add_path /opt/jetbrains-toolbox-2.3.2.31487/
   fish_add_path /home/linuxbrew/.linuxbrew/bin
+  fish_add_path ~/.pub-cache/bin
 
   set fish_greeting
   switch (uname) 
@@ -76,3 +77,7 @@ pyenv init - | source
 
 # Created by `pipx` on 2024-01-19 17:39:55
 set PATH $PATH /Users/peter/.local/bin
+
+# OpenClaw Completion
+source "/home/peter/.openclaw/completions/openclaw.fish"
+eval "$(/usr/bin/brew shellenv)"

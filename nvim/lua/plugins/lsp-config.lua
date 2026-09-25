@@ -16,20 +16,8 @@ return {
     end,
   },
 
-  {
-    'williamboman/mason-lspconfig.nvim',
-    config = function()
-      require("mason-lspconfig").setup {
-        automatic_installation = true,
-      }
-    end
-  },
-  {
-    'williamboman/mason.nvim',
-    config = function()
-      require("mason").setup()
-    end
-  },
+  'williamboman/mason-lspconfig.nvim',
+  'williamboman/mason.nvim',
   {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
