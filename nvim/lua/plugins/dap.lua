@@ -1,5 +1,17 @@
 -- Return the dap plugins and their configuration
 
+-- Prompt for program arguments before starting a debug session
+local function get_args(config)
+  local args = type(config.args) == "function" and (config.args() or {}) or config.args or {}
+  local args_str = type(args) == "table" and table.concat(args, " ") or args
+  config = vim.deepcopy(config)
+  config.args = function()
+    local new_args = vim.fn.expand(vim.fn.input("Run with args: ", args_str))
+    return require("dap.utils").splitstr(new_args)
+  end
+  return config
+end
+
 return {{
     "mfussenegger/nvim-dap",
 
@@ -40,17 +52,6 @@ return {{
       {
         "theHamsta/nvim-dap-virtual-text",
         opts = {},
-      },
-
-      -- which key integration
-      {
-        "folke/which-key.nvim",
-        optional = true,
-        opts = {
-          defaults = {
-            ["<leader>d"] = { name = "+debug" },
-          },
-        },
       },
 
       -- mason.nvim integration

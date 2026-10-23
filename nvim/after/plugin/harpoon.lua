@@ -13,5 +13,6 @@ vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
 vim.keymap.set("n", "<leader>6", function() harpoon:list():select(6) end)
 
 -- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+-- (<C-S-…> doesn't reach Neovim through Alacritty + tmux, it arrives as <C-p>/<C-n>)
+vim.keymap.set("n", "[h", function() harpoon:list():prev() end, { desc = "Harpoon previous" })
+vim.keymap.set("n", "]h", function() harpoon:list():next() end, { desc = "Harpoon next" })

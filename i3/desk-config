@@ -38,16 +38,16 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl -a previous
 floating_modifier $mod
 
 
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec xfce4-terminal -e "xfce4-terminal -e 'tmux new -n sessionizer ~/dotfiles/tmux-sessionizer'"
 
 exec --no-startup-id compton &
 
 # start newsboat
 
-bindsym $mod+b exec firefox-nightly
+bindsym $mod+b exec firefox
 bindsym $mod+m exec evolution
-bindsym $mod+i exec xfce4-terminal --execute vifm ~
+bindsym $mod+i exec alacritty -e vifm ~
 bindsym $mod+shift+s exec scrot -s /home/peter/screenshots/%y-%m-%d_%H:%M:%S.png
 
 # kill focused window
@@ -180,7 +180,7 @@ client.focused #555555 #555555 #ffffff #FFFFFF     #0095e4
 
 for_window [class="^.*"] border pixel 3
 
-exec source ~/.screenlayout/screen.sh
+# exec source ~/.screenlayout/screen.sh
 
 exec --no-startup-id clipit
 exec --no-startup-id nitrogen --restore

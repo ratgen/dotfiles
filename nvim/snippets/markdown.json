@@ -1,0 +1,9 @@
+{
+  "subitem": {
+    "prefix": "si",
+    "body": [
+      "\\subitem $0"
+    ],
+    "description": "subitem"
+  }
+}

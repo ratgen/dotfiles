@@ -13,6 +13,7 @@ if status is-interactive
   fish_add_path /home/linuxbrew/.linuxbrew/bin
   fish_add_path ~/.local/bin/
   fish_add_path /home/linuxbrew/.linuxbrew/opt/node@20/bin
+  fish_add_path /home/perat/.cargo/bin
 
   set fish_greeting
   switch (uname) 
