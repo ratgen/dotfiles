@@ -53,6 +53,12 @@ vim.diagnostic.config({
 
 set.conceallevel = 0
 
+-- Let clangd ask conda/pixi compilers (x86_64-conda-linux-gnu-c++) for their standard
+-- library and sysroot include paths; it won't run a compiler that isn't allow-listed here.
+vim.lsp.config('clangd', {
+  cmd = { 'clangd', '--query-driver=**/x86_64-conda-linux-gnu-*' },
+})
+
 vim.lsp.config('intelephense', {
   settings = {
     ['intelephense'] = {

@@ -1,4 +1,3 @@
-local null_ls = require("null-ls")
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
@@ -11,10 +10,3 @@ require("nvim-treesitter.configs").setup({
 
 require('refactoring').setup({})
 
-null_ls.setup({
-  sources = {
-      null_ls.builtins.code_actions.refactoring.with({
-        filetypes = { "python" },
-    }),
-  },
-})
